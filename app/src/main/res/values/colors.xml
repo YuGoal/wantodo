@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#ffffff</color>
+    <color name="colorPrimaryDark">#ffffff</color>
+    <color name="colorAccent">#2ab27f</color>
+    <color name="todo">#80919191</color>
+    <color name="bg_todo">#e4a340</color>
+    <color name="bg_completed">#2ab27f</color>
+    <color name="white">#ffffff</color>
+    <color name="black">#000000</color>
+    <color name="red">#F44336</color>
+</resources>

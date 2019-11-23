@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:id="@+id/line"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="vertical"
+        android:paddingLeft="20dp"
+        android:paddingRight="34dp"
+        android:paddingTop="8dp"
+        android:paddingBottom="8dp">
+
+        <TextView
+            android:id="@+id/tv_todo_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="标题"
+            android:textColor="@color/black"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/tv_todo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="记事"
+            android:textColor="@color/todo"
+            android:textSize="12sp" />
+        <TextView
+            android:id="@+id/tv_date"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="今天"
+            android:textColor="@color/bg_completed"
+            android:textSize="12sp" />
+    </LinearLayout>
+
+    <CheckBox
+        android:id="@+id/checkbox"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:layout_width="30dp"
+        android:layout_height="30dp"/>
+    <View
+        android:layout_below="@+id/line"
+        android:background="@color/todo"
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"/>
+</RelativeLayout>

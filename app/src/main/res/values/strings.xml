@@ -1,0 +1,27 @@
+<resources>
+    <string name="app_name">WanTODO</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Android Studio</string>
+    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Settings</string>
+
+    <string name="menu_home">Home</string>
+    <string name="menu_gallery">Gallery</string>
+    <string name="menu_slideshow">Slideshow</string>
+    <string name="menu_tools">Tools</string>
+    <string name="menu_share">Share</string>
+    <string name="menu_send">Send</string>
+    <string name="search_todo">你的清单</string>
+    <string name="add_todo">添加清单...</string>
+    <string name="title">标题</string>
+    <string name="content">内容</string>
+    <string name="label">标签</string>
+    <string name="add_a_todo">添加清单</string>
+    <string name="give_up_todo">放弃清单？</string>
+    <string name="delete">删除</string>
+    <string name="complete">完成</string>
+    <string name="pick_label">标签</string>
+    <string name="pick_priority">优先级</string>
+</resources>

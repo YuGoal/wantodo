@@ -1,0 +1,46 @@
+apply plugin: 'com.android.application'
+apply plugin: 'org.greenrobot.greendao'
+android {
+    compileSdkVersion rootProject.android.compileSdkVersion
+    buildToolsVersion rootProject.android.buildToolsVersion
+    defaultConfig {
+        applicationId rootProject.android.applicationId
+        minSdkVersion rootProject.android.minSdkVersion
+        targetSdkVersion rootProject.android.targetSdkVersion
+        versionCode rootProject.android.versionCode
+        versionName rootProject.android.versionName
+        multiDexEnabled rootProject.android.multiDexEnabled
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    //指定jdk版本
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation rootProject.depsLibs.appcompact
+    implementation 'com.google.android.material:material:1.0.0'
+    implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
+    implementation 'androidx.navigation:navigation-fragment:2.1.0'
+    implementation 'androidx.navigation:navigation-ui:2.1.0'
+    implementation 'androidx.lifecycle:lifecycle-extensions:2.1.0'
+
+    implementation project(path: ':lib_network')
+    implementation project(path: ':lib_common_ui')
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+    implementation rootProject.depsLibs.butterknife
+    annotationProcessor rootProject.depsLibs.butterknife_compiler
+    implementation rootProject.depsLibs.gson
+    implementation rootProject.depsLibs.eventbus
+    implementation rootProject.depsLibs.greendao
+    implementation rootProject.depsLibs.sqlcipher
+}

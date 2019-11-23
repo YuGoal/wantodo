@@ -1,0 +1,49 @@
+apply plugin: 'com.android.library'
+apply plugin: 'org.greenrobot.greendao'
+def versionString = '1.0'
+def versionNumber = 1
+android {
+    compileSdkVersion rootProject.android.compileSdkVersion
+
+    defaultConfig {
+        minSdkVersion rootProject.android.minSdkVersion
+        targetSdkVersion rootProject.android.targetSdkVersion
+        versionCode versionNumber
+        versionName versionString
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+//指定jdk版本
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+}
+
+greendao {
+    //其它配置保持默认,有需要再研究
+    schemaVersion 1 //数据库版本号
+    daoPackage 'io.yugoal.lib_todo.wantodo.db' //dao,master类所在包
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+
+    implementation 'androidx.appcompat:appcompat:1.1.0'
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.1'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
+    //占位主工程的greenDao类库
+    api rootProject.depsLibs.greendao
+    api rootProject.depsLibs.sqlcipher
+    api rootProject.depsLibs.eventbus
+    //音频播放器组
+    implementation project(':lib_network')
+}
+1

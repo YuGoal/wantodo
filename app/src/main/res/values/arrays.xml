@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string-array name="label_array" >
+        <item>工作</item>
+        <item>娱乐</item>
+        <item>学习</item>
+    </string-array>
+    <string-array name="priority_array" >
+        <item>高优先级</item>
+        <item>中优先级</item>
+        <item>低优先级</item>
+        <item>无优先级</item>
+    </string-array>
+</resources>
