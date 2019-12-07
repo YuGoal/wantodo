@@ -1,4 +1,4 @@
-package io.caoyu.wantodo.model;
+package io.caoyu.wantodo.db;
 
 
 import org.greenrobot.greendao.annotation.Entity;

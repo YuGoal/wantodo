@@ -16,7 +16,7 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import io.caoyu.wantodo.R;
-import io.caoyu.wantodo.model.ToDoBean;
+import io.caoyu.wantodo.db.ToDoBean;
 
 /**
  * @user caoyu

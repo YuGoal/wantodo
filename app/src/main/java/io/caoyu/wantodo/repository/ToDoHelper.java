@@ -3,7 +3,7 @@ package io.caoyu.wantodo.repository;
 import android.content.Context;
 
 import io.caoyu.wantodo.db.GreenDaoHelper;
-import io.caoyu.wantodo.model.ToDoBean;
+import io.caoyu.wantodo.db.ToDoBean;
 
 
 /**

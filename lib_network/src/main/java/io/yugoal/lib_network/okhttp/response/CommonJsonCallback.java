@@ -2,6 +2,7 @@ package io.yugoal.lib_network.okhttp.response;
 
 import android.os.Handler;
 import android.os.Looper;
+import android.util.Log;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -22,7 +23,7 @@ import okhttp3.Response;
  * 专门处理JSON的回调
  */
 public class CommonJsonCallback implements Callback {
-
+    private static final String TAG = "CommonJsonCallback";
     /**
      * the logic layer exception, may alter in different app
      */
@@ -76,6 +77,7 @@ public class CommonJsonCallback implements Callback {
     }
 
     private void handleResponse(String result) {
+        Log.d(TAG, "handleResponse: "+result);
         if (result == null || result.toString().trim().equals("")) {
             mListener.onFailure(new OkHttpException(NETWORK_ERROR, EMPTY_MSG));
             return;

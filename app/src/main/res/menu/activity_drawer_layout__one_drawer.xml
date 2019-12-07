@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_all"
+            android:icon="@drawable/ic_menu_gallery"
+            android:title="全部清单"/>
+        <item
+            android:id="@+id/nav_todo"
+            android:icon="@drawable/ic_menu_gallery"
+            android:title="待完成清单"/>
+        <item
+            android:id="@+id/nav_done"
+            android:icon="@drawable/ic_menu_gallery"
+            android:title="已完成清单"/>
+        <item
+            android:id="@+id/nav_label"
+            android:icon="@drawable/ic_label_outline_black_24dp"
+            android:title="标签管理"/>
+    </group>
+
+
+
+</menu>

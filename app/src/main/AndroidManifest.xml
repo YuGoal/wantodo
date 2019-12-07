@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="io.caoyu.wantodo">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+
 
     <application
         android:name=".application.TodoApplication"
@@ -21,7 +23,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".view.home.AddTodoActivity" android:theme="@style/BaseTheme" />
+        <activity
+            android:name=".view.home.AddTodoActivity"
+            android:theme="@style/BaseTheme" />
     </application>
 
 </manifest>

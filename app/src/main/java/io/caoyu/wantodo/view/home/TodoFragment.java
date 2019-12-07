@@ -30,7 +30,7 @@ import butterknife.Unbinder;
 import io.caoyu.wantodo.R;
 import io.caoyu.wantodo.event.ToDoListEvent;
 import io.caoyu.wantodo.event.ToDoStatusEvent;
-import io.caoyu.wantodo.model.ToDoBean;
+import io.caoyu.wantodo.db.ToDoBean;
 import io.caoyu.wantodo.repository.ToDoHelper;
 import io.caoyu.wantodo.view.home.adapter.RecycleItemTouchHelper;
 import io.caoyu.wantodo.view.home.adapter.TodoAdapter;

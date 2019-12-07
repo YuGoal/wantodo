@@ -10,9 +10,7 @@ import java.util.List;
 
 import io.caoyu.wantodo.model.DaoMaster;
 import io.caoyu.wantodo.model.DaoSession;
-import io.caoyu.wantodo.model.LabelBean;
 import io.caoyu.wantodo.model.LabelBeanDao;
-import io.caoyu.wantodo.model.ToDoBean;
 import io.caoyu.wantodo.model.ToDoBeanDao;
 import io.caoyu.wantodo.repository.ToDoHelper;
 

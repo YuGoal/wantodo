@@ -19,7 +19,7 @@ import java.util.Objects;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import io.caoyu.wantodo.R;
-import io.caoyu.wantodo.model.ToDoBean;
+import io.caoyu.wantodo.db.ToDoBean;
 import io.caoyu.wantodo.repository.ToDoHelper;
 import io.yugoal.lib_common_ui.base.BaseActivity;
 import io.yugoal.lib_common_ui.utils.DateUtils;

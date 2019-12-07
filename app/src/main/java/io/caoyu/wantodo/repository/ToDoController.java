@@ -7,7 +7,7 @@ import java.util.List;
 
 import io.caoyu.wantodo.db.GreenDaoHelper;
 import io.caoyu.wantodo.event.ToDoListEvent;
-import io.caoyu.wantodo.model.ToDoBean;
+import io.caoyu.wantodo.db.ToDoBean;
 
 /**
  * @user caoyu

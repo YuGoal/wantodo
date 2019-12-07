@@ -2,7 +2,7 @@ package io.caoyu.wantodo.event;
 
 import java.util.List;
 
-import io.caoyu.wantodo.model.ToDoBean;
+import io.caoyu.wantodo.db.ToDoBean;
 
 /**
  * @user caoyu

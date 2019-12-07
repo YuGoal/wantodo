@@ -2,7 +2,9 @@ package io.caoyu.wantodo.application;
 
 import android.app.Application;
 
+import io.caoyu.wantodo.constant.Constant;
 import io.caoyu.wantodo.repository.ToDoHelper;
+import io.yugoal.lib_common_ui.utils.SpUtils;
 
 
 /**
@@ -18,6 +20,7 @@ public class TodoApplication extends Application {
         super.onCreate();
         todoApplication = this;
         ToDoHelper.init(this);
+        SpUtils.init(getSharedPreferences(Constant.FILE_NAME, MODE_PRIVATE));
     }
 
     public static TodoApplication getInstance() {

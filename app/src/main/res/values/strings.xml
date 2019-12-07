@@ -24,4 +24,10 @@
     <string name="complete">完成</string>
     <string name="pick_label">标签</string>
     <string name="pick_priority">优先级</string>
+    <string name="name_cannot_be_empty">用户名不能为空</string>
+    <string name="pwd_cannot_be_empty">密码不能为空</string>
+    <string name="login_register">登录/注册</string>
+    <string name="login">登录</string>
+    <string name="account">账号</string>
+    <string name="pwd">密码</string>
 </resources>
