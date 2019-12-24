@@ -3,10 +3,11 @@
     <color name="colorPrimary">#ffffff</color>
     <color name="colorPrimaryDark">#ffffff</color>
     <color name="colorAccent">#2ab27f</color>
-    <color name="todo">#80919191</color>
+    <color name="todo">#949ea5</color>
     <color name="bg_todo">#e4a340</color>
-    <color name="bg_completed">#2ab27f</color>
+    <color name="bg_completed">#aed9ef</color>
     <color name="white">#ffffff</color>
     <color name="black">#000000</color>
     <color name="red">#F44336</color>
+    <color name="recycleview_bg">#f8f9fc</color>
 </resources>

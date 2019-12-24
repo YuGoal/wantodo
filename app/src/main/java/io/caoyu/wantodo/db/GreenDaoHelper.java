@@ -2,16 +2,11 @@ package io.caoyu.wantodo.db;
 
 import android.database.sqlite.SQLiteDatabase;
 
-
 import org.greenrobot.greendao.query.QueryBuilder;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import io.caoyu.wantodo.model.DaoMaster;
-import io.caoyu.wantodo.model.DaoSession;
-import io.caoyu.wantodo.model.LabelBeanDao;
-import io.caoyu.wantodo.model.ToDoBeanDao;
 import io.caoyu.wantodo.repository.ToDoHelper;
 
 

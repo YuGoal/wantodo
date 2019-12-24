@@ -70,8 +70,8 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
             public boolean onMenuItemClick(MenuItem item) {
                 switch (item.getItemId()) {
                     case R.id.menu_more:
+                       ToastUtils.showToast("功能开发中...");
                         // TODO: 2019/11/13 更多
-                        ToastUtils.showToast("功能开发中...");
                         break;
                 }
                 return true;
