@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="io.caoyu.wantodo">
 
     <uses-permission android:name="android.permission.INTERNET" />
@@ -12,6 +13,7 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
+        tools:ignore="GoogleAppIndexingWarning"
         android:theme="@style/BaseTheme">
         <activity
             android:name=".view.home.MainActivity"
@@ -26,6 +28,9 @@
         <activity
             android:name=".view.home.AddTodoActivity"
             android:theme="@style/BaseTheme" />
+        <activity android:name=".view.home.QuickToDoActivity"
+            android:windowSoftInputMode="adjustResize"
+            android:theme="@style/ActivityDialogStyle" />
     </application>
 
 </manifest>

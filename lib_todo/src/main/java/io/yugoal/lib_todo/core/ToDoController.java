@@ -1,7 +1,5 @@
 package io.yugoal.lib_todo.core;
 
-import java.util.List;
-
 import io.yugoal.lib_todo.model.ToDoBean;
 
 /**

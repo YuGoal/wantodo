@@ -2,10 +2,10 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/WanTodo.iml" filepath="$PROJECT_DIR$/WanTodo.iml" />
-      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
-      <module fileurl="file://$PROJECT_DIR$/lib_common_ui/lib_common_ui.iml" filepath="$PROJECT_DIR$/lib_common_ui/lib_common_ui.iml" />
-      <module fileurl="file://$PROJECT_DIR$/lib_network/lib_network.iml" filepath="$PROJECT_DIR$/lib_network/lib_network.iml" />
+      <module fileurl="file://$PROJECT_DIR$/WanTodo.iml" filepath="$PROJECT_DIR$/WanTodo.iml" group="WanTodo" />
+      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" group="WanTodo/app" />
+      <module fileurl="file://$PROJECT_DIR$/lib_common_ui/lib_common_ui.iml" filepath="$PROJECT_DIR$/lib_common_ui/lib_common_ui.iml" group="WanTodo/lib_common_ui" />
+      <module fileurl="file://$PROJECT_DIR$/lib_network/lib_network.iml" filepath="$PROJECT_DIR$/lib_network/lib_network.iml" group="WanTodo/lib_network" />
     </modules>
   </component>
 </project>

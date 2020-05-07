@@ -43,4 +43,6 @@ dependencies {
     implementation rootProject.depsLibs.eventbus
     implementation rootProject.depsLibs.greendao
     implementation rootProject.depsLibs.sqlcipher
+    // if u use AndroidX, use the following
+    implementation   rootProject.depsLibs.utilcodex
 }

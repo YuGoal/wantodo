@@ -85,6 +85,14 @@
             android:layout_height="match_parent"
             android:layout_below="@id/toolbar" />
 
+        <TextView
+            android:text="空数据"
+            android:layout_centerInParent="true"
+            android:textSize="20sp"
+            android:gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:src="@drawable/ic_add_black_24dp"
             android:layout_width="wrap_content"
@@ -96,7 +104,6 @@
             app:fabSize="normal"
             android:id="@+id/fab_add_todo"
             />
-
     </RelativeLayout>
     <com.google.android.material.navigation.NavigationView
         android:id="@+id/nav_view"

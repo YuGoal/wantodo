@@ -3,7 +3,6 @@ package io.yugoal.lib_todo.db;
 import android.database.sqlite.SQLiteDatabase;
 
 import org.greenrobot.greendao.query.QueryBuilder;
-import org.greenrobot.greendao.query.WhereCondition;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -2,8 +2,6 @@ package io.yugoal.lib_todo.app;
 
 import android.content.Context;
 
-import java.util.List;
-
 import io.yugoal.lib_todo.core.ToDoController;
 import io.yugoal.lib_todo.db.GreenDaoHelper;
 import io.yugoal.lib_todo.model.ToDoBean;

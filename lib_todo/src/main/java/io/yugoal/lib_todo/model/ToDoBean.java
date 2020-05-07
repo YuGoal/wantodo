@@ -1,8 +1,8 @@
 package io.yugoal.lib_todo.model;
 
 import org.greenrobot.greendao.annotation.Entity;
-import org.greenrobot.greendao.annotation.NotNull;
 import org.greenrobot.greendao.annotation.Generated;
+import org.greenrobot.greendao.annotation.NotNull;
 
 /**
  * @user caoyu

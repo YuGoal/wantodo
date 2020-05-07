@@ -30,4 +30,5 @@
     <string name="login">登录</string>
     <string name="account">账号</string>
     <string name="pwd">密码</string>
+    <string name="ReadyTodo">准备做什么？</string>
 </resources>

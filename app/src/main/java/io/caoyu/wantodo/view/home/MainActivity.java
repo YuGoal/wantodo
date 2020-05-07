@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.FrameLayout;
 import android.widget.TextView;
 
@@ -13,6 +14,7 @@ import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.widget.Toolbar;
 import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.fragment.app.DialogFragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
@@ -43,11 +45,14 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
     @BindView(R.id.nav_view)
     NavigationView navView;
 
+    private DialogFragment mDialogFragment;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN);
         ButterKnife.bind(this);
         initView();
         //自动登录
@@ -70,7 +75,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
             public boolean onMenuItemClick(MenuItem item) {
                 switch (item.getItemId()) {
                     case R.id.menu_more:
-                       ToastUtils.showToast("功能开发中...");
+                        ToastUtils.showToast("功能开发中...");
                         // TODO: 2019/11/13 更多
                         break;
                 }
@@ -113,7 +118,9 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
 
     @Override
     public void onClick(View v) {
-        startActivity(new Intent(this, AddTodoActivity.class));
+        //快捷输入
+        startActivity(new Intent(this, QuickToDoActivity.class));
+        overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
     }
 
     @Override

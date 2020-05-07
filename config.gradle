@@ -1,7 +1,7 @@
 ext {
     android = [compileSdkVersion: 29,
                buildToolsVersion: "29.0.2",
-               minSdkVersion    : 15,
+               minSdkVersion    : 21,
                targetSdkVersion : 29,
                applicationId    : 'io.caoyu.wantodo',
                versionCode      : 1,
@@ -26,6 +26,7 @@ ext {
                    smartrefresh        : '1.1.0',
                    smartrefreshheader  : '1.1.0',
                    sqlcipher           : '3.5.9',
+                   utilcodex           : '1.26.0',
                    gson                : '2.8.5',]
 
     depsLibs = [appcompact          : 'com.android.support:appcompat-v7:28.0.0',
@@ -48,5 +49,6 @@ ext {
                 gson                : "com.google.code.gson:gson:${depsVersion.gson}",
                 smartrefresh        : "com.scwang.smartrefresh:SmartRefreshLayout:${depsVersion.smartrefresh}",
                 sqlcipher           : "net.zetetic:android-database-sqlcipher:${depsVersion.sqlcipher}",
+                utilcodex           : "com.blankj:utilcodex:${depsVersion.utilcodex}",
                 smartrefreshheader  : "com.scwang.smartrefresh:SmartRefreshHeader:${depsVersion.smartrefreshheader}"]
 }

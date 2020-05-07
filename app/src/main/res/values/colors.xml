@@ -10,4 +10,5 @@
     <color name="black">#000000</color>
     <color name="red">#F44336</color>
     <color name="recycleview_bg">#f8f9fc</color>
+    <color name="quick_bg">#4D000000</color>
 </resources>
