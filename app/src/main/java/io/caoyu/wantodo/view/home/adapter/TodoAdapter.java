@@ -1,21 +1,19 @@
 package io.caoyu.wantodo.view.home.adapter;
 
 import android.content.Context;
+import android.os.Build;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.CheckBox;
 import android.widget.CompoundButton;
-import android.widget.TextView;
 
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
 
-import butterknife.BindView;
-import butterknife.ButterKnife;
-import io.caoyu.wantodo.R;
+import io.caoyu.wantodo.databinding.RvFooterBinding;
+import io.caoyu.wantodo.databinding.TodoItemBinding;
 import io.caoyu.wantodo.model.ToDoBean;
 
 /**
@@ -54,9 +52,9 @@ public class TodoAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> i
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         if (viewType == ITEM_TYPE_CONTENT) {
-            return new ContentViewHolder(mInflater.inflate(R.layout.todo_item, parent, false));
+            return new ContentViewHolder(TodoItemBinding.inflate(mInflater,parent,false));
         } else if (viewType == ITEM_TYPE_BOTTOM) {
-            return new BottomViewHolder(mInflater.inflate(R.layout.rv_footer, parent, false));
+            return new BottomViewHolder(RvFooterBinding.inflate(mInflater,parent,false));
         }
         return null;
     }
@@ -78,28 +76,30 @@ public class TodoAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> i
         ToDoBean toDoBean = stepList.get(position);
         if (holder instanceof ContentViewHolder) {
             ContentViewHolder  contentViewHolder = ((ContentViewHolder) holder);
-            if (TextUtils.isEmpty(toDoBean.getContent())) {
-                contentViewHolder.tvTodo.setVisibility(View.GONE);
+            if (TextUtils.isEmpty(toDoBean.content)) {
+                contentViewHolder.binding.tvTodo.setVisibility(View.GONE);
             } else {
-                contentViewHolder.tvTodo.setVisibility(View.VISIBLE);
+                contentViewHolder.binding.tvTodo.setVisibility(View.VISIBLE);
             }
-            if (0==toDoBean.getStatus()){
+            if (0==toDoBean.status){
                 //待完成
-                contentViewHolder.checkBox.setChecked(false);
+                contentViewHolder.binding.checkbox.setChecked(false);
             }else {
-                contentViewHolder.checkBox.setChecked(true);
+                contentViewHolder.binding.checkbox.setChecked(true);
                 //已完成
-                contentViewHolder.itemView.setTransitionAlpha(0.4f);
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
+                    contentViewHolder.itemView.setTransitionAlpha(0.4f);
+                }
             }
-            contentViewHolder.checkBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            contentViewHolder.binding.checkbox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
                 @Override
                 public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                     toDoCallBack.completedToDo(position);
                 }
             });
-            contentViewHolder.tvDate.setText(toDoBean.getDateStr());
-            contentViewHolder.tvTodoTitle.setText(toDoBean.getTitle());
-            contentViewHolder.tvTodo.setText(toDoBean.getContent());
+            contentViewHolder.binding.tvDate.setText(toDoBean.dateStr);
+            contentViewHolder.binding.tvTodoTitle.setText(toDoBean.title);
+            contentViewHolder.binding.tvTodo.setText(toDoBean.content);
         } else if (holder instanceof BottomViewHolder) {
 
         }
@@ -126,29 +126,21 @@ public class TodoAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> i
 
 
     //内容 ViewHolder
-    public class ContentViewHolder extends RecyclerView.ViewHolder {
-        @BindView(R.id.tv_todo_title)
-        TextView tvTodoTitle;
-        @BindView(R.id.tv_todo)
-        TextView tvTodo;
-        @BindView(R.id.tv_date)
-        TextView tvDate;
-        @BindView(R.id.checkbox)
-        CheckBox checkBox;
+    public static class ContentViewHolder extends RecyclerView.ViewHolder {
 
-        public ContentViewHolder(View itemView) {
-            super(itemView);
-            ButterKnife.bind(this, itemView);
+        private TodoItemBinding binding;
+        public ContentViewHolder(TodoItemBinding itemView) {
+            super(itemView.getRoot());
+            binding = itemView;
         }
     }
 
     //底部 ViewHolder
     public static class BottomViewHolder extends RecyclerView.ViewHolder {
-        @BindView(R.id.recyclerView)
-        RecyclerView recyclerView;
-        public BottomViewHolder(View itemView) {
-            super(itemView);
-            ButterKnife.bind(this, itemView);
+        private RvFooterBinding footerBinding;
+        public BottomViewHolder(RvFooterBinding itemView) {
+            super(itemView.getRoot());
+            footerBinding = itemView;
         }
     }
 

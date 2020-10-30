@@ -5,7 +5,8 @@ import org.greenrobot.eventbus.EventBus;
 
 import java.util.List;
 
-import io.caoyu.wantodo.db.GreenDaoHelper;
+import io.caoyu.wantodo.db.TodoDao;
+import io.caoyu.wantodo.db.TodoDataBase;
 import io.caoyu.wantodo.event.ToDoListEvent;
 import io.caoyu.wantodo.model.ToDoBean;
 
@@ -24,26 +25,22 @@ public class ToDoController {
     }
 
     public void addToDo(ToDoBean toDoBean) {
-        GreenDaoHelper.addToDo(toDoBean);
+        TodoDataBase.getInstance().getTodoDao().addToDo(toDoBean);
     }
 
-    public void deleteToDo(long id) {
-        GreenDaoHelper.deleteToDo(id);
+    public void deleteToDo(ToDoBean toDoBean) {
+        TodoDataBase.getInstance().getTodoDao().deleteToDo(toDoBean);
     }
 
 
     public void updataToDo(ToDoBean toDoBean) {
-        GreenDaoHelper.updataToDo(toDoBean);
+        TodoDataBase.getInstance().getTodoDao().updateToDo(toDoBean);
     }
 
-    public void getToDoList(int type, int priority, int orderby) {
-        List<ToDoBean> list = GreenDaoHelper.getToDoList(type, priority, orderby);
+    public void getToDoList(int type, int priority, int orderby,int page) {
+        List<ToDoBean> list = TodoDataBase.getInstance().getTodoDao().getToDoList(type, priority, orderby,page);
         ToDoListEvent toDoListEvent = new ToDoListEvent();
         toDoListEvent.setList(list);
         EventBus.getDefault().post(toDoListEvent);
-    }
-
-    public void completedToDo(long id, int status) {
-        GreenDaoHelper.completedToDo(id, status);
     }
 }

@@ -7,21 +7,18 @@ import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.DatePicker;
-import android.widget.EditText;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
-import androidx.appcompat.widget.Toolbar;
 
 import java.util.Calendar;
 import java.util.Objects;
 
-import butterknife.BindView;
-import butterknife.ButterKnife;
 import io.caoyu.wantodo.R;
+import io.caoyu.wantodo.databinding.ActivityAddTodoBinding;
 import io.caoyu.wantodo.model.ToDoBean;
 import io.caoyu.wantodo.repository.ToDoHelper;
-import io.yugoal.lib_common_ui.base.BaseActivity;
+import io.yugoal.lib_common_ui.base.BaseDataBindActivity;
 import io.yugoal.lib_common_ui.utils.DateUtils;
 
 /**
@@ -29,13 +26,7 @@ import io.yugoal.lib_common_ui.utils.DateUtils;
  * @date 2019/11/13
  * 添加待办清单
  */
-public class AddTodoActivity extends BaseActivity {
-    @BindView(R.id.toolbar)
-    Toolbar toolbar;
-    @BindView(R.id.et_title)
-    EditText etTitle;
-    @BindView(R.id.rt_content)
-    EditText rtContent;
+public class AddTodoActivity extends BaseDataBindActivity<ActivityAddTodoBinding> {
 
     private String date;
     private int type;
@@ -45,10 +36,13 @@ public class AddTodoActivity extends BaseActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_add_todo);
-        ButterKnife.bind(this);
         initView();
         initData();
+    }
+
+    @Override
+    protected int getLayoutId() {
+        return R.layout.activity_add_todo;
     }
 
     private void initData() {
@@ -57,8 +51,8 @@ public class AddTodoActivity extends BaseActivity {
     }
 
     private void initView() {
-        toolbar.inflateMenu(R.menu.add_todo);
-        toolbar.setOnMenuItemClickListener(item -> {
+        dataBind.toolbar.inflateMenu(R.menu.add_todo);
+        dataBind.toolbar.setOnMenuItemClickListener(item -> {
             switch (item.getItemId()) {
                 case R.id.menu_label:
 //                        ToastUtils.showToast("功能开发中...");
@@ -71,7 +65,7 @@ public class AddTodoActivity extends BaseActivity {
             }
             return true;
         });
-        toolbar.setNavigationOnClickListener(v -> {
+        dataBind.toolbar.setNavigationOnClickListener(v -> {
             try {
                 ((InputMethodManager) Objects.requireNonNull(getSystemService(Context.INPUT_METHOD_SERVICE)))
                         .hideSoftInputFromWindow(Objects.requireNonNull(getCurrentFocus()).getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
@@ -86,13 +80,13 @@ public class AddTodoActivity extends BaseActivity {
     @Override
     public void onBackPressed() {
         super.onBackPressed();
-        if (TextUtils.isEmpty(etTitle.getText())) {
+        if (TextUtils.isEmpty(dataBind.etTitle.getText())) {
             return;
         }
         ToDoBean toDoBean = new ToDoBean();
         toDoBean.setType(type);
-        toDoBean.setContent(rtContent.getText().toString());
-        toDoBean.setTitle(etTitle.getText().toString());
+        toDoBean.setContent(dataBind.rtContent.getText().toString());
+        toDoBean.setTitle(dataBind.etTitle.getText().toString());
         toDoBean.setStatus(0);
         toDoBean.setDate(date);
         toDoBean.setDateStr("今天");

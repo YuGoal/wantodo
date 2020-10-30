@@ -2,7 +2,6 @@ package io.caoyu.wantodo.repository;
 
 import android.content.Context;
 
-import io.caoyu.wantodo.db.GreenDaoHelper;
 import io.caoyu.wantodo.model.ToDoBean;
 
 
@@ -16,28 +15,22 @@ public final class ToDoHelper {
 
     public static void init(Context context) {
         mContext = context;
-        //初始化本地数据库
-        GreenDaoHelper.initDatabase();
     }
 
     public static void addToDo(ToDoBean toDoBean) {
         ToDoController.getInstance().addToDo(toDoBean);
     }
 
-    public static void deleteToDo(long id) {
-        ToDoController.getInstance().deleteToDo(id);
+    public static void deleteToDo(ToDoBean toDoBean) {
+        ToDoController.getInstance().deleteToDo(toDoBean);
     }
 
-    public static void updataToDo(ToDoBean toDoBean) {
+    public static void updateToDo(ToDoBean toDoBean) {
         ToDoController.getInstance().updataToDo(toDoBean);
     }
 
-    public static void getToDoList(int type, int priority, int orderby) {
-        ToDoController.getInstance().getToDoList(type, priority, orderby);
-    }
-
-    public static void completedToDo(long id, int status) {
-        ToDoController.getInstance().completedToDo(id, status);
+    public static void getToDoList(int type, int priority, int orderby,int page) {
+        ToDoController.getInstance().getToDoList(type, priority, orderby,page);
     }
 
     public static Context getContext() {
