@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="base_colorPrimary">#008577</color>
+    <color name="base_colorPrimaryDark">#00574B</color>
+    <color name="base_colorAccent">#D81B60</color>
+    <color name="base_5CA3E5">#5CA3E5</color>
+    <color name="base_white">#FFFFFF</color>
+    <color name="base_black">#000000</color>
+    <color name="base_transparent">#00000000</color>
+    <color name="base_translucent">#B3000000</color>
+    <color name="base_bg_white_gray">#f2f2f2</color>
+    <color name="base_tv_talk_content">#AF807F7F</color>
+    <color name="base_line_bg_color">#D6D6D6</color>
+    <color name="base_color_fbfbfb">#fbfbfb</color>
+    <color name="base_color_4C4D4C">#4C4D4C</color>
+    <color name="base_color_FAFAFA">#FAFAFA</color>
+    <color name="base_color_808080">#808080</color>
+    <color name="tr_blue">#AA00ffff</color>
+    <color name="company_color1">#65A7FD</color>
+    <color name="company_color2">#EF752D</color>
+    <color name="company_color3">#DB4BB1</color>
+    <color name="company_color4">#9701FD</color>
+    <color name="company_color5">#41D545</color>
+    <color name="company_color6">#FDDB65</color>
+
+
+    <color name="base_color_4682FF">#4682FF</color>
+    <color name="base_color_666666">#666666</color>
+    <color name="base_color_6191FF">#6191FF</color>
+    <color name="base_color_9A9A9A">#9A9A9A</color>
+    <color name="base_color_4582FF">#4582FF</color>
+    <color name="base_color_582E7A">#582E7A</color>
+    <color name="base_color_264E72">#264E72</color>
+    <color name="base_color_7A5C2E">#7A5C2E</color>
+    <color name="base_color_64332A">#64332A</color>
+    <color name="base_color_343434">#343434</color>
+    <color name="base_color_605C58">#605C58</color>
+    <color name="base_color_f0f0f0">#f0f0f0</color>
+    <color name="base_color_f5f5f5">#F5F5F5</color>
+    <color name="base_color_355995">#355995</color>
+    <color name="base_line">#f5f5f5</color>
+</resources>

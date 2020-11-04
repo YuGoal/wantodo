@@ -1,2 +1,2 @@
-include ':app', ':lib_network',':lib_common_ui'
+include ':app', ':lib_network',':lib_common_ui',':lib_base',':lib_utils'
 rootProject.name='WanTodo'

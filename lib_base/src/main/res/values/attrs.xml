@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <declare-styleable name="base_NumberProgressBar">
+        <attr name="base_progress_current" format="integer"/>
+        <attr name="base_progress_max" format="integer"/>
+        <attr name="base_progress_unreached_color" format="color"/>
+        <attr name="base_progress_reached_color" format="color"/>
+        <attr name="base_progress_reached_bar_height" format="dimension"/>
+        <attr name="base_progress_unreached_bar_height" format="dimension"/>
+        <attr name="base_progress_text_size" format="dimension"/>
+        <attr name="base_progress_text_color" format="color"/>
+        <attr name="base_progress_text_offset" format="dimension"/>
+        <attr name="base_progress_text_visibility" format="enum">
+            <enum name="visible" value="0"/>
+            <enum name="invisible" value="1"/>
+        </attr>
+    </declare-styleable>
+
+    <declare-styleable name="DefectDownView" tools:ignore="ResourceName">
+        <attr name="defect_text" format="string" />
+        <attr name="defect_background_color" format="color" />
+        <attr name="defect_image_icon" format="integer" />
+        <attr name="defect_text_color" format="color" />
+        <attr name="defect_imageColor" format="color" />
+    </declare-styleable>
+
+    <declare-styleable name="LTRatingBar" tools:ignore="ResourceName">
+        <attr name="starSize" format="dimension|reference"/>
+        <attr name="starCount" format="integer"/>
+        <attr name="starSpace" format="dimension|reference"/>
+        <attr name="starMaxProgress" format="float"/>
+        <attr name="starProgress" format="float"/>
+        <attr name="starStrokeWidth" format="dimension|reference"/>
+        <attr name="starShowStroke" format="boolean"/>
+        <attr name="starStrokeColor" format="color|reference"/>
+        <attr name="starFillColor" format="color|reference"/>
+        <attr name="starCoverColor" format="color|reference"/>
+        <attr name="starCanTouch" format="boolean"/>
+        <attr name="starUseGradient" format="boolean"/>
+        <attr name="starStartColor" format="color|reference"/>
+        <attr name="starEndColor" format="color|reference"/>
+        <attr name="starPathData" format="string|reference"/>
+        <attr name="starPathDataId" format="reference"/>
+        <attr name="starCoverDir">
+            <enum name="left_to_right" value="0" />
+            <enum name="right_to_left" value="1" />
+            <enum name="top_to_bottom" value="2" />
+            <enum name="bottom_to_top" value="3" />
+        </attr>
+    </declare-styleable>
+
+
+
+    <declare-styleable name="AndRatingBar" tools:ignore="ResourceName">
+        <!-- color of star -->
+        <attr name="starColor" format="color|reference" />
+
+        <!-- color of secondary star -->
+        <attr name="subStarColor" format="color|reference" />
+
+        <!-- color of background star -->
+        <attr name="bgColor" format="color|reference" />
+
+        <!-- drawable of star -->
+        <attr name="starDrawable" format="reference" />
+
+        <!-- drawable of background star -->
+        <attr name="bgDrawable" format="reference" />
+
+        <!-- if keep the origin color of star drawable -->
+        <attr name="keepOriginColor" format="boolean" />
+
+        <!-- the scale factor of ratingbar that can change the spacing of star -->
+        <attr name="scaleFactor" format="float" />
+
+        <!-- additional the spacing of the star -->
+        <attr name="starSpacing" format="dimension" />
+
+        <!-- right to left -->
+        <attr name="right2Left" format="boolean" />
+    </declare-styleable>
+</resources>

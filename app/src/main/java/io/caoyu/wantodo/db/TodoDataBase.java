@@ -19,8 +19,6 @@ public abstract class TodoDataBase extends RoomDatabase {
     private static final String DB_NAME = "TodoDataBase.db";
     private static volatile TodoDataBase singleton = null;
 
-    private TodoDataBase() {}
-
     public static TodoDataBase getInstance() {
         if (singleton == null) {
             synchronized (TodoDataBase.class) {

@@ -24,4 +24,7 @@
     <string name="complete">完成</string>
     <string name="pick_label">标签</string>
     <string name="pick_priority">优先级</string>
+    <string name="all">全部</string>
+    <string name="msg">消息</string>
+    <string name="node">节点</string>
 </resources>

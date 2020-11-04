@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
+    <string name="base_app_name" >base</string>
+    <string name="base_brvah_loading">正在加载中...</string>
+    <string name="base_brvah_load_failed">加载失败，请点我重试</string>
+    <string name="base_brvah_load_end">没有更多数据</string>
+    <string name="base_net_error">当前网络不佳，请稍后再试！</string>
+    <string name="base_empty">还没有数据哦</string>
+    <string name="base_loading">请稍后...</string>
+    <string name="base_reload">重新尝试</string>
+    <string name="base_no_net">网络不可用,请检查你的网络</string>
+    <string name="base_network_err">当前网络不佳，请稍后再试</string>
+    <string name="base_server_err">服务器异常</string>
+    <string name="base_empty_network_error">加载失败，请下拉刷新试试</string>
+    <string name="base_empty_no_data">暂无数据</string>
+    <string name="base_distance_format">%.2f</string>
+    <string name="base_network_not_good">网络不给力</string>
+
+    <!-- 圆角星星 -->
+    <string name="round_star" tools:ignore="ResourceName">
+        M333.312 257.856c-8.832 16.512-22.208 27.264-36.224 28.736l-208.64 30.272C8.064 330.24-23.68 430.528 33.664 490.176l150.016 150.912a52.48 52.48 0 0 1 14.848 44.928l-36.352 214.08c-12.864 83.648 70.784 147.072 141.632 106.88l185.472-100.288a42.752 42.752 0 0 1 44.8-0.256l186.56 100.8c70.464 39.936 154.048-23.488 141.312-106.752l-36.416-213.952a60.16 60.16 0 0 1 15.104-45.696l149.376-150.464c57.728-59.968 25.984-160.192-53.888-173.504l-208.256-30.144c-16.512-3.456-30.912-14.208-36.8-27.968L598.912 61.888A94.464 94.464 0 0 0 425.024 62.08L333.312 257.856m0 0
+    </string>
+    <string name="round_star2" tools:ignore="ResourceName">
+        M548.2 93l98.4 199.4c6.2 12.5 18.1 21.2 32 23.2l220 32c34.8 5.1 48.7 47.9 23.5 72.4L762.9 575.2c-10 9.8-14.6 23.8-12.2 37.6l37.6 219.1c5.9 34.7-30.5 61.1-61.6 44.8L529.9 773.2c-12.4-6.5-27.2-6.5-39.5 0L293.5 876.7c-31.2 16.4-67.6-10.1-61.6-44.8l37.6-219.1c2.4-13.8-2.2-27.8-12.2-37.6L98.1 420c-25.2-24.6-11.3-67.4 23.5-72.4l220-32c13.8-2 25.8-10.7 32-23.2L472 93c15.6-31.6 60.6-31.6 76.2 0z
+    </string>
+
+
+</resources>

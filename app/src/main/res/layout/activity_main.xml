@@ -1,56 +1,88 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools">
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
 
     </data>
 
-    <androidx.drawerlayout.widget.DrawerLayout
-        android:id="@+id/drawer_layout"
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@color/colorPrimary"
         android:fitsSystemWindows="true"
-        tools:openDrawer="start">
+        android:layout_height="match_parent">
 
-        <RelativeLayout
+        <com.google.android.material.appbar.AppBarLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="wrap_content"
+            android:background="@color/gray"
+            app:elevation="8dp">
 
-            <androidx.appcompat.widget.Toolbar
-                android:id="@+id/toolbar"
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@color/white"
-                android:minHeight="?attr/actionBarSize"
-                app:title="@string/app_name"
-                app:navigationIcon="@drawable/ic_menu_black_24dp"
-                app:popupTheme="@style/popup_theme"
-                app:theme="@style/toolbar_theme"
-                app:titleTextAppearance="@style/Toolbar_TextAppearance_White"
-                app:titleTextColor="@color/black" />
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:background="@color/gray"
+                app:layout_scrollFlags="scroll"
+                android:layout_height="@dimen/dp_60">
 
-            <FrameLayout
-                android:id="@+id/frameLayout"
+                <ImageView
+                    android:id="@+id/img_btn_nav"
+                    android:src="@drawable/ic_menu_black_24dp"
+                    android:layout_width="@dimen/dp_50"
+                    android:scaleType="center"
+                    android:layout_height="match_parent" />
+
+                <TextView
+                    android:text="@string/app_name"
+                    android:gravity="center"
+                    android:textStyle="bold"
+                    android:textColor="@color/black"
+                    android:textSize="20sp"
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent" />
+
+                <ImageView
+                    android:id="@+id/img_btn_search"
+                    android:src="@drawable/ic_baseline_search_24"
+                    android:background="@color/transparent"
+                    android:layout_width="@dimen/dp_50"
+                    android:scaleType="center"
+                    android:layout_height="match_parent" />
+            </LinearLayout>
+
+            <com.google.android.material.tabs.TabLayout
+                android:id="@+id/tabs"
+                android:background="@color/gray"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_below="@id/toolbar" />
+                android:layout_height="@dimen/dp_40"
+                app:tabIndicatorFullWidth="false"
+                app:tabTextAppearance="@style/TAB"
+                app:tabTextColor="@color/font_gray"
+                app:tabSelectedTextColor="@color/black"
+                android:gravity="center" >
 
-            <com.google.android.material.floatingactionbutton.FloatingActionButton
-                android:src="@drawable/ic_add_black_24dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentRight="true"
-                android:layout_alignParentBottom="true"
-                android:layout_marginRight="14dp"
-                android:layout_marginBottom="20dp"
-                app:fabSize="normal"
-                android:visibility="gone"
-                android:id="@+id/fab_add_todo" />
+                <com.google.android.material.tabs.TabItem
+                    android:text="@string/all"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"/>
+                <com.google.android.material.tabs.TabItem
+                    android:text="@string/msg"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"/>
+                <com.google.android.material.tabs.TabItem
+                    android:text="@string/node"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"/>
+            </com.google.android.material.tabs.TabLayout>
 
-        </RelativeLayout>
+        </com.google.android.material.appbar.AppBarLayout>
 
-    </androidx.drawerlayout.widget.DrawerLayout>
+        <androidx.viewpager.widget.ViewPager
+            android:id="@+id/viewpager"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior" />
+
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
 </layout>
