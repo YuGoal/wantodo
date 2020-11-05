@@ -1,6 +1,8 @@
 package io.caoyu.wantodo.view.home;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
+import android.view.Gravity;
 import android.view.MenuItem;
 import android.view.View;
 
@@ -41,9 +43,10 @@ public class MainActivity extends BaseDataBindActivity<ActivityMainBinding> {
         initViewPager();
     }
 
+    @SuppressLint("RtlHardcoded")
     private void initToolbar() {
         dataBind.imgBtnNav.setOnClickListener(v -> {
-            ToastUtils.showToast("功能开发中...");
+            dataBind.drawer.openDrawer(Gravity.LEFT);
         });
         dataBind.imgBtnSearch.setOnClickListener(v ->{
             ToastUtils.showToast("功能开发中...");

@@ -2,10 +2,12 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/WanTodo.iml" filepath="$PROJECT_DIR$/WanTodo.iml" />
-      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
-      <module fileurl="file://$PROJECT_DIR$/lib_common_ui/lib_common_ui.iml" filepath="$PROJECT_DIR$/lib_common_ui/lib_common_ui.iml" />
-      <module fileurl="file://$PROJECT_DIR$/lib_network/lib_network.iml" filepath="$PROJECT_DIR$/lib_network/lib_network.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/WanTodo.iml" filepath="$PROJECT_DIR$/.idea/modules/WanTodo.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/WanTodo.app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/WanTodo.app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/lib_base/WanTodo.lib_base.iml" filepath="$PROJECT_DIR$/.idea/modules/lib_base/WanTodo.lib_base.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/lib_common_ui/WanTodo.lib_common_ui.iml" filepath="$PROJECT_DIR$/.idea/modules/lib_common_ui/WanTodo.lib_common_ui.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/lib_network/WanTodo.lib_network.iml" filepath="$PROJECT_DIR$/.idea/modules/lib_network/WanTodo.lib_network.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/lib_utils/WanTodo.lib_utils.iml" filepath="$PROJECT_DIR$/.idea/modules/lib_utils/WanTodo.lib_utils.iml" />
     </modules>
   </component>
 </project>
