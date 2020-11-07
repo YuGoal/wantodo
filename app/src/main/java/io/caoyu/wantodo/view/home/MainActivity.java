@@ -17,6 +17,7 @@ import io.caoyu.wantodo.R;
 import io.caoyu.wantodo.databinding.ActivityMainBinding;
 import io.caoyu.wantodo.view.all.AllFragment;
 import io.caoyu.wantodo.view.home.adapter.CardViewAdapter;
+import io.caoyu.wantodo.view.mine.SettingActivity;
 import io.yugoal.lib_base.base.activity.BaseDataBindActivity;
 import io.yugoal.lib_common_ui.utils.StatusBarUtil;
 import io.yugoal.lib_utils.utils.StatusBarUtils;
@@ -28,8 +29,7 @@ public class MainActivity extends BaseDataBindActivity<ActivityMainBinding> {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        StatusBarUtils.setStatusBarColor(this,getResources().getColor(R.color.gray));
-        setStatusBarLightMode(true);
+
         initView();
     }
 
@@ -41,6 +41,13 @@ public class MainActivity extends BaseDataBindActivity<ActivityMainBinding> {
     private void initView() {
         initToolbar();
         initViewPager();
+        initEvent();
+    }
+
+    private void initEvent() {
+        dataBind.drawerView.tvSetting.setOnClickListener(v -> {
+            SettingActivity.show(this);
+        });
     }
 
     @SuppressLint("RtlHardcoded")

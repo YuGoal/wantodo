@@ -93,6 +93,8 @@
 
         </androidx.coordinatorlayout.widget.CoordinatorLayout>
 
-        <include layout="@layout/drawer_left" />
+        <include
+            android:id="@+id/drawer_view"
+            layout="@layout/drawer_left" />
     </androidx.drawerlayout.widget.DrawerLayout>
 </layout>
