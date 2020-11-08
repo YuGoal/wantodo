@@ -8,6 +8,7 @@ import android.os.Bundle;
 import io.caoyu.wantodo.R;
 import io.caoyu.wantodo.databinding.ActivitySettingBinding;
 import io.yugoal.lib_base.base.activity.BaseDataBindActivity;
+import io.yugoal.lib_common_ui.CommonDialog;
 
 /**
  * 系统设置界面
@@ -27,6 +28,20 @@ public class SettingActivity extends BaseDataBindActivity<ActivitySettingBinding
         dataBind.toolbar.setNavigationIcon(R.drawable.ic_arrow_back_black_24dp);
         dataBind.toolbar.setNavigationOnClickListener(v -> {
             finish();
+        });
+        dataBind.tvLogout.setOnClickListener(v -> {
+            CommonDialog commonDialog =  new CommonDialog(this,
+                    "退出登录",
+                    "确定退出吗？",
+                    "取消",
+                    "确定",
+                    new CommonDialog.DialogClickListener() {
+                        @Override
+                        public void onDialogClick() {
+                            finish();
+                        }
+                    });
+            commonDialog.show();
         });
     }
 

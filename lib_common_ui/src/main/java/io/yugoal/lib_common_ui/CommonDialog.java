@@ -59,7 +59,7 @@ public class CommonDialog extends Dialog {
   public CommonDialog(Context context, String msg, String contentMsg, String confirmText,
                       String cancelText, int dialogWidth, DialogClickListener confirmClick,
                       DialogClickListener cancelClick) {
-    super(context, R.style.Base_Theme_AppCompat_Dialog);
+    super(context, R.style.CustomDialogStyle);
     initDialogStyle(msg, contentMsg, confirmText, cancelText, dialogWidth, confirmClick,
         cancelClick);
   }
@@ -68,13 +68,12 @@ public class CommonDialog extends Dialog {
       int dialogWidth, final DialogClickListener confirmClick,
       final DialogClickListener cancelClick) {
     setContentView(createDialogView(R.layout.dialog_common_layout));
-    setParams(dialogWidth, LayoutParams.WRAP_CONTENT);
+    setParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT);
     LinearLayout layout1 = (LinearLayout) findChildViewById(R.id.all_layout);
     LinearLayout layout2 = (LinearLayout) findChildViewById(R.id.signal_layout);
     titleView = (TextView) findChildViewById(R.id.title_view);
     contentTextView = (TextView) findChildViewById(R.id.message);
     contentTextView.setText(contentMsg);
-    contentTextView.setGravity(Gravity.CENTER);
     if (!TextUtils.isEmpty(msg)) {
       titleView.setText(msg);
     }
