@@ -33,8 +33,8 @@ public class SettingActivity extends BaseDataBindActivity<ActivitySettingBinding
             CommonDialog commonDialog =  new CommonDialog(this,
                     "退出登录",
                     "确定退出吗？",
-                    "取消",
                     "确定",
+                    "取消",
                     new CommonDialog.DialogClickListener() {
                         @Override
                         public void onDialogClick() {
