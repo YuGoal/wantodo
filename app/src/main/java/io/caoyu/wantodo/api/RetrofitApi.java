@@ -11,6 +11,7 @@ import retrofit2.http.GET;
 import retrofit2.http.Multipart;
 import retrofit2.http.POST;
 import retrofit2.http.Part;
+import retrofit2.http.Path;
 import retrofit2.http.Query;
 
 /**
@@ -29,7 +30,7 @@ public interface RetrofitApi {
 
     //首页文章列表
     @GET("article/list/{page}/json")
-    Observable<Response<ResultBean<ArticleBean>>> article(@Query("page") int page);
+    Observable<Response<ResultBean<ArticleBean>>> article(@Path("page") int page);
 
 
 }

@@ -1,13 +1,19 @@
 package io.caoyu.wantodo.view.all;
 
 import android.app.Application;
+import android.text.TextUtils;
 
 import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
-import androidx.lifecycle.ViewModel;
+import androidx.lifecycle.MutableLiveData;
 
-import java.util.ArrayList;
-import java.util.List;
+import io.caoyu.wantodo.api.RetrofitClient;
+import io.caoyu.wantodo.api.bean.ArticleBean;
+import io.reactivex.Observer;
+import io.reactivex.disposables.Disposable;
+import io.yugoal.lib_network.okhttp.ResultBean;
+import io.yugoal.lib_network.okhttp.RxObservableTransformer;
+import retrofit2.Response;
 
 /**
  * user caoyu
@@ -16,28 +22,44 @@ import java.util.List;
  */
 public class AllViewModel extends AndroidViewModel {
 
-    public AllViewModel(@NonNull Application application) {
-        super(application);
+    private MutableLiveData<ArticleBean> articleBeanMutableLiveData;
+
+    public MutableLiveData<ArticleBean> getArticleBeanMutableLiveData() {
+        return articleBeanMutableLiveData;
     }
 
-    public List<String> getAllData(){
-        List<String> list = new ArrayList<>();
-        list.add("1");
-        list.add("1");
-        list.add("1");
-        list.add("1");
-        list.add("1");
-        list.add("1");
-        list.add("1");
-        list.add("1");
-        list.add("1");
-        list.add("1");
-        list.add("1");
-        list.add("1");
-        list.add("1");
-        list.add("1");
-        list.add("1");
-        list.add("1");
-        return list;
+    public AllViewModel(@NonNull Application application) {
+        super(application);
+        articleBeanMutableLiveData = new MutableLiveData<>();
+    }
+
+    public void getAllData() {
+        RetrofitClient.getRetrofit().getRetrofitApi().article(0)
+                .compose(RxObservableTransformer.transformer())
+                .subscribe(new Observer<Response<ResultBean<ArticleBean>>>() {
+                    @Override
+                    public void onSubscribe(@io.reactivex.annotations.NonNull Disposable d) {
+
+                    }
+
+                    @Override
+                    public void onNext(@io.reactivex.annotations.NonNull Response<ResultBean<ArticleBean>> resultBeanResponse) {
+                        if (resultBeanResponse.isSuccessful()) {
+
+                        } else {
+                            articleBeanMutableLiveData.postValue(null);
+                        }
+                    }
+
+                    @Override
+                    public void onError(@io.reactivex.annotations.NonNull Throwable e) {
+
+                    }
+
+                    @Override
+                    public void onComplete() {
+
+                    }
+                });
     }
 }

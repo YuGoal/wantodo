@@ -1,13 +1,12 @@
-package io.caoyu.wantodo.view.mine;
-
-import androidx.appcompat.app.AppCompatActivity;
+package io.caoyu.wantodo.view.mine.loginreg;
 
 import android.os.Bundle;
 
 import io.caoyu.wantodo.R;
+import io.caoyu.wantodo.databinding.FragmentLoginBinding;
 import io.yugoal.lib_base.base.activity.BaseDataBindActivity;
 
-public class LoginRegActivity extends BaseDataBindActivity {
+public class LoginActivity extends BaseDataBindActivity<FragmentLoginBinding> {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -16,6 +15,6 @@ public class LoginRegActivity extends BaseDataBindActivity {
 
     @Override
     protected int getLayoutId() {
-        return R.layout.activity_login_reg;
+        return R.layout.fragment_login;
     }
 }
