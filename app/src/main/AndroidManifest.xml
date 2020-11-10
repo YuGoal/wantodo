@@ -12,8 +12,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/BaseTheme">
-        <activity android:name=".view.mine.loginreg.LoginActivity"></activity>
-        <activity android:name=".view.mine.SettingActivity" />
+        <activity android:name=".view.all.ArticleActivity"></activity>
+        <activity android:name=".view.mine.loginreg.LoginActivity" />
+        <activity android:name=".view.mine.set.SettingActivity" />
         <activity android:name=".view.home.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

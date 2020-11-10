@@ -3,10 +3,7 @@ package io.caoyu.wantodo.view.home;
 import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.view.Gravity;
-import android.view.MenuItem;
-import android.view.View;
 
-import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 import androidx.viewpager.widget.ViewPager;
 
@@ -17,10 +14,8 @@ import io.caoyu.wantodo.R;
 import io.caoyu.wantodo.databinding.ActivityMainBinding;
 import io.caoyu.wantodo.view.all.AllFragment;
 import io.caoyu.wantodo.view.home.adapter.CardViewAdapter;
-import io.caoyu.wantodo.view.mine.SettingActivity;
+import io.caoyu.wantodo.view.mine.set.SettingActivity;
 import io.yugoal.lib_base.base.activity.BaseDataBindActivity;
-import io.yugoal.lib_common_ui.utils.StatusBarUtil;
-import io.yugoal.lib_utils.utils.StatusBarUtils;
 import io.yugoal.lib_utils.utils.ToastUtils;
 
 
