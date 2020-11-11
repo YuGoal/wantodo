@@ -2,6 +2,7 @@ package io.yugoal.lib_base.base.fragment;
 
 import android.content.Context;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.LinearLayout;
@@ -16,6 +17,8 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModel;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.lifecycle.ViewModelStoreOwner;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.disposables.Disposable;
@@ -137,7 +140,6 @@ public abstract class BaseFragment extends Fragment {
     }
 
 
-
     private CompositeDisposable compositeDisposable;
 
     public void addDisposable(Disposable disposable) {
@@ -182,5 +184,16 @@ public abstract class BaseFragment extends Fragment {
         }
     }
 
+    /**
+     * 加载列表
+     *
+     * @return
+     */
+    public RecyclerView getSuccessView() {
+        RecyclerView recyclerView = new RecyclerView(getContext());
+        LinearLayoutManager mLinearLayoutManager = new LinearLayoutManager(getContext());
+        recyclerView.setLayoutManager(mLinearLayoutManager);
+        return recyclerView;
+    }
 
 }

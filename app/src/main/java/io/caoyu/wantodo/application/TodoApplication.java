@@ -1,15 +1,14 @@
 package io.caoyu.wantodo.application;
 
-import android.app.Application;
-
 import io.caoyu.wantodo.repository.ToDoHelper;
+import io.yugoal.lib_base.App;
 
 
 /**
  * @user caoyu
  * @date 2019/11/13
  */
-public class TodoApplication extends Application {
+public class TodoApplication extends App {
 
     private static TodoApplication todoApplication = null;
 

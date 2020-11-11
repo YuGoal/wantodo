@@ -45,7 +45,7 @@ public class AllViewModel extends AndroidViewModel {
                     @Override
                     public void onNext(@io.reactivex.annotations.NonNull Response<ResultBean<ArticleBean>> resultBeanResponse) {
                         if (resultBeanResponse.isSuccessful()) {
-
+                            articleBeanMutableLiveData.postValue(resultBeanResponse.body().getData());
                         } else {
                             articleBeanMutableLiveData.postValue(null);
                         }

@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
 
+import io.caoyu.wantodo.api.bean.ArticleBean;
 import io.caoyu.wantodo.databinding.ItemAllBinding;
 
 /**
@@ -19,7 +20,7 @@ import io.caoyu.wantodo.databinding.ItemAllBinding;
 public class AllAdapter extends RecyclerView.Adapter<AllAdapter.ViewHolder> {
 
 
-    private List<String> stepList;
+    private List<ArticleBean.DatasBean> stepList;
     private LayoutInflater mInflater;
     private OnItemClickListener mOnItemClickListener;
 
@@ -28,14 +29,10 @@ public class AllAdapter extends RecyclerView.Adapter<AllAdapter.ViewHolder> {
     }
 
     public interface OnItemClickListener {
-        void onItemClickListener(int pos, List<String> myLiveList);
-
-        void onDeleteClickListener(int pos, List<String> myLiveList);
-
-        void onPositionClickListener(int pos, List<String> myLiveList);
+        void onItemClickListener(int pos, List<ArticleBean.DatasBean> myLiveList);
     }
 
-    public AllAdapter(Context mContext, List<String> stepList) {
+    public AllAdapter(Context mContext, List<ArticleBean.DatasBean> stepList) {
         this.stepList = stepList;
         mInflater = LayoutInflater.from(mContext);
     }
@@ -48,7 +45,7 @@ public class AllAdapter extends RecyclerView.Adapter<AllAdapter.ViewHolder> {
 
     @Override
     public void onBindViewHolder(final ViewHolder holder, int position) {
-        String str = stepList.get(position);
+        ArticleBean.DatasBean str = stepList.get(position);
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

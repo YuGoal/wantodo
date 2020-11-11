@@ -11,8 +11,6 @@ import java.nio.charset.Charset;
 import java.util.concurrent.TimeUnit;
 
 import io.yugoal.lib_base.App;
-import io.yugoal.lib_base.BuildConfig;
-import io.yugoal.lib_utils.utils.IOUtils;
 import okhttp3.Connection;
 import okhttp3.Headers;
 import okhttp3.Interceptor;

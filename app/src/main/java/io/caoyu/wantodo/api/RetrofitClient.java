@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
+import io.caoyu.wantodo.application.TodoApplication;
 import io.yugoal.lib_base.App;
 import io.yugoal.lib_network.okhttp.NetApi;
 import io.yugoal.lib_network.okhttp.TInterceptor;
@@ -56,7 +57,7 @@ public class RetrofitClient {
         /**
          * 设置缓存
          */
-        File cacheFile = new File(App.getInstance().getExternalCacheDir(), CACHE_NAME);
+        File cacheFile = new File(TodoApplication.getInstance().getExternalCacheDir(), CACHE_NAME);
         Cache cache = new Cache(cacheFile, 1024 * 1024 * 50);
         Interceptor cacheInterceptor = new Interceptor() {
             @Override
@@ -172,7 +173,7 @@ public class RetrofitClient {
                 .cache(cache)
                 .addInterceptor(cacheInterceptor)//缓存
                 .addInterceptor(headerInterceptor)
-                .cookieJar(new CookieJarImpl(new SPCookieStore(App.getContext()))) //使用sp保持cookie，如果cookie不过期，则一直有效
+                .cookieJar(new CookieJarImpl(new SPCookieStore(TodoApplication.getContext()))) //使用sp保持cookie，如果cookie不过期，则一直有效
                 .addNetworkInterceptor(new TInterceptor())// 加入日志拦截
                 .build();
         mRetrofit = getRetrofitBuildStringRxjava();
