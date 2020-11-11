@@ -16,6 +16,7 @@ import io.caoyu.wantodo.api.bean.ArticleBean;
 import io.caoyu.wantodo.databinding.FragmentAllBinding;
 import io.caoyu.wantodo.view.all.adapter.AllAdapter;
 import io.yugoal.lib_base.base.fragment.BaseDataBindFragment;
+import io.yugoal.lib_utils.utils.ToastUtils;
 
 /**
  * user caoyu
@@ -61,6 +62,12 @@ public class AllFragment extends BaseDataBindFragment<FragmentAllBinding> implem
 
         allAdapter = new AllAdapter(getContext(),stepList);
         recyclerView.setAdapter(allAdapter);
+        allAdapter.setOnItemClickListener(new AllAdapter.OnItemClickListener() {
+            @Override
+            public void onItemClickListener(int pos, List<ArticleBean.DatasBean> myLiveList) {
+                ToastUtils.showToast("功能开发中");
+            }
+        });
 
         allViewModel.getAllData();
         allViewModel.getArticleBeanMutableLiveData().observe(this, new Observer<ArticleBean>() {

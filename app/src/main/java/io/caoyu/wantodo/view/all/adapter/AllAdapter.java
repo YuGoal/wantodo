@@ -45,7 +45,11 @@ public class AllAdapter extends RecyclerView.Adapter<AllAdapter.ViewHolder> {
 
     @Override
     public void onBindViewHolder(final ViewHolder holder, int position) {
-        ArticleBean.DatasBean str = stepList.get(position);
+        ArticleBean.DatasBean datasBean = stepList.get(position);
+        holder.binding.tvAuthor.setText(datasBean.getShareUser());
+        holder.binding.tvNiceShareDate.setText(datasBean.getNiceShareDate());
+        holder.binding.tvTags.setText(datasBean.getSuperChapterName());
+        holder.binding.tvTitle.setText(datasBean.getTitle());
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
