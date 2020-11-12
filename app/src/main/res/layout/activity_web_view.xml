@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+    </data>
+
+    <FrameLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:background="@color/gray"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:elevation="@dimen/dp_8"
+            app:navigationIcon="@drawable/ic_arrow_back_black_24dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <io.yugoal.lib_common_ui.ProgressWebView
+            android:id="@+id/webview"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+
+        <ImageButton
+            android:elevation="@dimen/dp_8"
+            android:layout_gravity="bottom"
+            android:layout_marginBottom="@dimen/dp_50"
+            android:layout_marginStart="@dimen/dp_20"
+            android:background="@drawable/shape_c_back"
+            android:src="@drawable/ic_arrow_back_black_24dp"
+            android:layout_width="@dimen/dp_50"
+            android:layout_height="@dimen/dp_50"/>
+    </FrameLayout>
+</layout>

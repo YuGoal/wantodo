@@ -25,6 +25,7 @@
                 android:layout_height="wrap_content"
                 android:background="@color/gray"
                 android:elevation="@dimen/dp_8"
+                app:navigationIcon="@drawable/ic_arrow_back_black_24dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />

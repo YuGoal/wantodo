@@ -14,6 +14,7 @@ import java.util.List;
 import io.caoyu.wantodo.R;
 import io.caoyu.wantodo.api.bean.ArticleBean;
 import io.caoyu.wantodo.databinding.FragmentAllBinding;
+import io.caoyu.wantodo.view.WebViewActivity;
 import io.caoyu.wantodo.view.all.adapter.AllAdapter;
 import io.yugoal.lib_base.base.fragment.BaseDataBindFragment;
 import io.yugoal.lib_utils.utils.ToastUtils;
@@ -65,7 +66,8 @@ public class AllFragment extends BaseDataBindFragment<FragmentAllBinding> implem
         allAdapter.setOnItemClickListener(new AllAdapter.OnItemClickListener() {
             @Override
             public void onItemClickListener(int pos, List<ArticleBean.DatasBean> myLiveList) {
-                ToastUtils.showToast("功能开发中");
+                ArticleBean.DatasBean datasBean = myLiveList.get(pos);
+                WebViewActivity.show(getContext(),datasBean.getLink(),datasBean.getTitle());
             }
         });
 
