@@ -28,12 +28,12 @@
                 style="@style/ArticleAuthor" />
 
             <TextView
-                android:layout_toRightOf="@+id/tv_author"
+                android:layout_toEndOf="@+id/tv_author"
                 android:id="@+id/tv_nice_share_date"
                 style="@style/ArticleAuthor" />
 
             <TextView
-                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true"
                 android:id="@+id/tv_tags"
                 style="@style/ArticleTags" />
 
