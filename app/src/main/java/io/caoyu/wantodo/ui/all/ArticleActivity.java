@@ -1,4 +1,4 @@
-package io.caoyu.wantodo.view.all;
+package io.caoyu.wantodo.ui.all;
 
 import androidx.appcompat.app.AppCompatActivity;
 

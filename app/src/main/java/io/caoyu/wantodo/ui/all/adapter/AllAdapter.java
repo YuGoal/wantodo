@@ -1,4 +1,4 @@
-package io.caoyu.wantodo.view.all.adapter;
+package io.caoyu.wantodo.ui.all.adapter;
 
 import android.content.Context;
 import android.view.LayoutInflater;

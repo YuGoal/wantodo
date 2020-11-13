@@ -1,4 +1,4 @@
-package io.caoyu.wantodo.view.home;
+package io.caoyu.wantodo.ui.home;
 
 import android.annotation.SuppressLint;
 import android.os.Bundle;
@@ -12,9 +12,9 @@ import java.util.List;
 
 import io.caoyu.wantodo.R;
 import io.caoyu.wantodo.databinding.ActivityMainBinding;
-import io.caoyu.wantodo.view.all.AllFragment;
-import io.caoyu.wantodo.view.home.adapter.CardViewAdapter;
-import io.caoyu.wantodo.view.mine.set.SettingActivity;
+import io.caoyu.wantodo.ui.all.AllFragment;
+import io.caoyu.wantodo.ui.home.adapter.CardViewAdapter;
+import io.caoyu.wantodo.ui.mine.set.SettingActivity;
 import io.yugoal.lib_base.base.activity.BaseDataBindActivity;
 import io.yugoal.lib_utils.utils.ToastUtils;
 

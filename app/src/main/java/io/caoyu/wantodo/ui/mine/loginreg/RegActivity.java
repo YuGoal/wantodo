@@ -1,11 +1,4 @@
-package io.caoyu.wantodo.view.mine.loginreg;
-
-import android.os.Bundle;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-
-import androidx.fragment.app.Fragment;
+package io.caoyu.wantodo.ui.mine.loginreg;
 
 import io.caoyu.wantodo.R;
 import io.caoyu.wantodo.databinding.FragmentRegBinding;

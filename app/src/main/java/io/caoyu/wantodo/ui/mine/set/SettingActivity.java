@@ -1,4 +1,4 @@
-package io.caoyu.wantodo.view.mine.set;
+package io.caoyu.wantodo.ui.mine.set;
 
 
 import android.content.Context;

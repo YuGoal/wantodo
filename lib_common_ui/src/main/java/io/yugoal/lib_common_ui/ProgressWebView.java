@@ -5,6 +5,7 @@ import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.os.Message;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.webkit.GeolocationPermissions;
 import android.webkit.SslErrorHandler;
@@ -23,6 +24,8 @@ import android.widget.ProgressBar;
 public class ProgressWebView extends WebView {
     private static final String TAG = "ProgressWebView";
     private final ProgressBar progressbar;
+    private OnScrollChangedCallback mOnScrollChangedCallback;
+
 
     public ProgressWebView(Context context, AttributeSet attrs) {
         super(context, attrs);
@@ -101,10 +104,30 @@ public class ProgressWebView extends WebView {
 
     @Override
     protected void onScrollChanged(int l, int t, int oldl, int oldt) {
+        Log.d(TAG, "onScrollChanged: l="+l+" t="+t+" oldl="+oldl+" oldt="+oldt);
         LayoutParams lp = (LayoutParams) progressbar.getLayoutParams();
         lp.x = l;
         lp.y = t;
         progressbar.setLayoutParams(lp);
+        if (mOnScrollChangedCallback != null) {
+            mOnScrollChangedCallback.onScroll(l , t );
+        }
         super.onScrollChanged(l, t, oldl, oldt);
     }
+
+
+    public OnScrollChangedCallback getOnScrollChangedCallback() {
+        return mOnScrollChangedCallback;
+    }
+    public void setOnScrollChangedCallback(
+            final OnScrollChangedCallback onScrollChangedCallback) {
+        mOnScrollChangedCallback = onScrollChangedCallback;
+    }
+    /**
+     * Impliment in the activity/fragment/view that you want to listen to the webview
+     */
+    public  interface OnScrollChangedCallback {
+        void onScroll(int dx, int dy);
+    }
+
 }

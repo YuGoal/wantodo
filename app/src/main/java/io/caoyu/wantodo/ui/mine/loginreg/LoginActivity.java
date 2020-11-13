@@ -1,4 +1,4 @@
-package io.caoyu.wantodo.view.mine.loginreg;
+package io.caoyu.wantodo.ui.mine.loginreg;
 
 import android.os.Bundle;
 

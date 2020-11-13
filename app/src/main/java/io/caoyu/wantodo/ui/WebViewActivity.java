@@ -1,9 +1,10 @@
-package io.caoyu.wantodo.view;
+package io.caoyu.wantodo.ui;
 
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.webkit.WebSettings;
@@ -13,13 +14,16 @@ import android.webkit.WebViewClient;
 import io.caoyu.wantodo.R;
 import io.caoyu.wantodo.databinding.ActivityWebViewBinding;
 import io.yugoal.lib_base.base.activity.BaseDataBindActivity;
+import io.yugoal.lib_common_ui.ProgressWebView;
 
 public class WebViewActivity extends BaseDataBindActivity<ActivityWebViewBinding> {
-
-    public static void show(Context context, String url,String title ) {
+    private static final String TAG = "WebViewActivity";
+    private boolean mAnimatorOn = true;
+    public static void show(Context context, String url,String title,String chapterName ) {
         Intent intent = new Intent(context, WebViewActivity.class);
         intent.putExtra("url", url);
         intent.putExtra("title", title);
+        intent.putExtra("chapterName", chapterName);
         context.startActivity(intent);
     }
     @Override
@@ -34,7 +38,19 @@ public class WebViewActivity extends BaseDataBindActivity<ActivityWebViewBinding
         //自适应屏幕
         dataBind.webview.getSettings().setLayoutAlgorithm(WebSettings.LayoutAlgorithm.SINGLE_COLUMN);
         dataBind.webview.getSettings().setLoadWithOverviewMode(true);
-
+        dataBind.webview.setOnScrollChangedCallback(new ProgressWebView.OnScrollChangedCallback() {
+            @Override
+            public void onScroll(int dx, int dy) {
+                Log.d(TAG, "onScroll: "+dy);
+                /*if (dy>600){
+                    Log.d(TAG, "onScroll: hideBottomTv");
+                    hideBottomTv();
+                }else {
+                    Log.d(TAG, "onScroll:showBottomTv ");
+                    showBottomTv();
+                }*/
+            }
+        });
         initData();
     }
 
@@ -43,11 +59,9 @@ public class WebViewActivity extends BaseDataBindActivity<ActivityWebViewBinding
         if (null!=intent){
             String url = intent.getStringExtra("url");
             String title = intent.getStringExtra("title");
+            String chapterName = intent.getStringExtra("chapterName");
             if (!TextUtils.isEmpty(url)) {
                 dataBind.webview.loadUrl(url);
-            }
-            if (!TextUtils.isEmpty(title)) {
-                dataBind.toolbar.setTitle(title);
             }
         }
 
@@ -57,13 +71,10 @@ public class WebViewActivity extends BaseDataBindActivity<ActivityWebViewBinding
             public void onPageFinished(WebView view, String url) {
                 super.onPageFinished(view, url);
                 String title = view.getTitle();
-                if (!TextUtils.isEmpty(title)) {
-                    //dataBind.tvTitle.setText(title);
-                }
             }
         });
 
-        dataBind.toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+        dataBind.imgBtnBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (dataBind.webview.canGoBack()) {

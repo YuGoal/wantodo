@@ -1,10 +1,9 @@
-package io.caoyu.wantodo.view.all;
+package io.caoyu.wantodo.ui.all;
 
 import android.os.Bundle;
 
 import androidx.annotation.Nullable;
 import androidx.lifecycle.Observer;
-import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
@@ -14,10 +13,9 @@ import java.util.List;
 import io.caoyu.wantodo.R;
 import io.caoyu.wantodo.api.bean.ArticleBean;
 import io.caoyu.wantodo.databinding.FragmentAllBinding;
-import io.caoyu.wantodo.view.WebViewActivity;
-import io.caoyu.wantodo.view.all.adapter.AllAdapter;
+import io.caoyu.wantodo.ui.WebViewActivity;
+import io.caoyu.wantodo.ui.all.adapter.AllAdapter;
 import io.yugoal.lib_base.base.fragment.BaseDataBindFragment;
-import io.yugoal.lib_utils.utils.ToastUtils;
 
 /**
  * user caoyu
@@ -67,7 +65,7 @@ public class AllFragment extends BaseDataBindFragment<FragmentAllBinding> implem
             @Override
             public void onItemClickListener(int pos, List<ArticleBean.DatasBean> myLiveList) {
                 ArticleBean.DatasBean datasBean = myLiveList.get(pos);
-                WebViewActivity.show(getContext(),datasBean.getLink(),datasBean.getTitle());
+                WebViewActivity.show(getContext(),datasBean.getLink(),datasBean.getTitle(),datasBean.getChapterName());
             }
         });
 

@@ -1,7 +1,6 @@
-package io.caoyu.wantodo.view.all;
+package io.caoyu.wantodo.ui.all;
 
 import android.app.Application;
-import android.text.TextUtils;
 
 import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
