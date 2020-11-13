@@ -5,6 +5,7 @@ import java.util.List;
 import io.caoyu.wantodo.api.bean.ArticleBean;
 import io.caoyu.wantodo.api.bean.CoinBean;
 import io.caoyu.wantodo.api.bean.LoginBean;
+import io.caoyu.wantodo.api.bean.WendaBean;
 import io.reactivex.Observable;
 import io.yugoal.lib_network.okhttp.ResultBean;
 import okhttp3.MultipartBody;
@@ -33,6 +34,10 @@ public interface RetrofitApi {
     //首页文章列表
     @GET("article/list/{page}/json")
     Observable<Response<ResultBean<ArticleBean>>> article(@Path("page") int page);
+
+    //问答列表
+    @GET("wenda/list/{page}/json")
+    Observable<Response<ResultBean<WendaBean>>> wenda(@Path("page") int page);
 
     //登录
     @POST("user/login")

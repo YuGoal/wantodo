@@ -19,7 +19,7 @@ public class CardViewAdapter extends FragmentPagerAdapter {
 
     private final FragmentManager fragmentManager;
     private final List<Fragment> mFragmentList;
-    private final String[] titles = {"全部","消息","节点"};
+    private final String[] titles = {"文章","问答","体系"};
     public CardViewAdapter(FragmentManager fm, List<Fragment> fragmentList) {
         super(fm);
         this.fragmentManager = fm;

@@ -20,6 +20,7 @@ import io.caoyu.wantodo.ui.home.adapter.CardViewAdapter;
 import io.caoyu.wantodo.ui.mine.loginreg.LoginActivity;
 import io.caoyu.wantodo.ui.mine.rank.UserRankActivity;
 import io.caoyu.wantodo.ui.mine.set.SettingActivity;
+import io.caoyu.wantodo.ui.wenda.WendaFragment;
 import io.yugoal.lib_base.base.activity.BaseDataBindActivity;
 import io.yugoal.lib_base.SPUtils;
 import io.yugoal.lib_utils.utils.ToastUtils;
@@ -87,7 +88,7 @@ public class MainActivity extends BaseDataBindActivity<ActivityMainBinding> {
     private void initViewPager() {
         List<Fragment> fragments = new ArrayList<>();
         fragments.add(AllFragment.newInstance());
-        fragments.add(AllFragment.newInstance());
+        fragments.add(WendaFragment.newInstance());
         fragments.add(AllFragment.newInstance());
         CardViewAdapter cardViewAdapter = new CardViewAdapter(getSupportFragmentManager(), fragments);
         dataBind.viewpager.setAdapter(cardViewAdapter);
