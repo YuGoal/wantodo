@@ -20,11 +20,13 @@
             android:layout_height="@dimen/dp_180">
 
             <io.yugoal.lib_common_ui.CharAvatarView
+                android:id="@+id/char_avatar_view"
                 android:layout_width="@dimen/dp_60"
                 android:layout_height="@dimen/dp_60" />
 
             <TextView
-                android:text="yugoal"
+                android:id="@+id/tv_name"
+                android:text="请先登录"
                 android:layout_marginTop="@dimen/dp_10"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />

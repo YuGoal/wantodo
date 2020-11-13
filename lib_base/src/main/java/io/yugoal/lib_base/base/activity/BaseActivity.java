@@ -1,9 +1,11 @@
 package io.yugoal.lib_base.base.activity;
 
 
+import android.app.ProgressDialog;
 import android.content.res.Configuration;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.widget.ProgressBar;
 
 import androidx.annotation.ColorRes;
 import androidx.annotation.NonNull;
@@ -119,6 +121,27 @@ public abstract class BaseActivity extends AppCompatActivity {
      */
     public void setStatusBarLightMode(boolean isLightMode) {
         StatusBarUtils.setStatusBarLightMode(this, isLightMode);
+    }
+
+    private ProgressDialog dialog;
+
+    public void showDialogLoading() {
+        try {
+            if (dialog != null && dialog.isShowing() && !isFinishing()) return;
+            dialog = new ProgressDialog(this);
+            dialog.show();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void dismissDialogLoading() {
+        if (!isFinishing()) {
+            if (dialog != null && dialog.isShowing()) {
+                dialog.dismiss();
+                dialog = null;
+            }
+        }
     }
 
     /**

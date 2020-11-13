@@ -14,6 +14,7 @@ import io.caoyu.wantodo.R;
 import io.caoyu.wantodo.databinding.ActivityMainBinding;
 import io.caoyu.wantodo.ui.all.AllFragment;
 import io.caoyu.wantodo.ui.home.adapter.CardViewAdapter;
+import io.caoyu.wantodo.ui.mine.loginreg.LoginActivity;
 import io.caoyu.wantodo.ui.mine.set.SettingActivity;
 import io.yugoal.lib_base.base.activity.BaseDataBindActivity;
 import io.yugoal.lib_utils.utils.ToastUtils;
@@ -52,6 +53,9 @@ public class MainActivity extends BaseDataBindActivity<ActivityMainBinding> {
         });
         dataBind.imgBtnSearch.setOnClickListener(v ->{
             ToastUtils.showToast("功能开发中...");
+        });
+        dataBind.drawerView.charAvatarView.setOnClickListener(v->{
+            LoginActivity.show(this);
         });
     }
 

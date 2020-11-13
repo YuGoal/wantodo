@@ -8,9 +8,6 @@
 
     </data>
 
-    <androidx.core.widget.NestedScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
 
 
         <LinearLayout
@@ -48,7 +45,7 @@
                 android:textColor="@color/font_black" />
 
             <TextView
-                android:id="@+id/tv_logout"
+                android:id="@+id/tv_login"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="end"
@@ -58,5 +55,4 @@
                 android:textColor="@color/font_black"
                 android:textSize="16sp" />
         </LinearLayout>
-    </androidx.core.widget.NestedScrollView>
 </layout>
