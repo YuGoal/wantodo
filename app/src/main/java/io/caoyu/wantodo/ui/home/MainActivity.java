@@ -2,7 +2,9 @@ package io.caoyu.wantodo.ui.home;
 
 import android.annotation.SuppressLint;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.Gravity;
+import android.view.TextureView;
 
 import androidx.fragment.app.Fragment;
 import androidx.viewpager.widget.ViewPager;
@@ -11,16 +13,24 @@ import java.util.ArrayList;
 import java.util.List;
 
 import io.caoyu.wantodo.R;
+import io.caoyu.wantodo.api.Constants;
 import io.caoyu.wantodo.databinding.ActivityMainBinding;
 import io.caoyu.wantodo.ui.all.AllFragment;
 import io.caoyu.wantodo.ui.home.adapter.CardViewAdapter;
 import io.caoyu.wantodo.ui.mine.loginreg.LoginActivity;
+import io.caoyu.wantodo.ui.mine.rank.UserRankActivity;
 import io.caoyu.wantodo.ui.mine.set.SettingActivity;
 import io.yugoal.lib_base.base.activity.BaseDataBindActivity;
+import io.yugoal.lib_base.SPUtils;
 import io.yugoal.lib_utils.utils.ToastUtils;
 
 
 public class MainActivity extends BaseDataBindActivity<ActivityMainBinding> {
+
+    @Override
+    public void initViewModel() {
+
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,6 +42,16 @@ public class MainActivity extends BaseDataBindActivity<ActivityMainBinding> {
     @Override
     protected int getLayoutId() {
         return R.layout.activity_main;
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        String name = SPUtils.getString(Constants.NAME,"");
+        if (!TextUtils.isEmpty(name)){
+            dataBind.drawerView.tvName.setText(name);
+            dataBind.drawerView.charAvatarView.setText(name);
+        }
     }
 
     private void initView() {
@@ -55,7 +75,12 @@ public class MainActivity extends BaseDataBindActivity<ActivityMainBinding> {
             ToastUtils.showToast("功能开发中...");
         });
         dataBind.drawerView.charAvatarView.setOnClickListener(v->{
-            LoginActivity.show(this);
+            if (TextUtils.isEmpty(SPUtils.getString(Constants.NAME,""))){
+                LoginActivity.show(this);
+            }else {
+                // TODO: 2020/11/13 个人积分
+                UserRankActivity.show(this);
+            }
         });
     }
 

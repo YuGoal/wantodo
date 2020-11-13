@@ -12,7 +12,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/BaseTheme">
-        <activity android:name=".ui.WebViewActivity"></activity>
+        <activity android:name=".ui.mine.rank.UserRankActivity"></activity>
+        <activity android:name=".ui.WebViewActivity" />
         <activity android:name=".ui.all.ArticleActivity" />
         <activity android:name=".ui.mine.loginreg.LoginActivity" />
         <activity android:name=".ui.mine.set.SettingActivity" />

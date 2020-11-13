@@ -29,11 +29,12 @@ import io.yugoal.lib_utils.utils.StatusBarUtils;
 public abstract class BaseActivity extends AppCompatActivity {
     private ViewModelProvider viewModelProvider;
     private SharedViewModel mSharedViewModel;
-
+    public abstract void initViewModel();
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setStatusBarLightMode(true);
+        initViewModel();
     }
 
     @Override
@@ -125,10 +126,11 @@ public abstract class BaseActivity extends AppCompatActivity {
 
     private ProgressDialog dialog;
 
-    public void showDialogLoading() {
+    public void showDialogLoading(String msg) {
         try {
             if (dialog != null && dialog.isShowing() && !isFinishing()) return;
             dialog = new ProgressDialog(this);
+            dialog.setMessage(msg);
             dialog.show();
         } catch (Exception e) {
             e.printStackTrace();
@@ -169,4 +171,9 @@ public abstract class BaseActivity extends AppCompatActivity {
         return mSharedViewModel;
     }
 
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        dispose();
+    }
 }

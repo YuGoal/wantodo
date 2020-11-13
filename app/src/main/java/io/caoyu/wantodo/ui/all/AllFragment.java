@@ -30,6 +30,7 @@ public class AllFragment extends BaseDataBindFragment<FragmentAllBinding> implem
     private AllViewModel allViewModel;
     private List<ArticleBean.DatasBean> stepList;
     private RecyclerView recyclerView;
+    private int page;
 
     public static AllFragment newInstance() {
         return new AllFragment();
@@ -69,13 +70,24 @@ public class AllFragment extends BaseDataBindFragment<FragmentAllBinding> implem
             }
         });
 
-        allViewModel.getAllData();
+        allViewModel.getAllData(page);
         allViewModel.getArticleBeanMutableLiveData().observe(this, new Observer<ArticleBean>() {
             @Override
             public void onChanged(ArticleBean articleBean) {
                 dataBind.swiperefreshlayout.setRefreshing(false);
-                dataBind.statelayout.showSuccessView();
-                stepList.clear();
+                if (null != articleBean){
+                    if (articleBean.getDatas().size()>0){
+                        dataBind.statelayout.showSuccessView();
+                        if (page == 0){
+                            stepList.clear();
+                            stepList.addAll(articleBean.getDatas());
+                        }
+                    }else {
+                        if (page == 0){
+                            dataBind.statelayout.showEmptyView();
+                        }
+                    }
+                }
                 stepList.addAll(articleBean.getDatas());
                 allAdapter.notifyDataSetChanged();
             }
@@ -84,6 +96,7 @@ public class AllFragment extends BaseDataBindFragment<FragmentAllBinding> implem
 
     @Override
     public void onRefresh() {
-        allViewModel.getAllData();
+        page = 0;
+        allViewModel.getAllData(page);
     }
 }

@@ -8,6 +8,7 @@ import android.view.View;
 import com.google.android.material.textfield.TextInputEditText;
 
 import io.caoyu.wantodo.R;
+import io.caoyu.wantodo.api.Constants;
 import io.caoyu.wantodo.api.RetrofitClient;
 import io.caoyu.wantodo.api.bean.LoginBean;
 import io.caoyu.wantodo.databinding.FragmentLoginBinding;
@@ -17,6 +18,7 @@ import io.reactivex.disposables.Disposable;
 import io.yugoal.lib_base.base.activity.BaseDataBindActivity;
 import io.yugoal.lib_network.okhttp.ResultBean;
 import io.yugoal.lib_network.okhttp.RxObservableTransformer;
+import io.yugoal.lib_base.SPUtils;
 import io.yugoal.lib_utils.utils.StringUtils;
 import io.yugoal.lib_utils.utils.ToastUtils;
 import retrofit2.Response;
@@ -28,6 +30,12 @@ public class LoginActivity extends BaseDataBindActivity<FragmentLoginBinding> {
         Intent intent = new Intent(context, LoginActivity.class);
         context.startActivity(intent);
     }
+
+    @Override
+    public void initViewModel() {
+
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -53,7 +61,7 @@ public class LoginActivity extends BaseDataBindActivity<FragmentLoginBinding> {
     }
 
     private void login(String account, String password) {
-        showDialogLoading();
+        showDialogLoading("登录中...");
         RetrofitClient.getRetrofit().getRetrofitApi()
                 .login(account,password)
                 .compose(RxObservableTransformer.transformer())
@@ -67,10 +75,15 @@ public class LoginActivity extends BaseDataBindActivity<FragmentLoginBinding> {
                     public void onNext(@NonNull Response<ResultBean<LoginBean>> resultBeanResponse) {
                         dismissDialogLoading();
                         if (resultBeanResponse.isSuccessful()){
-                            if (resultBeanResponse.code() == 200){
+                            if (resultBeanResponse.body().getErrorCode() == 0){
                                 ToastUtils.showToast("登录成功");
+                                SPUtils.putString(Constants.NAME,resultBeanResponse.body().getData().getNickname());
+                                SPUtils.putInt(Constants.ID,resultBeanResponse.body().getData().getId());
                                 finish();
+                            }else {
+                                ToastUtils.showToast(resultBeanResponse.body().getErrorMsg());
                             }
+
                         }
                     }
 

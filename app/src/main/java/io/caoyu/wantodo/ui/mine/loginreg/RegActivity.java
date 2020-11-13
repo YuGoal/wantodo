@@ -13,6 +13,11 @@ import io.yugoal.lib_base.base.activity.BaseDataBindActivity;
 public class RegActivity extends BaseDataBindActivity<FragmentRegBinding> {
 
     @Override
+    public void initViewModel() {
+
+    }
+
+    @Override
     protected int getLayoutId() {
         return R.layout.fragment_reg;
     }

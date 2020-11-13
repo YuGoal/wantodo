@@ -26,6 +26,12 @@ public class WebViewActivity extends BaseDataBindActivity<ActivityWebViewBinding
         intent.putExtra("chapterName", chapterName);
         context.startActivity(intent);
     }
+
+    @Override
+    public void initViewModel() {
+
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

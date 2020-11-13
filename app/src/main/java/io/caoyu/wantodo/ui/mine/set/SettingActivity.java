@@ -22,6 +22,11 @@ public class SettingActivity extends BaseDataBindActivity<ActivitySettingBinding
 
 
     @Override
+    public void initViewModel() {
+
+    }
+
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         dataBind.toolbar.setTitle("系统设置");

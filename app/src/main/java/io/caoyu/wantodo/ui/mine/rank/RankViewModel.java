@@ -1,4 +1,4 @@
-package io.caoyu.wantodo.ui.all;
+package io.caoyu.wantodo.ui.mine.rank;
 
 import android.app.Application;
 
@@ -8,45 +8,41 @@ import androidx.lifecycle.MutableLiveData;
 
 import io.caoyu.wantodo.api.RetrofitClient;
 import io.caoyu.wantodo.api.bean.ArticleBean;
+import io.caoyu.wantodo.api.bean.CoinBean;
 import io.reactivex.Observer;
 import io.reactivex.disposables.Disposable;
 import io.yugoal.lib_network.okhttp.ResultBean;
 import io.yugoal.lib_network.okhttp.RxObservableTransformer;
 import retrofit2.Response;
 
-/**
- * user caoyu
- * date 2020/11/4
- * time 15:54
- */
-public class AllViewModel extends AndroidViewModel {
+public class RankViewModel extends AndroidViewModel {
 
-    private MutableLiveData<ArticleBean> articleBeanMutableLiveData;
+    private MutableLiveData<CoinBean> coinBeanMutableLiveData;
 
-    public MutableLiveData<ArticleBean> getArticleBeanMutableLiveData() {
-        return articleBeanMutableLiveData;
+    public MutableLiveData<CoinBean> getCoinBeanMutableLiveData() {
+        return coinBeanMutableLiveData;
     }
 
-    public AllViewModel(@NonNull Application application) {
+    public RankViewModel(@NonNull Application application) {
         super(application);
-        articleBeanMutableLiveData = new MutableLiveData<>();
+        coinBeanMutableLiveData = new MutableLiveData<>();
     }
 
-    public void getAllData(int page) {
-        RetrofitClient.getRetrofit().getRetrofitApi().article(page)
+    public void getCoinCount() {
+        RetrofitClient.getRetrofit().getRetrofitApi().coinCount()
                 .compose(RxObservableTransformer.transformer())
-                .subscribe(new Observer<Response<ResultBean<ArticleBean>>>() {
+                .subscribe(new Observer<Response<ResultBean<CoinBean>>>() {
                     @Override
                     public void onSubscribe(@io.reactivex.annotations.NonNull Disposable d) {
 
                     }
 
                     @Override
-                    public void onNext(@io.reactivex.annotations.NonNull Response<ResultBean<ArticleBean>> resultBeanResponse) {
+                    public void onNext(@io.reactivex.annotations.NonNull Response<ResultBean<CoinBean>> resultBeanResponse) {
                         if (resultBeanResponse.isSuccessful()) {
-                            articleBeanMutableLiveData.postValue(resultBeanResponse.body().getData());
+                            coinBeanMutableLiveData.postValue(resultBeanResponse.body().getData());
                         } else {
-                            articleBeanMutableLiveData.postValue(null);
+                            coinBeanMutableLiveData.postValue(null);
                         }
                     }
 

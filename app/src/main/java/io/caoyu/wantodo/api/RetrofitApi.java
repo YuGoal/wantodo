@@ -3,6 +3,7 @@ package io.caoyu.wantodo.api;
 import java.util.List;
 
 import io.caoyu.wantodo.api.bean.ArticleBean;
+import io.caoyu.wantodo.api.bean.CoinBean;
 import io.caoyu.wantodo.api.bean.LoginBean;
 import io.reactivex.Observable;
 import io.yugoal.lib_network.okhttp.ResultBean;
@@ -36,6 +37,10 @@ public interface RetrofitApi {
     //登录
     @POST("user/login")
     Observable<Response<ResultBean<LoginBean>>> login(@Query("username") String username, @Query("password") String password);
+
+    //个人积分
+    @GET("lg/coin/userinfo/json")
+    Observable<Response<ResultBean<CoinBean>>> coinCount();
 
 
 }
