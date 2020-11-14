@@ -44,6 +44,6 @@ dependencies {
     api 'androidx.lifecycle:lifecycle-livedata:2.2.0'
 
     api "androidx.viewpager2:viewpager2:1.0.0"
-
+    api "com.google.android:flexbox:1.0.0"
 
 }

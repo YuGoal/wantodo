@@ -11,7 +11,7 @@ public class WendaBean {
      * over : false
      * pageCount : 6
      * size : 21
-     * total : 119
+     * total : TreeBean
      */
 
     private Integer curPage;

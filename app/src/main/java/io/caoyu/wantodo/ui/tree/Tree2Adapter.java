@@ -1,4 +1,4 @@
-package io.caoyu.wantodo.ui.wenda;
+package io.caoyu.wantodo.ui.tree;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -7,53 +7,53 @@ import android.view.ViewGroup;
 
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.android.flexbox.FlexDirection;
+import com.google.android.flexbox.FlexWrap;
+import com.google.android.flexbox.FlexboxLayoutManager;
+
 import java.util.List;
 
-import io.caoyu.wantodo.api.bean.ArticleBean;
-import io.caoyu.wantodo.api.bean.WendaBean;
-import io.caoyu.wantodo.databinding.ItemAllBinding;
-import io.caoyu.wantodo.databinding.ItemWendaBinding;
-import io.yugoal.lib_utils.utils.StringUtils;
+import io.caoyu.wantodo.api.bean.TreeBean;
+import io.caoyu.wantodo.databinding.ItemTree2Binding;
+import io.caoyu.wantodo.databinding.ItemTreeBinding;
 
 /**
  * user caoyu
  * date 2020/11/4
  * time 15:57
  */
-public class WendaAdapter extends RecyclerView.Adapter<WendaAdapter.ViewHolder> {
+public class Tree2Adapter extends RecyclerView.Adapter<Tree2Adapter.ViewHolder> {
 
 
-    private List<WendaBean.DatasDTO> stepList;
+    private List<TreeBean.ChildrenBean> stepList;
     private LayoutInflater mInflater;
     private OnItemClickListener mOnItemClickListener;
+    private Context context;
 
     public void setOnItemClickListener(OnItemClickListener onItemClickListener) {
         this.mOnItemClickListener = onItemClickListener;
     }
 
     public interface OnItemClickListener {
-        void onItemClickListener(int pos, List<WendaBean.DatasDTO> myLiveList);
+        void onItemClickListener(int pos, List<TreeBean.ChildrenBean> myLiveList);
     }
 
-    public WendaAdapter(Context mContext, List<WendaBean.DatasDTO> stepList) {
+    public Tree2Adapter(Context mContext, List<TreeBean.ChildrenBean> stepList) {
         this.stepList = stepList;
+        context = mContext;
         mInflater = LayoutInflater.from(mContext);
     }
 
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        ViewHolder holder = new ViewHolder(ItemWendaBinding.inflate(mInflater, parent, false));
+        ViewHolder holder = new ViewHolder(ItemTree2Binding.inflate(mInflater, parent, false));
         return holder;
     }
 
     @Override
     public void onBindViewHolder(final ViewHolder holder, int position) {
-        WendaBean.DatasDTO datasBean = stepList.get(position);
-        holder.binding.tvAuthor.setText(datasBean.getAuthor());
-        holder.binding.tvNiceShareDate.setText(datasBean.getNiceDate());
-        holder.binding.tvTags.setText(String.format("%s · %s", datasBean.getSuperChapterName(), datasBean.getChapterName()));
-        holder.binding.tvTitle.setText(datasBean.getTitle());
-        holder.binding.tvDesc.setText(StringUtils.getHTMLStr(datasBean.getDesc()));
+        TreeBean.ChildrenBean dataBean = stepList.get(position);
+        holder.binding.btnTitle.setText(dataBean.getName());
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -71,9 +71,9 @@ public class WendaAdapter extends RecyclerView.Adapter<WendaAdapter.ViewHolder> 
     }
 
     protected static class ViewHolder extends RecyclerView.ViewHolder {
-        private ItemWendaBinding binding;
+        private ItemTree2Binding binding;
 
-        public ViewHolder(ItemWendaBinding itemView) {
+        public ViewHolder(ItemTree2Binding itemView) {
             super(itemView.getRoot());
             binding = itemView;
 
