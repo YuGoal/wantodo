@@ -15,6 +15,8 @@ import androidx.lifecycle.ViewModelProvider;
 import androidx.lifecycle.ViewModelStore;
 import androidx.lifecycle.ViewModelStoreOwner;
 
+import com.kingja.loadsir.core.LoadSir;
+
 import io.yugoal.lib_utils.utils.Utils;
 
 
@@ -46,8 +48,16 @@ public class App extends Application implements ViewModelStoreOwner {
             // You should not init your app in this process.
             return;
         }
-
+ LoadSir.beginBuilder()
+                .addCallback(new ErrorCallback())//添加各种状态页
+                .addCallback(new EmptyCallback())
+                .addCallback(new LoadingCallback())
+                .addCallback(new TimeoutCallback())
+                .addCallback(new CustomCallback())
+                .setDefaultCallback(LoadingCallback.class)//设置默认状态页
+                .commit();
         mRefWatcher = LeakCanary.install(this);*/
+
     }
 
     /*public static RefWatcher getRefWatcher(Context context) {
