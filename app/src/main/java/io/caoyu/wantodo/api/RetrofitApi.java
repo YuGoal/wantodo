@@ -5,6 +5,7 @@ import java.util.List;
 import io.caoyu.wantodo.api.bean.ArticleBean;
 import io.caoyu.wantodo.api.bean.CoinBean;
 import io.caoyu.wantodo.api.bean.LoginBean;
+import io.caoyu.wantodo.api.bean.Tree2Bean;
 import io.caoyu.wantodo.api.bean.TreeBean;
 import io.caoyu.wantodo.api.bean.WendaBean;
 import io.reactivex.Observable;
@@ -43,6 +44,10 @@ public interface RetrofitApi {
     //体系
     @GET("tree/json")
     Observable<Response<ResultBean<List<TreeBean>>>> tree();
+
+    //体系2
+    @GET("article/list/{page}/json")
+    Observable<Response<ResultBean<Tree2Bean>>> tree2(@Path("page") int page,@Query("cid") int cid);
 
     //登录
     @POST("user/login")

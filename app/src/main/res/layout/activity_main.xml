@@ -30,7 +30,7 @@
                     android:orientation="horizontal"
                     app:layout_scrollFlags="scroll">
 
-                    <androidx.appcompat.widget.AppCompatImageView
+                    <ImageView
                         android:id="@+id/img_btn_nav"
                         android:layout_width="@dimen/dp_50"
                         android:layout_height="match_parent"
@@ -47,7 +47,7 @@
                         android:textSize="20sp"
                         android:textStyle="bold" />
 
-                    <androidx.appcompat.widget.AppCompatImageView
+                    <ImageView
                         android:id="@+id/img_btn_search"
                         android:layout_width="@dimen/dp_50"
                         android:layout_height="match_parent"

@@ -37,8 +37,9 @@ public class MainActivity extends BaseDataBindActivity<ActivityMainBinding> {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-        initView();
+        initToolbar();
+        initViewPager();
+        initEvent();
     }
 
     @Override
@@ -54,12 +55,6 @@ public class MainActivity extends BaseDataBindActivity<ActivityMainBinding> {
             dataBind.drawerView.tvName.setText(name);
             dataBind.drawerView.charAvatarView.setText(name);
         }
-    }
-
-    private void initView() {
-        initToolbar();
-        initViewPager();
-        initEvent();
     }
 
     private void initEvent() {

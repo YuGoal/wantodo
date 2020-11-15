@@ -4,22 +4,26 @@ package io.yugoal.lib_base.base.activity;
 import android.app.ProgressDialog;
 import android.content.res.Configuration;
 import android.graphics.Color;
+import android.os.Build;
 import android.os.Bundle;
-import android.widget.ProgressBar;
+import android.view.View;
 
 import androidx.annotation.ColorRes;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.core.content.ContextCompat;
 import androidx.lifecycle.ViewModel;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.lifecycle.ViewModelStoreOwner;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.disposables.Disposable;
+import io.yugoal.lib_base.R;
 import io.yugoal.lib_base.base.viewmodel.SharedViewModel;
-import io.yugoal.lib_common_ui.utils.StatusBarUtil;
 import io.yugoal.lib_utils.utils.StatusBarUtils;
 
 /**
@@ -29,7 +33,9 @@ import io.yugoal.lib_utils.utils.StatusBarUtils;
 public abstract class BaseActivity extends AppCompatActivity {
     private ViewModelProvider viewModelProvider;
     private SharedViewModel mSharedViewModel;
+
     public abstract void initViewModel();
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -95,6 +101,7 @@ public abstract class BaseActivity extends AppCompatActivity {
         StatusBarUtils.setNavBarVisibility(getWindow(), this, false);
 
     }
+
     /**
      * 保留状态栏高度,状态栏设置为透明
      */
@@ -175,5 +182,30 @@ public abstract class BaseActivity extends AppCompatActivity {
     protected void onDestroy() {
         super.onDestroy();
         dispose();
+    }
+
+    /**
+     * 加载列表
+     *
+     * @return
+     */
+    public RecyclerView getSuccessView() {
+        RecyclerView recyclerView = new RecyclerView(this);
+        LinearLayoutManager mLinearLayoutManager = new LinearLayoutManager(this);
+        recyclerView.setLayoutManager(mLinearLayoutManager);
+        return recyclerView;
+    }
+
+    public void initToolbar(String title) {
+        Toolbar toolbar = findViewById(R.id.toolbar);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            toolbar.setTitle(title);
+            toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    finish();
+                }
+            });
+        }
     }
 }

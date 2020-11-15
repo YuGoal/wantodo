@@ -29,11 +29,7 @@ public class SettingActivity extends BaseDataBindActivity<ActivitySettingBinding
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        dataBind.toolbar.setTitle("系统设置");
-        dataBind.toolbar.setNavigationIcon(R.drawable.ic_arrow_back_black_24dp);
-        dataBind.toolbar.setNavigationOnClickListener(v -> {
-            finish();
-        });
+        initToolbar("系统设置");
         dataBind.tvLogout.setOnClickListener(v -> {
             CommonDialog commonDialog =  new CommonDialog(this,
                     "退出登录",

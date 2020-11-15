@@ -1,4 +1,4 @@
-package io.caoyu.wantodo.ui.tree;
+package io.caoyu.wantodo.ui.tree.adapter;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -7,53 +7,50 @@ import android.view.ViewGroup;
 
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.google.android.flexbox.FlexDirection;
-import com.google.android.flexbox.FlexWrap;
-import com.google.android.flexbox.FlexboxLayoutManager;
-
 import java.util.List;
 
-import io.caoyu.wantodo.api.bean.TreeBean;
-import io.caoyu.wantodo.databinding.ItemTree2Binding;
-import io.caoyu.wantodo.databinding.ItemTreeBinding;
+import io.caoyu.wantodo.api.bean.ArticleBean;
+import io.caoyu.wantodo.api.bean.Tree2Bean;
+import io.caoyu.wantodo.databinding.ItemAllBinding;
 
 /**
  * user caoyu
  * date 2020/11/4
  * time 15:57
  */
-public class Tree2Adapter extends RecyclerView.Adapter<Tree2Adapter.ViewHolder> {
+public class TreeArticleAdapter extends RecyclerView.Adapter<TreeArticleAdapter.ViewHolder> {
 
 
-    private List<TreeBean.ChildrenBean> stepList;
+    private List<Tree2Bean.DatasDTO> stepList;
     private LayoutInflater mInflater;
     private OnItemClickListener mOnItemClickListener;
-    private Context context;
 
     public void setOnItemClickListener(OnItemClickListener onItemClickListener) {
         this.mOnItemClickListener = onItemClickListener;
     }
 
     public interface OnItemClickListener {
-        void onItemClickListener(int pos, List<TreeBean.ChildrenBean> myLiveList);
+        void onItemClickListener(int pos, List<Tree2Bean.DatasDTO> myLiveList);
     }
 
-    public Tree2Adapter(Context mContext, List<TreeBean.ChildrenBean> stepList) {
+    public TreeArticleAdapter(Context mContext, List<Tree2Bean.DatasDTO> stepList) {
         this.stepList = stepList;
-        context = mContext;
         mInflater = LayoutInflater.from(mContext);
     }
 
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        ViewHolder holder = new ViewHolder(ItemTree2Binding.inflate(mInflater, parent, false));
+        ViewHolder holder = new ViewHolder(ItemAllBinding.inflate(mInflater, parent, false));
         return holder;
     }
 
     @Override
     public void onBindViewHolder(final ViewHolder holder, int position) {
-        TreeBean.ChildrenBean dataBean = stepList.get(position);
-        holder.binding.btnTitle.setText(dataBean.getName());
+        Tree2Bean.DatasDTO datasBean = stepList.get(position);
+        holder.binding.tvAuthor.setText(datasBean.getShareUser());
+        holder.binding.tvNiceShareDate.setText(datasBean.getNiceShareDate());
+        holder.binding.tvTags.setVisibility(View.GONE);
+        holder.binding.tvTitle.setText(datasBean.getTitle());
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -71,9 +68,9 @@ public class Tree2Adapter extends RecyclerView.Adapter<Tree2Adapter.ViewHolder> 
     }
 
     protected static class ViewHolder extends RecyclerView.ViewHolder {
-        private ItemTree2Binding binding;
+        private ItemAllBinding binding;
 
-        public ViewHolder(ItemTree2Binding itemView) {
+        public ViewHolder(ItemAllBinding itemView) {
             super(itemView.getRoot());
             binding = itemView;
 

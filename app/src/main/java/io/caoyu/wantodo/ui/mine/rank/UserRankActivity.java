@@ -46,13 +46,7 @@ public class UserRankActivity extends BaseDataBindActivity<ActivityUserRankBindi
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        dataBind.toolbar.setTitle("个人积分");
-        dataBind.toolbar.setNavigationOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                finish();
-            }
-        });
+        initToolbar("个人积分");
     }
 
     @Override

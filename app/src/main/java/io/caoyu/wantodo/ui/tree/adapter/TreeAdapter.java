@@ -1,4 +1,4 @@
-package io.caoyu.wantodo.ui.tree;
+package io.caoyu.wantodo.ui.tree.adapter;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -12,8 +12,10 @@ import com.google.android.flexbox.FlexboxLayoutManager;
 
 import java.util.List;
 
+import io.caoyu.wantodo.api.bean.Tree2Bean;
 import io.caoyu.wantodo.api.bean.TreeBean;
 import io.caoyu.wantodo.databinding.ItemTreeBinding;
+import io.caoyu.wantodo.ui.tree.Tree2Activity;
 
 /**
  * user caoyu
@@ -47,6 +49,10 @@ public class TreeAdapter extends RecyclerView.Adapter<TreeAdapter.ViewHolder> {
 
         Tree2Adapter tree2Adapter = new Tree2Adapter(context,dataBean.getChildren());
 
+        tree2Adapter.setOnItemClickListener((pos, myLiveList) -> {
+            TreeBean.ChildrenBean childrenBean = myLiveList.get(pos);
+            Tree2Activity.show(context,childrenBean.getName(),childrenBean.getId());
+        });
         FlexboxLayoutManager manager  = new FlexboxLayoutManager(context, FlexDirection.ROW, FlexWrap.WRAP);
         holder.binding.recyclerView.setLayoutManager(manager);
         holder.binding.recyclerView.setAdapter(tree2Adapter);

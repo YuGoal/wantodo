@@ -60,7 +60,7 @@ public class WebViewActivity extends BaseDataBindActivity<ActivityWebViewBinding
         initData();
     }
 
-    private void initData() {
+    public void initData() {
         Intent intent = getIntent();
         if (null!=intent){
             String url = intent.getStringExtra("url");

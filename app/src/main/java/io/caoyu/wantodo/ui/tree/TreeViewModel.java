@@ -9,6 +9,7 @@ import androidx.lifecycle.MutableLiveData;
 import java.util.List;
 
 import io.caoyu.wantodo.api.RetrofitClient;
+import io.caoyu.wantodo.api.bean.Tree2Bean;
 import io.caoyu.wantodo.api.bean.TreeBean;
 import io.reactivex.Observer;
 import io.reactivex.disposables.Disposable;
@@ -24,14 +25,20 @@ import retrofit2.Response;
 public class TreeViewModel extends AndroidViewModel {
 
     private MutableLiveData<List<TreeBean>> treeBeanMutableLiveData;
+    private MutableLiveData<Tree2Bean> tree2BeanMutableLiveData;
 
     public MutableLiveData<List<TreeBean>> getTreeBeanMutableLiveData() {
         return treeBeanMutableLiveData;
     }
 
+    public MutableLiveData<Tree2Bean> getTree2BeanMutableLiveData() {
+        return tree2BeanMutableLiveData;
+    }
+
     public TreeViewModel(@NonNull Application application) {
         super(application);
         treeBeanMutableLiveData = new MutableLiveData<>();
+        tree2BeanMutableLiveData = new MutableLiveData<>();
     }
 
     public void getTree() {
@@ -51,6 +58,38 @@ public class TreeViewModel extends AndroidViewModel {
                             }
                         } else {
                             treeBeanMutableLiveData.postValue(null);
+                        }
+                    }
+
+                    @Override
+                    public void onError(@io.reactivex.annotations.NonNull Throwable e) {
+
+                    }
+
+                    @Override
+                    public void onComplete() {
+
+                    }
+                });
+    }
+
+    public void getTree2(int page,int cid) {
+        RetrofitClient.getRetrofit().getRetrofitApi().tree2(page,cid)
+                .compose(RxObservableTransformer.transformer())
+                .subscribe(new Observer<Response<ResultBean<Tree2Bean>>>() {
+                    @Override
+                    public void onSubscribe(@io.reactivex.annotations.NonNull Disposable d) {
+
+                    }
+
+                    @Override
+                    public void onNext(@io.reactivex.annotations.NonNull Response<ResultBean<Tree2Bean>> resultBeanResponse) {
+                        if (resultBeanResponse.isSuccessful()) {
+                            if (resultBeanResponse.body() != null) {
+                                tree2BeanMutableLiveData.postValue(resultBeanResponse.body().getData());
+                            }
+                        } else {
+                            tree2BeanMutableLiveData.postValue(null);
                         }
                     }
 

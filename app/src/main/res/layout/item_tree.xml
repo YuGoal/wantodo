@@ -10,7 +10,9 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:background="@color/white"
-        android:padding="@dimen/dp_20">
+        android:paddingTop="@dimen/dp_10"
+        android:paddingStart="@dimen/dp_20"
+        android:paddingEnd="@dimen/dp_20">
         <LinearLayout
             android:orientation="vertical"
             android:layout_width="match_parent"
@@ -27,7 +29,7 @@
                 android:layout_height="@dimen/dp_18"/>
             <TextView
                 android:textColor="@color/font_black"
-                android:layout_marginLeft="@dimen/dp_4"
+                android:layout_marginStart="@dimen/dp_8"
                 android:layout_height="wrap_content"
                 android:layout_width="wrap_content"
                 android:id="@+id/tv_title" />
@@ -35,7 +37,6 @@
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerView"
-            android:layout_marginTop="@dimen/dp_8"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
         </LinearLayout>

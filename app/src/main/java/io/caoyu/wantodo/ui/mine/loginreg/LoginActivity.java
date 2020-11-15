@@ -5,6 +5,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
+import androidx.annotation.Nullable;
+
 import com.google.android.material.textfield.TextInputEditText;
 
 import io.caoyu.wantodo.R;
@@ -32,21 +34,18 @@ public class LoginActivity extends BaseDataBindActivity<FragmentLoginBinding> {
     }
 
     @Override
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        initToolbar("登录");
+        initEvent();
+    }
+
+    @Override
     public void initViewModel() {
 
     }
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        dataBind.toolbar.setTitle("登录");
-        initEvent();
-    }
-
     private void initEvent() {
-        dataBind.toolbar.setNavigationOnClickListener(v->{
-            finish();
-        });
         dataBind.tvLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
