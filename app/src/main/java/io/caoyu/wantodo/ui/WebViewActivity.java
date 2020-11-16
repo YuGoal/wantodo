@@ -35,6 +35,7 @@ public class WebViewActivity extends BaseDataBindActivity<ActivityWebViewBinding
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setStatusBarLightMode(true);
         dataBind.webview.getSettings().setJavaScriptEnabled(true);
         dataBind.webview.getSettings().setSupportZoom(true);
         dataBind.webview.getSettings().setBuiltInZoomControls(true);

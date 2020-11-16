@@ -1,6 +1,7 @@
 package io.caoyu.wantodo.ui.all.adapter;
 
 import android.content.Context;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -46,7 +47,11 @@ public class AllAdapter extends RecyclerView.Adapter<AllAdapter.ViewHolder> {
     @Override
     public void onBindViewHolder(final ViewHolder holder, int position) {
         ArticleBean.DatasBean datasBean = stepList.get(position);
-        holder.binding.tvAuthor.setText(datasBean.getShareUser());
+        if (TextUtils.isEmpty(datasBean.getAuthor())){
+            holder.binding.tvAuthor.setText(datasBean.getShareUser());
+        }else {
+            holder.binding.tvAuthor.setText(datasBean.getAuthor());
+        }
         holder.binding.tvNiceShareDate.setText(datasBean.getNiceShareDate());
         holder.binding.tvTags.setText(datasBean.getSuperChapterName());
         holder.binding.tvTitle.setText(datasBean.getTitle());

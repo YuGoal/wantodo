@@ -1,6 +1,7 @@
 package io.caoyu.wantodo.ui.wenda;
 
 import android.content.Context;
+import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -53,7 +54,9 @@ public class WendaAdapter extends RecyclerView.Adapter<WendaAdapter.ViewHolder> 
         holder.binding.tvNiceShareDate.setText(datasBean.getNiceDate());
         holder.binding.tvTags.setText(String.format("%s · %s", datasBean.getSuperChapterName(), datasBean.getChapterName()));
         holder.binding.tvTitle.setText(datasBean.getTitle());
-        holder.binding.tvDesc.setText(StringUtils.getHTMLStr(datasBean.getDesc()));
+        String desc = Html.fromHtml(datasBean.getDesc()).toString();
+        desc = StringUtils.removeAllBank(desc, 2);
+        holder.binding.tvDesc.setText(desc);
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
