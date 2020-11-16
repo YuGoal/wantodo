@@ -17,6 +17,11 @@ import androidx.lifecycle.ViewModelStoreOwner;
 
 import com.kingja.loadsir.core.LoadSir;
 
+import io.yugoal.lib_base.loadsir.callback.CustomCallback;
+import io.yugoal.lib_base.loadsir.callback.EmptyCallback;
+import io.yugoal.lib_base.loadsir.callback.ErrorCallback;
+import io.yugoal.lib_base.loadsir.callback.LoadingCallback;
+import io.yugoal.lib_base.loadsir.callback.TimeoutCallback;
 import io.yugoal.lib_utils.utils.Utils;
 
 
@@ -48,7 +53,9 @@ public class App extends Application implements ViewModelStoreOwner {
             // You should not init your app in this process.
             return;
         }
- LoadSir.beginBuilder()
+
+        mRefWatcher = LeakCanary.install(this);*/
+        LoadSir.beginBuilder()
                 .addCallback(new ErrorCallback())//添加各种状态页
                 .addCallback(new EmptyCallback())
                 .addCallback(new LoadingCallback())
@@ -56,8 +63,6 @@ public class App extends Application implements ViewModelStoreOwner {
                 .addCallback(new CustomCallback())
                 .setDefaultCallback(LoadingCallback.class)//设置默认状态页
                 .commit();
-        mRefWatcher = LeakCanary.install(this);*/
-
     }
 
     /*public static RefWatcher getRefWatcher(Context context) {
