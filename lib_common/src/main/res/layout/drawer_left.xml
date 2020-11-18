@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+    </data>
+
+    <LinearLayout
+        android:layout_width="280dp"
+        android:layout_height="match_parent"
+        android:layout_gravity="start"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:paddingTop="@dimen/dp_20"
+            android:gravity="center"
+            android:background="@color/gray"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_200">
+
+            <io.yugoal.lib_common_ui.CharAvatarView
+                android:id="@+id/char_avatar_view"
+                android:layout_width="@dimen/dp_60"
+                android:layout_height="@dimen/dp_60" />
+
+            <TextView
+                android:id="@+id/tv_name"
+                android:text="请先登录"
+                android:layout_marginTop="@dimen/dp_10"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:background="@color/white"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" >
+
+            <TextView
+                style="@style/DrawerMenuFont"
+                android:text="我的积分" />
+
+            <TextView
+                style="@style/DrawerMenuFont"
+                android:text="我的分享" />
+            <TextView
+                style="@style/DrawerMenuFont"
+                android:text="我的收藏" />
+
+            <View
+                style="@style/DrawerMenuLine" />
+            <TextView
+                style="@style/DrawerMenuFont"
+                android:text="稍后阅读" />
+
+            <TextView
+                style="@style/DrawerMenuFont"
+                android:text="阅读历史" />
+            <TextView
+                android:id="@+id/tv_setting"
+                style="@style/DrawerMenuFont"
+                android:text="系统设置" />
+            <View
+                style="@style/DrawerMenuLine" />
+
+
+            <androidx.appcompat.widget.SwitchCompat
+                style="@style/DrawerMenuFont"
+                android:text="夜间模式" />
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+</layout>

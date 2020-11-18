@@ -15,7 +15,6 @@
         <activity android:name=".ui.tree.Tree2Activity"/>
         <activity android:name=".ui.mine.rank.UserRankActivity" />
         <activity android:name=".ui.WebViewActivity" />
-        <activity android:name=".ui.all.ArticleActivity" />
         <activity android:name=".ui.mine.loginreg.LoginActivity" />
         <activity android:name=".ui.mine.set.SettingActivity" />
         <activity android:name=".ui.home.MainActivity">

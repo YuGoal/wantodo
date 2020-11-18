@@ -1,3 +1,4 @@
+/*
 package io.caoyu.wantodo.ui.all;
 
 import android.os.Bundle;
@@ -16,12 +17,14 @@ import io.caoyu.wantodo.databinding.FragmentAllBinding;
 import io.caoyu.wantodo.ui.WebViewActivity;
 import io.caoyu.wantodo.ui.all.adapter.AllAdapter;
 
+*/
 /**
  * user caoyu
  * date 2020/11/4
  * time 14:33
  * 全部
- */
+ *//*
+
 public class AllFragment extends BaseDataBindFragment<FragmentAllBinding> implements SwipeRefreshLayout.OnRefreshListener {
 
 
@@ -99,3 +102,4 @@ public class AllFragment extends BaseDataBindFragment<FragmentAllBinding> implem
         allViewModel.getAllData(page);
     }
 }
+*/

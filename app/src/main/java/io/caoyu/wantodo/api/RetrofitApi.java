@@ -9,7 +9,6 @@ import io.caoyu.wantodo.api.bean.Tree2Bean;
 import io.caoyu.wantodo.api.bean.TreeBean;
 import io.caoyu.wantodo.api.bean.WendaBean;
 import io.reactivex.Observable;
-import io.yugoal.lib_network.okhttp.ResultBean;
 import okhttp3.MultipartBody;
 import retrofit2.Response;
 import retrofit2.http.GET;
@@ -26,6 +25,7 @@ import retrofit2.http.Query;
  * functiona:
  */
 public interface RetrofitApi {
+/*
 
     //带参数文件上传
     @Multipart
@@ -56,6 +56,7 @@ public interface RetrofitApi {
     //个人积分
     @GET("lg/coin/userinfo/json")
     Observable<Response<ResultBean<CoinBean>>> coinCount();
+*/
 
 
 }

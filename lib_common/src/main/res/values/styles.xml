@@ -1,0 +1,158 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+    <style name="AppTheme.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+    <!--toolbar popup_theme的样式-->
+    <style name="popup_theme" parent="@style/ThemeOverlay.AppCompat.Light">
+        <!--设置背景-->
+        <item name="android:background">@color/transparent</item>
+        <!--设置字体颜色-->
+        <item name="android:textColor">@color/black</item>
+        <!--设置不覆盖锚点-->
+        <item name="overlapAnchor">false</item>
+    </style>
+
+    <style name="toolbar_theme" parent="@style/ThemeOverlay.AppCompat.Light">
+        <item name="android:textSize">18sp</item>
+        <!--修改toolbar的Title(大标题)颜色-->
+        <item name="android:textColorPrimary">@color/black</item>
+        <!--修改toolbar的subtitle(小标题)颜色-->
+        <item name="subtitleTextColor">@color/colorAccent</item>
+        <!--menu字体颜色-->
+        <item name="android:actionMenuTextAppearance">@style/MenuTextStyle</item>
+        <!--修改toolbar的图标颜色 三个点 ...-->
+        <item name="colorControlNormal">@color/colorAccent</item>
+    </style>
+
+    <!--Toobar 菜单字体设置-->
+    <style name="MenuTextStyle">
+        <item name="actionMenuTextColor">@color/white</item>
+        <item name="android:textSize">12sp</item>
+    </style>
+
+    <style name="Toolbar_TextAppearance_White">
+        <item name="android:textSize">20sp</item>
+        <item name="android:textColor">@android:color/white</item>
+    </style>
+
+    <!-- Base application theme. -->
+    <style name="BaseTheme" parent="Theme.AppCompat.Light.NoActionBar">
+       <!--Appbar背景色-->
+        <item name="colorPrimary">@color/gray</item>
+        <!--状态栏颜色-->
+        <item name="colorPrimaryDark">@color/gray</item>
+        <!--控制各个控件被选中时的颜色-->
+        <item name="colorAccent">@color/colorAccent</item>
+        <!--在无需多点触控的页面上，建议关闭多点触控-->
+        <item name="android:splitMotionEvents">false</item>
+        <!-- 禁止多点触控 -->
+        <item name="android:windowEnableSplitTouch">false</item>
+        <item name="android:configChanges">orientation|screenSize</item>
+    </style>
+
+    <style name="TAB" parent="TextAppearance.Widget.AppCompat.Toolbar.Title">
+        <!--Toolbar 主标题大小-->
+        <item name="android:textSize">@dimen/sp_16</item>
+    </style>
+
+    <style name="DrawerMenuFont">
+        <item name="android:textSize">16sp</item>
+        <item name="android:layout_height">@dimen/dp_50</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:textColor">@color/font_black</item>
+        <item name="android:paddingLeft">@dimen/dp_20</item>
+        <item name="android:paddingEnd">@dimen/dp_20</item>
+        <item name="android:gravity">center_vertical</item>
+    </style>
+
+    <style name="DrawerMenuLine">
+        <item name="android:layout_height">0.5dp</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:background">@color/todo</item>
+    </style>
+
+    <style name="SetTitle">
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:textColor">@color/font_gray</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:layout_marginTop">@dimen/dp_20</item>
+        <item name="android:layout_marginStart">@dimen/dp_18</item>
+    </style>
+
+    <style name="SetBigFont">
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:textColor">@color/font_black</item>
+        <item name="android:textSize">18sp</item>
+        <item name="android:layout_marginTop">@dimen/dp_10</item>
+        <item name="android:layout_marginStart">@dimen/dp_20</item>
+    </style>
+
+    <style name="SetFont">
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:textColor">@color/font_gray</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:layout_marginTop">@dimen/dp_4</item>
+        <item name="android:layout_marginStart">@dimen/dp_20</item>
+        <item name="android:layout_marginBottom">@dimen/dp_10</item>
+    </style>
+    <style name="ArticleTitle">
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:textColor">@color/font_black</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:layout_marginTop">@dimen/dp_4</item>
+        <item name="android:layout_marginStart">@dimen/dp_10</item>
+    </style>
+    <style name="ArticleTags">
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:textColor">@color/font_black</item>
+        <item name="android:textSize">12sp</item>
+        <item name="android:background">@drawable/shape_tags</item>
+        <item name="android:paddingTop">@dimen/dp_2</item>
+        <item name="android:paddingBottom">@dimen/dp_2</item>
+        <item name="android:paddingStart">@dimen/dp_8</item>
+        <item name="android:paddingEnd">@dimen/dp_8</item>
+        <item name="android:layout_marginTop">@dimen/dp_4</item>
+        <item name="android:layout_marginEnd">@dimen/dp_10</item>
+    </style>
+
+    <style name="ArticleAuthor">
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:textColor">@color/font_gray</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:layout_marginTop">@dimen/dp_4</item>
+        <item name="android:layout_marginStart">@dimen/dp_10</item>
+    </style>
+
+    <style name="TextButton">
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:textColor">@color/font_gray</item>
+        <item name="android:textSize">12sp</item>
+        <item name="android:paddingBottom">@dimen/dp_6</item>
+        <item name="android:paddingTop">@dimen/dp_6</item>
+        <item name="android:paddingLeft">@dimen/dp_10</item>
+        <item name="android:paddingRight">@dimen/dp_10</item>
+    </style>
+</resources>

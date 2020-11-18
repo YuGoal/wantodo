@@ -1,16 +1,13 @@
 package io.yugoal.lib_network.observer;
 
 
-import com.arch.demo.core.model.MvvmBaseModel;
-import com.xiangxue.network.errorhandler.ExceptionHandle;
+
 
 import io.reactivex.Observer;
 import io.reactivex.disposables.Disposable;
+import io.yugoal.lib_base.base.model.MvvmBaseModel;
+import io.yugoal.lib_network.errorhandler.ExceptionHandle;
 
-/**
- * Created by Allen on 2017/7/20.
- * 保留所有版权，未经允许请不要分享到互联网和其他人
- */
 public abstract class BaseObserver<T> implements Observer<T> {
     MvvmBaseModel baseModel;
     public BaseObserver(MvvmBaseModel baseModel) {

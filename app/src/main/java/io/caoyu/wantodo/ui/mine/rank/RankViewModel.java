@@ -6,8 +6,6 @@ import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.MutableLiveData;
 
-import io.caoyu.wantodo.api.RetrofitClient;
-import io.caoyu.wantodo.api.bean.ArticleBean;
 import io.caoyu.wantodo.api.bean.CoinBean;
 import io.reactivex.Observer;
 import io.reactivex.disposables.Disposable;

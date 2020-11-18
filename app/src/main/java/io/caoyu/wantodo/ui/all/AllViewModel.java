@@ -1,3 +1,4 @@
+/*
 package io.caoyu.wantodo.ui.all;
 
 import android.app.Application;
@@ -6,7 +7,6 @@ import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.MutableLiveData;
 
-import io.caoyu.wantodo.api.RetrofitClient;
 import io.caoyu.wantodo.api.bean.ArticleBean;
 import io.reactivex.Observer;
 import io.reactivex.disposables.Disposable;
@@ -14,14 +14,18 @@ import io.yugoal.lib_network.okhttp.ResultBean;
 import io.yugoal.lib_network.okhttp.RxObservableTransformer;
 import retrofit2.Response;
 
+*/
 /**
  * user caoyu
  * date 2020/11/4
  * time 15:54
- */
+ *//*
+
 public class AllViewModel extends AndroidViewModel {
 
     private MutableLiveData<ArticleBean> articleBeanMutableLiveData;
+*/
+/**//*
 
     public MutableLiveData<ArticleBean> getArticleBeanMutableLiveData() {
         return articleBeanMutableLiveData;
@@ -62,3 +66,4 @@ public class AllViewModel extends AndroidViewModel {
                 });
     }
 }
+*/
