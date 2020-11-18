@@ -12,7 +12,6 @@ import io.caoyu.wantodo.R;
 import io.caoyu.wantodo.api.bean.TreeBean;
 import io.caoyu.wantodo.databinding.FragmentTreeBinding;
 import io.caoyu.wantodo.ui.tree.adapter.TreeAdapter;
-import io.yugoal.lib_base.base.fragment.BaseDataBindFragment;
 
 /**
  * user caoyu

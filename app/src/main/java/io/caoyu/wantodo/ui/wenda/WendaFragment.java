@@ -14,7 +14,6 @@ import io.caoyu.wantodo.R;
 import io.caoyu.wantodo.api.bean.WendaBean;
 import io.caoyu.wantodo.databinding.FragmentAllBinding;
 import io.caoyu.wantodo.ui.WebViewActivity;
-import io.yugoal.lib_base.base.fragment.BaseDataBindFragment;
 
 /**
  * user caoyu

@@ -1,4 +1,4 @@
-package io.yugoal.lib_base.base;
+package io.yugoal.lib_base;
 
 import android.annotation.TargetApi;
 import android.app.Activity;

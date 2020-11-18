@@ -3,23 +3,11 @@ package io.caoyu.wantodo.ui.mine.rank;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
 
 import io.caoyu.wantodo.R;
 import io.caoyu.wantodo.api.Constants;
-import io.caoyu.wantodo.api.RetrofitApi;
-import io.caoyu.wantodo.api.RetrofitClient;
 import io.caoyu.wantodo.api.bean.CoinBean;
 import io.caoyu.wantodo.databinding.ActivityUserRankBinding;
-import io.caoyu.wantodo.ui.mine.loginreg.LoginActivity;
-import io.reactivex.Observer;
-import io.reactivex.annotations.NonNull;
-import io.reactivex.disposables.Disposable;
-import io.yugoal.lib_base.SPUtils;
-import io.yugoal.lib_base.base.activity.BaseDataBindActivity;
-import io.yugoal.lib_network.okhttp.ResultBean;
-import io.yugoal.lib_network.okhttp.RxObservableTransformer;
-import retrofit2.Response;
 
 public class UserRankActivity extends BaseDataBindActivity<ActivityUserRankBinding> {
 

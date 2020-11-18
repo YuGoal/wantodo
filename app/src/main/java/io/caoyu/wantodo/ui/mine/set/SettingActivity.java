@@ -7,7 +7,6 @@ import android.os.Bundle;
 
 import io.caoyu.wantodo.R;
 import io.caoyu.wantodo.databinding.ActivitySettingBinding;
-import io.yugoal.lib_base.base.activity.BaseDataBindActivity;
 import io.yugoal.lib_common_ui.CommonDialog;
 
 /**

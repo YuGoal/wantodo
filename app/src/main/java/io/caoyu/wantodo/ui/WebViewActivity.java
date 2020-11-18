@@ -13,7 +13,6 @@ import android.webkit.WebViewClient;
 
 import io.caoyu.wantodo.R;
 import io.caoyu.wantodo.databinding.ActivityWebViewBinding;
-import io.yugoal.lib_base.base.activity.BaseDataBindActivity;
 import io.yugoal.lib_common_ui.ProgressWebView;
 
 public class WebViewActivity extends BaseDataBindActivity<ActivityWebViewBinding> {

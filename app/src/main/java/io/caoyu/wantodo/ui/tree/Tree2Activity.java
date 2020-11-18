@@ -6,21 +6,16 @@ import android.os.Bundle;
 import android.text.TextUtils;
 
 import androidx.annotation.Nullable;
-import androidx.lifecycle.Observer;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import io.caoyu.wantodo.R;
-import io.caoyu.wantodo.api.bean.ArticleBean;
 import io.caoyu.wantodo.api.bean.Tree2Bean;
 import io.caoyu.wantodo.databinding.ActivityTree2Binding;
 import io.caoyu.wantodo.ui.WebViewActivity;
-import io.caoyu.wantodo.ui.all.AllViewModel;
-import io.caoyu.wantodo.ui.all.adapter.AllAdapter;
 import io.caoyu.wantodo.ui.tree.adapter.TreeArticleAdapter;
-import io.yugoal.lib_base.base.activity.BaseDataBindActivity;
 
 public class Tree2Activity extends BaseDataBindActivity<ActivityTree2Binding> {
 

@@ -4,7 +4,6 @@ import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.Gravity;
-import android.view.TextureView;
 
 import androidx.fragment.app.Fragment;
 import androidx.viewpager.widget.ViewPager;
@@ -22,8 +21,6 @@ import io.caoyu.wantodo.ui.mine.rank.UserRankActivity;
 import io.caoyu.wantodo.ui.mine.set.SettingActivity;
 import io.caoyu.wantodo.ui.tree.TreeFragment;
 import io.caoyu.wantodo.ui.wenda.WendaFragment;
-import io.yugoal.lib_base.base.activity.BaseDataBindActivity;
-import io.yugoal.lib_base.SPUtils;
 import io.yugoal.lib_utils.utils.ToastUtils;
 
 

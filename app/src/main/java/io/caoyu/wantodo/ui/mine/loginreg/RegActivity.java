@@ -2,7 +2,6 @@ package io.caoyu.wantodo.ui.mine.loginreg;
 
 import io.caoyu.wantodo.R;
 import io.caoyu.wantodo.databinding.FragmentRegBinding;
-import io.yugoal.lib_base.base.activity.BaseDataBindActivity;
 
 /**
  * user caoyu
