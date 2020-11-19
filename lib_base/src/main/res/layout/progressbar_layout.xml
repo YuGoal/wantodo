@@ -6,7 +6,7 @@
     android:layout_height="match_parent">
 
     <ProgressBar
-        android:indeterminateTint="@color/colorBlack"
+        android:indeterminateTint="@color/base_black"
         android:indeterminateTintMode="src_atop"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />

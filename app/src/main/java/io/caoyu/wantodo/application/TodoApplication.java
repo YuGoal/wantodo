@@ -7,7 +7,7 @@ import com.kingja.loadsir.core.LoadSir;
 
 import io.caoyu.wantodo.BuildConfig;
 import io.yugoal.lib_base.base.preference.PreferencesUtil;
-import io.yugoal.lib_base.base.utils.ToastUtil;
+import io.yugoal.lib_utils.utils.ToastUtil;
 import io.yugoal.lib_base.loadsir.callback.CustomCallback;
 import io.yugoal.lib_base.loadsir.callback.EmptyCallback;
 import io.yugoal.lib_base.loadsir.callback.ErrorCallback;

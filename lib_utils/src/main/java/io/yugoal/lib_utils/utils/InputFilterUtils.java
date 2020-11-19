@@ -22,7 +22,7 @@ public class InputFilterUtils {
                 public CharSequence filter(CharSequence source, int start, int end, Spanned dest, int dstart, int dend) {
                     Matcher emojiMatcher = emoji.matcher(source);
                     if (emojiMatcher.find()) {
-                        ToastUtils.showToast("不支持输入表情");
+                        ToastUtil.show("不支持输入表情");
                         return "";
                     }
                     return null;

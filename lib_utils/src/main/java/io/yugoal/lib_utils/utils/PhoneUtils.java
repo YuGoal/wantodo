@@ -376,7 +376,7 @@ public final class PhoneUtils {
      */
     public static boolean isMobileNO(String phone) {
         if (TextUtils.isEmpty(phone)){
-            ToastUtils.showToast("手机号码不能为空！");
+            ToastUtil.show("手机号码不能为空！");
             return false;
         }
         String regex = "^((13[0-9])|(14[1])|(14[4-9])|(15[0-3])|(15[5-9])|(16[2])|(16[5-7])|(17[0-3])|(17[5-8])|(18[0-9])|(19[1|8|9]))\\d{8}$";

@@ -8,9 +8,9 @@
     <Button
         android:id="@+id/click_again"
         android:text="空数据"
-        android:textColor="@color/colorBlack"
+        android:textColor="@color/font_black"
         android:textSize="14sp"
-        android:background="@color/transparent"
+        android:background="@color/base_transparent"
         android:layout_width="60dp"
         android:layout_height="30dp" />
 

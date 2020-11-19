@@ -8,8 +8,8 @@
     <Button
         android:id="@+id/click_again"
         android:text="重新加载"
-        android:background="@color/transparent"
-        android:textColor="@color/colorBlack"
+        android:background="@color/base_transparent"
+        android:textColor="@color/base_black"
         android:layout_width="80dp"
         android:layout_height="30dp" />
 

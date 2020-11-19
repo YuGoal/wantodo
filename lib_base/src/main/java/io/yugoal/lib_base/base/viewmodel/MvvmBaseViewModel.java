@@ -1,5 +1,7 @@
 package io.yugoal.lib_base.base.viewmodel;
 
+import android.util.Log;
+
 import androidx.databinding.ObservableArrayList;
 import androidx.databinding.ObservableList;
 import androidx.lifecycle.Lifecycle;
@@ -13,8 +15,10 @@ import java.util.List;
 import io.yugoal.lib_base.base.model.IBaseModelListener;
 import io.yugoal.lib_base.base.model.MvvmBaseModel;
 import io.yugoal.lib_base.base.model.PagingResult;
+import io.yugoal.lib_utils.utils.ToastUtil;
 
 public class MvvmBaseViewModel<M extends MvvmBaseModel, D> extends ViewModel implements LifecycleObserver, IBaseModelListener<List<D>> {
+    private static final String TAG = "MvvmBaseViewModel";
     protected M model;
 
     public MutableLiveData<ObservableList<D>> dataList = new MutableLiveData<>();

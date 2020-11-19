@@ -42,7 +42,7 @@ public class SpreadView extends View {
         int centerColor = a.getColor(R.styleable.SpreadView_spread_center_color,
                 ContextCompat.getColor(context, android.R.color.holo_red_dark));
         int spreadColor = a.getColor(R.styleable.SpreadView_spread_spread_color,
-                ContextCompat.getColor(context, R.color.color_F71816));
+                ContextCompat.getColor(context, R.color.base_5CA3E5));
         distance = a.getInt(R.styleable.SpreadView_spread_distance, distance);
         a.recycle();
 

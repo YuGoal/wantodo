@@ -69,11 +69,11 @@ public class WanTodoApi extends NetworkApi {
 
     @Override
     public String getFormal() {
-        return null;
+        return "https://www.wanandroid.com/";
     }
 
     @Override
     public String getTest() {
-        return null;
+        return "https://www.wanandroid.com/";
     }
 }

@@ -6,12 +6,15 @@
         <variable
             name="viewModel"
             type="io.yugoal.lib_common_ui.views.article.ArticleItemModel" />
+
         <import type="android.view.View" />
+
         <import type="android.text.TextUtils" />
+
         <import type="androidx.databinding.ObservableField" />
     </data>
 
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/dp_8"
@@ -21,9 +24,11 @@
 
         <TextView
             android:id="@+id/tv_title"
-            style="@style/ArticleTitle" />
+            style="@style/ArticleTitle"
+            android:text="@{viewModel.title}" />
 
         <RelativeLayout
+            android:layout_below="@+id/tv_title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/dp_4"
@@ -31,19 +36,22 @@
 
             <TextView
                 android:id="@+id/tv_author"
-                style="@style/ArticleAuthor" />
+                style="@style/ArticleAuthor"
+                android:text="@{viewModel.author}" />
 
             <TextView
                 android:id="@+id/tv_nice_share_date"
                 style="@style/ArticleAuthor"
-                android:layout_toEndOf="@+id/tv_author" />
+                android:layout_toEndOf="@+id/tv_author"
+                android:text="@{viewModel.niceShareDate}" />
 
             <TextView
                 android:id="@+id/tv_tags"
                 style="@style/ArticleTags"
-                android:layout_alignParentEnd="true" />
+                android:layout_alignParentEnd="true"
+                android:text="@{viewModel.tags}" />
 
         </RelativeLayout>
 
-    </LinearLayout>
+    </RelativeLayout>
 </layout>

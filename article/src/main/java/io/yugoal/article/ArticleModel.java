@@ -3,6 +3,9 @@ package io.yugoal.article;
 import android.text.TextUtils;
 import android.util.Log;
 
+import com.google.gson.reflect.TypeToken;
+
+import java.lang.reflect.Type;
 import java.util.ArrayList;
 
 import io.yugoal.article.api.ArticleApiInterface;
@@ -11,9 +14,11 @@ import io.yugoal.lib_base.base.customview.BaseCustomViewModel;
 import io.yugoal.lib_base.base.model.MvvmBaseModel;
 import io.yugoal.lib_base.base.model.PagingResult;
 import io.yugoal.lib_common_ui.views.article.ArticleItemModel;
+import io.yugoal.lib_common_ui.views.article.ArticleItemView;
 import io.yugoal.lib_network.WanTodoApi;
 import io.yugoal.lib_network.beans.BaseResponse;
 import io.yugoal.lib_network.observer.BaseObserver;
+import io.yugoal.lib_utils.utils.ToastUtil;
 import retrofit2.Response;
 
 /**
@@ -48,7 +53,6 @@ public class ArticleModel extends MvvmBaseModel<ArrayList<BaseCustomViewModel>> 
                     public void onSuccess(Response<BaseResponse<ArticleBean>> baseResponseResponse) {
                         pageNumber = isRefresh ? 2 : pageNumber + 1;
                         ArrayList<BaseCustomViewModel> baseViewModels = new ArrayList<>();
-                        Log.d("TAG", "onSuccess: ");
                         for (ArticleBean.DatasBean datasBean : baseResponseResponse.body().data.getDatas()) {
                             if (datasBean != null) {
                                 ArticleItemModel viewModel = new ArticleItemModel();
@@ -69,7 +73,7 @@ public class ArticleModel extends MvvmBaseModel<ArrayList<BaseCustomViewModel>> 
 
                     @Override
                     public void onFailure(Throwable e) {
-                        Log.d("TAG", "onFailure: ");
+                        ToastUtil.show("onFailure");
                         loadFail(e.getMessage(), new PagingResult(true, isRefresh, false));
 
                     }

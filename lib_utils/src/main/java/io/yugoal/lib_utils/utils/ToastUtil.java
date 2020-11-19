@@ -1,4 +1,4 @@
-package io.yugoal.lib_base.base.utils;
+package io.yugoal.lib_utils.utils;
 
 import android.content.Context;
 import android.text.TextUtils;

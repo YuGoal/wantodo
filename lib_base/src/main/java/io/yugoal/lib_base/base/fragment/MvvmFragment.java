@@ -22,7 +22,7 @@ import com.kingja.loadsir.core.LoadService;
 import com.kingja.loadsir.core.LoadSir;
 
 import io.yugoal.lib_base.R;
-import io.yugoal.lib_base.base.utils.ToastUtil;
+import io.yugoal.lib_utils.utils.ToastUtil;
 import io.yugoal.lib_base.base.viewmodel.MvvmBaseViewModel;
 import io.yugoal.lib_base.base.viewmodel.ViewStatus;
 import io.yugoal.lib_base.loadsir.callback.EmptyCallback;

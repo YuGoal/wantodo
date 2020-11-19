@@ -15,6 +15,7 @@ import io.caoyu.wantodo.R;
 import io.caoyu.wantodo.databinding.ActivityWebViewBinding;
 import io.yugoal.lib_common_ui.ProgressWebView;
 
+/*
 public class WebViewActivity extends BaseDataBindActivity<ActivityWebViewBinding> {
     private static final String TAG = "WebViewActivity";
     private boolean mAnimatorOn = true;
@@ -48,13 +49,15 @@ public class WebViewActivity extends BaseDataBindActivity<ActivityWebViewBinding
             @Override
             public void onScroll(int dx, int dy) {
                 Log.d(TAG, "onScroll: "+dy);
-                /*if (dy>600){
+                */
+/*if (dy>600){
                     Log.d(TAG, "onScroll: hideBottomTv");
                     hideBottomTv();
                 }else {
                     Log.d(TAG, "onScroll:showBottomTv ");
                     showBottomTv();
-                }*/
+                }*//*
+
             }
         });
         initData();
@@ -106,4 +109,4 @@ public class WebViewActivity extends BaseDataBindActivity<ActivityWebViewBinding
     protected int getLayoutId() {
         return R.layout.activity_web_view;
     }
-}
+}*/

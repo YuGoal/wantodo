@@ -17,6 +17,7 @@ import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.disposables.Disposable;
 import io.yugoal.lib_base.base.preference.BasicDataPreferenceUtil;
 import io.yugoal.lib_base.base.utils.GsonUtils;
+import io.yugoal.lib_utils.utils.ToastUtil;
 
 /**
  * user caoyu
@@ -74,8 +75,8 @@ public abstract class MvvmBaseModel<T> {
                 mWeakListenerArrayList.remove(releaseListener);
             }
 
-            for (WeakReference<IBaseModelListener> listenerWeakReference : mWeakListenerArrayList) {
-                IBaseModelListener listenerItem = listenerWeakReference.get();
+            for (WeakReference<IBaseModelListener> weakListener : mWeakListenerArrayList) {
+                IBaseModelListener listenerItem = weakListener.get();
                 if (listenerItem == listener) {
                     return;
                 }
@@ -194,20 +195,18 @@ public abstract class MvvmBaseModel<T> {
             return;
         }
         synchronized (this) {
-            for (WeakReference<IBaseModelListener> listenerWeakReference :
-                    mWeakListenerArrayList) {
-                if (listenerWeakReference instanceof IBaseModelListener) {
-                    IBaseModelListener listener = listenerWeakReference.get();
-                    if (listener != null) {
+            for (WeakReference<IBaseModelListener> weakListener : mWeakListenerArrayList) {
+                if (weakListener.get() instanceof IBaseModelListener) {
+                    IBaseModelListener listenerItem = weakListener.get();
+                    if (listenerItem != null) {
                         if (pagingResult != null && pagingResult.length > 0) {
-                            listener.onLoadFinish(this, data, pagingResult);
+                            listenerItem.onLoadFinish(this, data, pagingResult);
                         } else {
-                            listener.onLoadFinish(this, data);
+                            listenerItem.onLoadFinish(this, data);
                         }
                     }
                 }
             }
-            //缓存数据
             if (mCachedPreferenceKey != null && pagingResult != null) {
                 saveDataToPreference(data);
             }

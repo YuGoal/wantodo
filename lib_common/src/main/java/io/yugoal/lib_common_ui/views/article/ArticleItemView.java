@@ -6,13 +6,14 @@ import android.view.View;
 import io.yugoal.lib_base.base.customview.BaseCustomView;
 import io.yugoal.lib_common_ui.R;
 import io.yugoal.lib_common_ui.databinding.ItemArticleBinding;
-import io.yugoal.lib_common_ui.views.article.ArticleItemModel;
 
 
 public class ArticleItemView extends BaseCustomView<ItemArticleBinding, ArticleItemModel> {
     public ArticleItemView(Context context) {
         super(context);
     }
+
+
 
     @Override
     public int setViewLayoutId() {

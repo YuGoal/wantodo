@@ -15,15 +15,12 @@ import io.caoyu.wantodo.R;
 import io.caoyu.wantodo.api.Constants;
 import io.caoyu.wantodo.databinding.ActivityMainBinding;
 import io.caoyu.wantodo.ui.home.adapter.CardViewAdapter;
-import io.caoyu.wantodo.ui.mine.loginreg.LoginActivity;
-import io.caoyu.wantodo.ui.mine.rank.UserRankActivity;
-import io.caoyu.wantodo.ui.mine.set.SettingActivity;
 import io.yugoal.lib_base.base.activity.MvvmActivity;
 import io.yugoal.lib_base.base.preference.PreferencesUtil;
-import io.yugoal.lib_base.base.utils.ToastUtil;
 import io.yugoal.lib_base.base.viewmodel.MvvmBaseViewModel;
 import io.yugoal.lib_common_ui.arouter.RouteServiceManager;
 import io.yugoal.lib_common_ui.arouter.article.IArticleService;
+import io.yugoal.lib_utils.utils.ToastUtil;
 
 
 public class MainActivity extends MvvmActivity<ActivityMainBinding, MvvmBaseViewModel> {
@@ -70,7 +67,7 @@ public class MainActivity extends MvvmActivity<ActivityMainBinding, MvvmBaseView
 
     private void initEvent() {
         viewDataBinding.drawerView.tvSetting.setOnClickListener(v -> {
-            SettingActivity.show(this);
+            //SettingActivity.show(this);
         });
     }
 
@@ -84,16 +81,16 @@ public class MainActivity extends MvvmActivity<ActivityMainBinding, MvvmBaseView
         });
         viewDataBinding.drawerView.charAvatarView.setOnClickListener(v->{
             if (TextUtils.isEmpty(PreferencesUtil.getInstance().getString(Constants.NAME,""))){
-                LoginActivity.show(this);
+                //LoginActivity.show(this);
             }else {
                 // TODO: 2020/11/13 个人积分
-                UserRankActivity.show(this);
+                //UserRankActivity.show(this);
             }
         });
     }
 
     private void initViewPager() {
-        iArticleService = RouteServiceManager.provide(IArticleService.class,IArticleService.ARTICLE_ROUTER);
+        iArticleService = RouteServiceManager.provide(IArticleService.class,IArticleService.ARTICLE_SERVICE);
         List<Fragment> fragments = new ArrayList<>();
         fragments.add(iArticleService.getArticleFragment());
         fragments.add(iArticleService.getArticleFragment());
