@@ -49,7 +49,7 @@ public class ArticleFragment extends MvvmFragment<FragmentArticleBinding, Articl
             viewModel.init();
             return viewModel;
         }
-        return new ArticleViewModel();
+        return viewModel;
     }
 
     @Override
@@ -87,7 +87,7 @@ public class ArticleFragment extends MvvmFragment<FragmentArticleBinding, Articl
 
     @Override
     protected void onRetryBtnClick() {
-        viewModel.tryToLoadNextPage();
+        viewModel.tryRefresh();
     }
 
     @Override

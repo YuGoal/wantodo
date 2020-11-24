@@ -34,6 +34,17 @@ public class ArticleModel extends MvvmBaseModel<ArrayList<BaseCustomViewModel>> 
     }
 
     @Override
+    protected boolean isNeedToUpdate() {
+        return false;
+    }
+
+    @Override
+    public Type getTClass() {
+        return new TypeToken<ArrayList<ArticleItemModel>>() {
+        }.getType();
+    }
+
+    @Override
     public void refresh() {
         isRefresh = true;
         load();
@@ -46,12 +57,12 @@ public class ArticleModel extends MvvmBaseModel<ArrayList<BaseCustomViewModel>> 
 
     @Override
     protected void load() {
+        pageNumber = isRefresh ? 0 : pageNumber + 1;
         WanTodoApi.getService(ArticleApiInterface.class)
                 .article(pageNumber)
                 .compose(WanTodoApi.getInstance().applySchedulers(new BaseObserver<Response<BaseResponse<ArticleBean>>>(this) {
                     @Override
                     public void onSuccess(Response<BaseResponse<ArticleBean>> baseResponseResponse) {
-                        pageNumber = isRefresh ? 2 : pageNumber + 1;
                         ArrayList<BaseCustomViewModel> baseViewModels = new ArrayList<>();
                         for (ArticleBean.DatasBean datasBean : baseResponseResponse.body().data.getDatas()) {
                             if (datasBean != null) {
@@ -73,7 +84,6 @@ public class ArticleModel extends MvvmBaseModel<ArrayList<BaseCustomViewModel>> 
 
                     @Override
                     public void onFailure(Throwable e) {
-                        ToastUtil.show("onFailure");
                         loadFail(e.getMessage(), new PagingResult(true, isRefresh, false));
 
                     }

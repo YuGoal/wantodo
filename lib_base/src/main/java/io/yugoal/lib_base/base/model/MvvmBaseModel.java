@@ -160,7 +160,7 @@ public abstract class MvvmBaseModel<T> {
     public void getCachedDataAndLoad() {
         if (mCachedPreferenceKey != null) {
             String saveDataString = BasicDataPreferenceUtil.getInstance().getString(mCachedPreferenceKey);
-            if (TextUtils.isEmpty(saveDataString)) {
+            if (!TextUtils.isEmpty(saveDataString)) {
                 try {
                     T savedData = GsonUtils.fromLocalJson(new JSONObject(saveDataString).get("data").toString(), getTClass());
                     if (null != savedData) {

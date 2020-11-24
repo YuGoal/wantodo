@@ -43,6 +43,7 @@ dependencies {
     annotationProcessor "androidx.room:room-compiler:2.2.5"
 
     implementation project(path: ':article')
+    implementation project(path: ':tree')
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     implementation rootProject.depsLibs.gson
     implementation rootProject.depsLibs.eventbus
