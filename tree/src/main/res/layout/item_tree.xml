@@ -2,15 +2,7 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android">
 
     <data>
-        <variable
-            name="viewModel"
-            type="io.yugoal.lib_common_ui.views.tree.TreeItemModel" />
 
-        <import type="android.view.View" />
-
-        <import type="android.text.TextUtils" />
-
-        <import type="androidx.databinding.ObservableField" />
     </data>
 
     <androidx.core.widget.NestedScrollView
@@ -36,7 +28,6 @@
                 android:layout_width="4dp"
                 android:layout_height="@dimen/dp_18"/>
             <TextView
-                android:text="@{viewModel.name}"
                 android:textColor="@color/font_black"
                 android:layout_marginStart="@dimen/dp_8"
                 android:layout_height="wrap_content"

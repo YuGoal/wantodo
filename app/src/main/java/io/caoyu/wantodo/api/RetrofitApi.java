@@ -1,23 +1,5 @@
 package io.caoyu.wantodo.api;
 
-import java.util.List;
-
-import io.caoyu.wantodo.api.bean.ArticleBean;
-import io.caoyu.wantodo.api.bean.CoinBean;
-import io.caoyu.wantodo.api.bean.LoginBean;
-import io.caoyu.wantodo.api.bean.Tree2Bean;
-import io.caoyu.wantodo.api.bean.TreeBean;
-import io.caoyu.wantodo.api.bean.WendaBean;
-import io.reactivex.Observable;
-import okhttp3.MultipartBody;
-import retrofit2.Response;
-import retrofit2.http.GET;
-import retrofit2.http.Multipart;
-import retrofit2.http.POST;
-import retrofit2.http.Part;
-import retrofit2.http.Path;
-import retrofit2.http.Query;
-
 /**
  * Created by ${LiuTao}.
  * User: Administrator

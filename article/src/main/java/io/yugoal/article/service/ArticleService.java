@@ -1,4 +1,4 @@
-package io.yugoal.article;
+package io.yugoal.article.service;
 
 import android.content.Context;
 
@@ -6,7 +6,8 @@ import androidx.fragment.app.Fragment;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
 
-import io.yugoal.lib_common_ui.arouter.article.IArticleService;
+import io.yugoal.article.ArticleFragment;
+import io.yugoal.lib_common_ui.arouter.IArticleService;
 
 /**
  * user caoyu

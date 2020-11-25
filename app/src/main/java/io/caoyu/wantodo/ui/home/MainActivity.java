@@ -18,14 +18,16 @@ import io.caoyu.wantodo.ui.home.adapter.CardViewAdapter;
 import io.yugoal.lib_base.base.activity.MvvmActivity;
 import io.yugoal.lib_base.base.preference.PreferencesUtil;
 import io.yugoal.lib_base.base.viewmodel.MvvmBaseViewModel;
+import io.yugoal.lib_common_ui.arouter.ITreeService;
 import io.yugoal.lib_common_ui.arouter.RouteServiceManager;
-import io.yugoal.lib_common_ui.arouter.article.IArticleService;
+import io.yugoal.lib_common_ui.arouter.IArticleService;
 import io.yugoal.lib_utils.utils.ToastUtil;
 
 
 public class MainActivity extends MvvmActivity<ActivityMainBinding, MvvmBaseViewModel> {
 
     private IArticleService iArticleService;
+    private ITreeService iTreeService;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -91,10 +93,11 @@ public class MainActivity extends MvvmActivity<ActivityMainBinding, MvvmBaseView
 
     private void initViewPager() {
         iArticleService = RouteServiceManager.provide(IArticleService.class,IArticleService.ARTICLE_SERVICE);
+        iTreeService = RouteServiceManager.provide(ITreeService.class,ITreeService.TREE_SERVICE);
         List<Fragment> fragments = new ArrayList<>();
         fragments.add(iArticleService.getArticleFragment());
         fragments.add(iArticleService.getArticleFragment());
-        fragments.add(iArticleService.getArticleFragment());
+        fragments.add(iTreeService.getTreeFragment());
         CardViewAdapter cardViewAdapter = new CardViewAdapter(getSupportFragmentManager(), fragments);
         viewDataBinding.viewpager.setAdapter(cardViewAdapter);
         viewDataBinding.tabs.setupWithViewPager(viewDataBinding.viewpager);

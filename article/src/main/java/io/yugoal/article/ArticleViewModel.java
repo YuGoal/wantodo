@@ -17,8 +17,8 @@ public class ArticleViewModel extends MvvmBaseViewModel<ArticleModel, BaseCustom
     public ArticleViewModel init() {
         model =new ArticleModel();
         model.register(this);
-        model.getCachedDataAndLoad();
-        //model.refresh();
+        //model.getCachedDataAndLoad();
+        model.refresh();
         return this;
     }
     public void tryToLoadNextPage() {
