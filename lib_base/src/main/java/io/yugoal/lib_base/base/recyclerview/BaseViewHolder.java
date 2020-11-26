@@ -24,4 +24,8 @@ public class BaseViewHolder extends RecyclerView.ViewHolder {
     public void bind(@NonNull BaseCustomViewModel item) {
         view.setData(item);
     }
+
+    public ICustomView getView() {
+        return view;
+    }
 }

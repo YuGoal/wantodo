@@ -2,6 +2,7 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android">
 
     <data>
+
         <variable
             name="viewModel"
             type="io.yugoal.lib_common_ui.views.tree.TreeItemModel" />
@@ -16,38 +17,43 @@
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
         android:background="@color/white"
-        android:paddingTop="@dimen/dp_10"
+        android:orientation="vertical"
         android:paddingStart="@dimen/dp_20"
+        android:paddingTop="@dimen/dp_10"
         android:paddingEnd="@dimen/dp_20">
-        <LinearLayout
-            android:orientation="vertical"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
 
-        <LinearLayout
-            android:gravity="center_vertical"
-            android:orientation="horizontal"
-            android:layout_width="wrap_content"
-            android:layout_height="@dimen/dp_20">
-            <ImageView
-                android:src="@drawable/shape_vertical_line"
-                android:layout_width="4dp"
-                android:layout_height="@dimen/dp_18"/>
-            <TextView
-                android:text="@{viewModel.name}"
-                android:textColor="@color/font_black"
-                android:layout_marginStart="@dimen/dp_8"
-                android:layout_height="wrap_content"
-                android:layout_width="wrap_content"
-                android:id="@+id/tv_title" />
-        </LinearLayout>
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recyclerView"
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
-        </LinearLayout>
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:id="@+id/line_title"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp_20"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="4dp"
+                    android:layout_height="@dimen/dp_18"
+                    android:src="@drawable/shape_vertical_line" />
+
+                <TextView
+                    android:id="@+id/tv_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/dp_8"
+                    android:text="@{viewModel.name}"
+                    android:textColor="@color/font_black" />
+            </LinearLayout>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerView"
+                android:layout_below="@+id/line_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+        </RelativeLayout>
     </androidx.core.widget.NestedScrollView>
 </layout>

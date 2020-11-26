@@ -1,12 +1,16 @@
 package io.caoyu.wantodo.application;
 
 import android.app.Application;
+import android.content.Context;
 
+import com.alibaba.android.arouter.facade.annotation.Route;
 import com.alibaba.android.arouter.launcher.ARouter;
 import com.kingja.loadsir.core.LoadSir;
 
 import io.caoyu.wantodo.BuildConfig;
 import io.yugoal.lib_base.base.preference.PreferencesUtil;
+import io.yugoal.lib_common_ui.arouter.IAppService;
+import io.yugoal.lib_common_ui.arouter.IArticleService;
 import io.yugoal.lib_utils.utils.ToastUtil;
 import io.yugoal.lib_base.loadsir.callback.CustomCallback;
 import io.yugoal.lib_base.loadsir.callback.EmptyCallback;
@@ -22,9 +26,16 @@ import io.yugoal.lib_network.base.NetworkApi;
  */
 public class TodoApplication extends Application {
 
+    public static Context mContext;
+
+    public static Context getContext() {
+        return mContext;
+    }
+
     @Override
     public void onCreate() {
         super.onCreate();
+        mContext = getApplicationContext();
         PreferencesUtil.init(this);
         NetworkApi.init(new NetworkRequestInfo(this));
         ToastUtil.init(this);
@@ -45,4 +56,6 @@ public class TodoApplication extends Application {
                 .setDefaultCallback(LoadingCallback.class)//设置默认状态页
                 .commit();
     }
+
+
 }

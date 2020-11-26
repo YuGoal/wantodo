@@ -1,16 +1,16 @@
 package io.yugoal.tree.tree2;
 
-import android.content.Context;
-import android.view.LayoutInflater;
-import android.view.View;
 import android.view.ViewGroup;
 
+import androidx.annotation.NonNull;
+import androidx.databinding.ObservableArrayList;
+import androidx.databinding.ObservableList;
 import androidx.recyclerview.widget.RecyclerView;
 
-import java.util.List;
-
-import io.yugoal.lib_common_ui.databinding.ItemTree2Binding;
-import io.yugoal.tree.beans.TreeBean;
+import io.yugoal.lib_base.base.customview.BaseCustomViewModel;
+import io.yugoal.lib_base.base.recyclerview.BaseViewHolder;
+import io.yugoal.lib_common_ui.views.tree.TreeItem2Model;
+import io.yugoal.lib_common_ui.views.tree.TreeItem2View;
 
 
 /**
@@ -18,61 +18,34 @@ import io.yugoal.tree.beans.TreeBean;
  * date 2020/11/4
  * time 15:57
  */
-public class Tree2Adapter extends RecyclerView.Adapter<Tree2Adapter.ViewHolder> {
+public class Tree2Adapter extends RecyclerView.Adapter<BaseViewHolder> {
+    private ObservableList<TreeItem2Model> mItems;
 
+    public Tree2Adapter() {
 
-    private List<TreeBean.ChildrenBean> stepList;
-    private LayoutInflater mInflater;
-    private OnItemClickListener mOnItemClickListener;
-    private Context context;
-
-    public void setOnItemClickListener(OnItemClickListener onItemClickListener) {
-        this.mOnItemClickListener = onItemClickListener;
     }
-
-    public interface OnItemClickListener {
-        void onItemClickListener(int pos, List<TreeBean.ChildrenBean> myLiveList);
+    public void setData(ObservableArrayList<TreeItem2Model> items) {
+        mItems = items;
+        notifyDataSetChanged();
     }
-
-    public Tree2Adapter(Context mContext, List<TreeBean.ChildrenBean> stepList) {
-        this.stepList = stepList;
-        context = mContext;
-        mInflater = LayoutInflater.from(mContext);
+    @Override
+    public BaseViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+        TreeItem2View treeItemView = new TreeItem2View(parent.getContext());
+        return new BaseViewHolder(treeItemView);
     }
 
     @Override
-    public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        ViewHolder holder = new ViewHolder(ItemTree2Binding.inflate(mInflater, parent, false));
-        return holder;
-    }
-
-    @Override
-    public void onBindViewHolder(final ViewHolder holder, int position) {
-        TreeBean.ChildrenBean dataBean = stepList.get(position);
-        holder.binding.btnTitle.setText(dataBean.getName());
-        holder.itemView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                mOnItemClickListener.onItemClickListener(holder.getAdapterPosition(), stepList);
-            }
-        });
+    public void onBindViewHolder(@NonNull BaseViewHolder holder, int position) {
+        TreeItem2Model treeBean = (TreeItem2Model) mItems.get(position);
+        holder.bind(treeBean);
     }
 
     @Override
     public int getItemCount() {
-        if (stepList == null) {
-            return 0;
+        if (mItems != null && mItems.size() > 0) {
+            return mItems.size();
         }
-        return stepList.size();
-    }
-
-    protected static class ViewHolder extends RecyclerView.ViewHolder {
-        private ItemTree2Binding binding;
-
-        public ViewHolder(ItemTree2Binding itemView) {
-            super(itemView.getRoot());
-            binding = itemView;
-
-        }
+        return 0;
     }
 }
+

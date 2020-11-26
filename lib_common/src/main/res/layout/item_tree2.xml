@@ -2,7 +2,14 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android">
 
     <data>
+        <variable
+            name="tree2"
+            type="io.yugoal.lib_common_ui.views.tree.TreeItem2Model" />
+        <import type="android.view.View" />
 
+        <import type="android.text.TextUtils" />
+
+        <import type="androidx.databinding.ObservableField" />
     </data>
 
     <LinearLayout
@@ -14,7 +21,7 @@
             style="@style/TextButton"
             android:id="@+id/btn_title"
             android:background="@drawable/ripple_bg"
-            android:text="testv"
+            android:text="@{tree2.name}"
             android:layout_marginTop="@dimen/dp_8"
             android:layout_marginRight="@dimen/dp_8"/>
 

@@ -1,6 +1,6 @@
 package io.yugoal.tree.tree1;
 
-import android.text.TextUtils;
+import androidx.databinding.ObservableArrayList;
 
 import com.google.gson.reflect.TypeToken;
 
@@ -12,6 +12,7 @@ import io.yugoal.lib_base.base.customview.BaseCustomViewModel;
 import io.yugoal.lib_base.base.model.MvvmBaseModel;
 import io.yugoal.lib_base.base.model.PagingResult;
 import io.yugoal.lib_common_ui.views.article.ArticleItemModel;
+import io.yugoal.lib_common_ui.views.tree.TreeItem2Model;
 import io.yugoal.lib_common_ui.views.tree.TreeItemModel;
 import io.yugoal.lib_network.WanTodoApi;
 import io.yugoal.lib_network.beans.BaseResponse;
@@ -58,10 +59,13 @@ public class TreeModel extends MvvmBaseModel<ArrayList<BaseCustomViewModel>> {
                         for (TreeBean datasBean : baseResponseResponse.body().data) {
                             if (datasBean != null) {
                                 TreeItemModel viewModel = new TreeItemModel();
-                                if (TextUtils.isEmpty(datasBean.getName())) {
-                                    viewModel.name = datasBean.getName();
-                                } else {
-                                    viewModel.name = "";
+                                viewModel.item2Model = new ObservableArrayList<>();
+                                viewModel.name = datasBean.getName();
+                                for (TreeBean.ChildrenBean childrenBean : datasBean.getChildren()){
+                                    TreeItem2Model treeItem2Model = new TreeItem2Model();
+                                    treeItem2Model.id = childrenBean.getId();
+                                    treeItem2Model.name = childrenBean.getName();
+                                    viewModel.item2Model.add(treeItem2Model);
                                 }
                                 baseViewModels.add(viewModel);
                             }

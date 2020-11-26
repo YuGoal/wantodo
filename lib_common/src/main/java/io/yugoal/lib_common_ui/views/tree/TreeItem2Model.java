@@ -1,7 +1,5 @@
 package io.yugoal.lib_common_ui.views.tree;
 
-import androidx.databinding.ObservableArrayList;
-
 import io.yugoal.lib_base.base.customview.BaseCustomViewModel;
 
 /**
@@ -10,7 +8,7 @@ import io.yugoal.lib_base.base.customview.BaseCustomViewModel;
  * time 17:44
  * 体系列表单项展示数据
  */
-public class TreeItemModel extends BaseCustomViewModel {
+public class TreeItem2Model extends BaseCustomViewModel {
     public String name;
-    public ObservableArrayList<TreeItem2Model> item2Model;
+    public int id;
 }
