@@ -1,3 +1,4 @@
+include ':wenda'
 include ':tree'
 include ':article'
 include ':app', ':lib_network', ':lib_common',':lib_base',':lib_utils'

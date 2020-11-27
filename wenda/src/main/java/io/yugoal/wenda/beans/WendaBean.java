@@ -1,4 +1,4 @@
-package io.caoyu.wantodo.api.bean;
+package io.yugoal.wenda.beans;
 
 import java.util.List;
 

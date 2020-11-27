@@ -49,6 +49,7 @@ dependencies {
 
     implementation project(path: ':article')
     implementation project(path: ':tree')
+    implementation project(path: ':wenda')
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     implementation rootProject.depsLibs.gson
     implementation rootProject.depsLibs.eventbus

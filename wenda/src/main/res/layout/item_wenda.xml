@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+        <variable
+            name="wenda"
+            type="io.yugoal.wenda.ui.WendaItemModel" />
+
+        <import type="android.view.View" />
+
+        <import type="android.text.TextUtils" />
+
+        <import type="androidx.databinding.ObservableField" />
+
+    </data>
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dp_8"
+        android:background="@drawable/ripple_white_bg"
+        android:padding="@dimen/dp_10">
+
+        <TextView
+            android:id="@+id/tv_title"
+            style="@style/ArticleTitle"
+            android:singleLine="true"
+            android:text="@{wenda.title}" />
+
+        <TextView
+            android:layout_below="@+id/tv_title"
+            android:id="@+id/tv_desc"
+            style="@style/ArticleAuthor"
+            android:ellipsize="end"
+            android:lines="3"
+            android:text="@{wenda.desc}" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp_4"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/tv_author"
+                style="@style/ArticleAuthor"
+                android:text="@{wenda.author}" />
+
+            <TextView
+                android:id="@+id/tv_nice_share_date"
+                style="@style/ArticleAuthor"
+                android:layout_toEndOf="@+id/tv_author"
+                android:text="@{wenda.niceShareDate}" />
+
+            <TextView
+                android:id="@+id/tv_tags"
+                style="@style/ArticleTags"
+                android:layout_alignParentEnd="true"
+                android:text="@{wenda.tags}" />
+
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+</layout>

@@ -19,6 +19,7 @@ import io.yugoal.lib_base.base.activity.MvvmActivity;
 import io.yugoal.lib_base.base.preference.PreferencesUtil;
 import io.yugoal.lib_base.base.viewmodel.MvvmBaseViewModel;
 import io.yugoal.lib_common_ui.arouter.ITreeService;
+import io.yugoal.lib_common_ui.arouter.IWendaService;
 import io.yugoal.lib_common_ui.arouter.RouteServiceManager;
 import io.yugoal.lib_common_ui.arouter.IArticleService;
 import io.yugoal.lib_utils.utils.ToastUtil;
@@ -28,6 +29,7 @@ public class MainActivity extends MvvmActivity<ActivityMainBinding, MvvmBaseView
 
     private IArticleService iArticleService;
     private ITreeService iTreeService;
+    private IWendaService iWendaService;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,8 +62,8 @@ public class MainActivity extends MvvmActivity<ActivityMainBinding, MvvmBaseView
     @Override
     public void onResume() {
         super.onResume();
-        String name = PreferencesUtil.getInstance().getString(Constants.NAME,"");
-        if (!TextUtils.isEmpty(name)){
+        String name = PreferencesUtil.getInstance().getString(Constants.NAME, "");
+        if (!TextUtils.isEmpty(name)) {
             viewDataBinding.drawerView.tvName.setText(name);
             viewDataBinding.drawerView.charAvatarView.setText(name);
         }
@@ -78,13 +80,13 @@ public class MainActivity extends MvvmActivity<ActivityMainBinding, MvvmBaseView
         viewDataBinding.imgBtnNav.setOnClickListener(v -> {
             viewDataBinding.drawer.openDrawer(Gravity.LEFT);
         });
-        viewDataBinding.imgBtnSearch.setOnClickListener(v ->{
+        viewDataBinding.imgBtnSearch.setOnClickListener(v -> {
             ToastUtil.show("功能开发中...");
         });
-        viewDataBinding.drawerView.charAvatarView.setOnClickListener(v->{
-            if (TextUtils.isEmpty(PreferencesUtil.getInstance().getString(Constants.NAME,""))){
+        viewDataBinding.drawerView.charAvatarView.setOnClickListener(v -> {
+            if (TextUtils.isEmpty(PreferencesUtil.getInstance().getString(Constants.NAME, ""))) {
                 //LoginActivity.show(this);
-            }else {
+            } else {
                 // TODO: 2020/11/13 个人积分
                 //UserRankActivity.show(this);
             }
@@ -92,11 +94,12 @@ public class MainActivity extends MvvmActivity<ActivityMainBinding, MvvmBaseView
     }
 
     private void initViewPager() {
-        iArticleService = RouteServiceManager.provide(IArticleService.class,IArticleService.ARTICLE_SERVICE);
-        iTreeService = RouteServiceManager.provide(ITreeService.class,ITreeService.TREE_SERVICE);
+        iArticleService = RouteServiceManager.provide(IArticleService.class, IArticleService.ARTICLE_SERVICE);
+        iTreeService = RouteServiceManager.provide(ITreeService.class, ITreeService.TREE_SERVICE);
+        iWendaService = RouteServiceManager.provide(IWendaService.class, IWendaService.WENDA_SERVICE);
         List<Fragment> fragments = new ArrayList<>();
         fragments.add(iArticleService.getArticleFragment());
-        fragments.add(iArticleService.getArticleFragment());
+        fragments.add(iWendaService.getWendaFragment());
         fragments.add(iTreeService.getTreeFragment());
         CardViewAdapter cardViewAdapter = new CardViewAdapter(getSupportFragmentManager(), fragments);
         viewDataBinding.viewpager.setAdapter(cardViewAdapter);
