@@ -1,6 +1,7 @@
 package io.caoyu.wantodo.ui.home;
 
 import android.annotation.SuppressLint;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.Gravity;
@@ -22,6 +23,7 @@ import io.yugoal.lib_common_ui.arouter.ITreeService;
 import io.yugoal.lib_common_ui.arouter.IWendaService;
 import io.yugoal.lib_common_ui.arouter.RouteServiceManager;
 import io.yugoal.lib_common_ui.arouter.IArticleService;
+import io.yugoal.lib_utils.utils.StatusBarUtils;
 import io.yugoal.lib_utils.utils.ToastUtil;
 
 
@@ -34,6 +36,8 @@ public class MainActivity extends MvvmActivity<ActivityMainBinding, MvvmBaseView
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        StatusBarUtils.setStatusBarColor(this, Color.TRANSPARENT, false);
+        StatusBarUtils.setStatusBarLightMode(this, true);
         initToolbar();
         initViewPager();
         initEvent();

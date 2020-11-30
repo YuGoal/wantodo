@@ -18,4 +18,5 @@ public interface IAppService extends IProvider {
     String APP_SERVICE = APP_ROUTER + "app_service";
 
     Context getApp();
+    void showWebview(Context context, String url, String title, String name);
 }
