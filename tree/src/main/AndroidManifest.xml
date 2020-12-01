@@ -2,4 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="io.yugoal.tree">
 
+    <application>
+        <activity android:name=".treelist.TreeListActivity"></activity>
+    </application>
+
 </manifest>

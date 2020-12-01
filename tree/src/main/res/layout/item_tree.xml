@@ -5,7 +5,7 @@
 
         <variable
             name="viewModel"
-            type="io.yugoal.lib_common_ui.views.tree.TreeItemModel" />
+            type="io.yugoal.tree.views.TreeItemModel" />
 
         <import type="android.view.View" />
 

@@ -7,6 +7,7 @@ import android.view.View;
 import androidx.annotation.LayoutRes;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.databinding.DataBindingUtil;
 import androidx.databinding.ObservableArrayList;
 import androidx.databinding.ViewDataBinding;
@@ -17,14 +18,14 @@ import com.kingja.loadsir.core.LoadService;
 import com.kingja.loadsir.core.LoadSir;
 
 import io.yugoal.lib_base.R;
-import io.yugoal.lib_utils.utils.ToastUtil;
 import io.yugoal.lib_base.base.viewmodel.MvvmBaseViewModel;
 import io.yugoal.lib_base.base.viewmodel.ViewStatus;
 import io.yugoal.lib_base.loadsir.callback.EmptyCallback;
 import io.yugoal.lib_base.loadsir.callback.ErrorCallback;
 import io.yugoal.lib_base.loadsir.callback.LoadingCallback;
+import io.yugoal.lib_utils.utils.ToastUtil;
 
-public abstract class MvvmActivity<V extends ViewDataBinding,VM extends MvvmBaseViewModel> extends AppCompatActivity implements Observer {
+public abstract class MvvmActivity<V extends ViewDataBinding, VM extends MvvmBaseViewModel> extends AppCompatActivity implements Observer {
 
     protected VM viewModel;
     private LoadService mLoadService;
@@ -35,7 +36,9 @@ public abstract class MvvmActivity<V extends ViewDataBinding,VM extends MvvmBase
     int getLayoutId();
 
     protected abstract VM getViewModel();
+
     public abstract int getBindingVariable();
+
     protected abstract void onRetryBtnClick();
 
     @Override
@@ -43,21 +46,33 @@ public abstract class MvvmActivity<V extends ViewDataBinding,VM extends MvvmBase
         super.onCreate(savedInstanceState);
         initViewModel();
         performDataBinding();
-        if(viewModel != null)
+        if (viewModel != null)
             getLifecycle().addObserver(viewModel);
     }
+
+    protected void initToolbar(String title) {
+        Toolbar mToolbar =  findViewById(R.id.toolbar);
+        mToolbar.setTitle(title);
+        mToolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onBackPressed();
+                finish();
+            }
+        });
+    };
 
     private void initViewModel() {
         viewModel = getViewModel();
     }
 
-    private void performDataBinding(){
-        viewDataBinding = DataBindingUtil.setContentView(this,getLayoutId());
-        if (viewModel == null){
+    private void performDataBinding() {
+        viewDataBinding = DataBindingUtil.setContentView(this, getLayoutId());
+        if (viewModel == null) {
             viewModel = getViewModel();
         }
-        if (getBindingVariable()>0){
-            viewDataBinding.setVariable(getLayoutId(),viewModel);
+        if (getBindingVariable() > 0) {
+            viewDataBinding.setVariable(getLayoutId(), viewModel);
         }
     }
 
@@ -73,8 +88,8 @@ public abstract class MvvmActivity<V extends ViewDataBinding,VM extends MvvmBase
 
     @Override
     public void onChanged(Object o) {
-        if (o instanceof ViewStatus&&mLoadService!=null){
-            switch ((ViewStatus)o){
+        if (o instanceof ViewStatus && mLoadService != null) {
+            switch ((ViewStatus) o) {
                 case LOADING:
                     mLoadService.showCallback(LoadingCallback.class);
                     break;

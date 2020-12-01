@@ -36,7 +36,7 @@ public class MainActivity extends MvvmActivity<ActivityMainBinding, MvvmBaseView
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        StatusBarUtils.setStatusBarColor(this, Color.TRANSPARENT, false);
+        StatusBarUtils.setStatusBarColor(this, getResources().getColor(R.color.gray), false);
         StatusBarUtils.setStatusBarLightMode(this, true);
         initToolbar();
         initViewPager();

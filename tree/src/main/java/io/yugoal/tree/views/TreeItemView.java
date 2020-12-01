@@ -1,13 +1,11 @@
-package io.yugoal.lib_common_ui.views.tree;
+package io.yugoal.tree.views;
 
 import android.content.Context;
 import android.view.View;
 
-import androidx.databinding.ViewDataBinding;
-
 import io.yugoal.lib_base.base.customview.BaseCustomView;
-import io.yugoal.lib_common_ui.R;
-import io.yugoal.lib_common_ui.databinding.ItemTreeBinding;
+import io.yugoal.tree.R;
+import io.yugoal.tree.databinding.ItemTreeBinding;
 
 
 public class TreeItemView extends BaseCustomView<ItemTreeBinding, TreeItemModel> {

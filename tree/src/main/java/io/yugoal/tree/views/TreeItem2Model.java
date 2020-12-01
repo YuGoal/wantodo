@@ -1,4 +1,4 @@
-package io.yugoal.lib_common_ui.views.tree;
+package io.yugoal.tree.views;
 
 import io.yugoal.lib_base.base.customview.BaseCustomViewModel;
 

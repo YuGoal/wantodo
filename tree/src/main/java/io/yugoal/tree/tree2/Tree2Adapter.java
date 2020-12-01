@@ -7,10 +7,9 @@ import androidx.databinding.ObservableArrayList;
 import androidx.databinding.ObservableList;
 import androidx.recyclerview.widget.RecyclerView;
 
-import io.yugoal.lib_base.base.customview.BaseCustomViewModel;
 import io.yugoal.lib_base.base.recyclerview.BaseViewHolder;
-import io.yugoal.lib_common_ui.views.tree.TreeItem2Model;
-import io.yugoal.lib_common_ui.views.tree.TreeItem2View;
+import io.yugoal.tree.views.TreeItem2Model;
+import io.yugoal.tree.views.TreeItem2View;
 
 
 /**

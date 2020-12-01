@@ -1,11 +1,12 @@
-package io.yugoal.lib_common_ui.views.tree;
+package io.yugoal.tree.views;
 
 import android.content.Context;
 import android.view.View;
 
 import io.yugoal.lib_base.base.customview.BaseCustomView;
-import io.yugoal.lib_common_ui.R;
-import io.yugoal.lib_common_ui.databinding.ItemTree2Binding;
+import io.yugoal.tree.R;
+import io.yugoal.tree.databinding.ItemTree2Binding;
+import io.yugoal.tree.treelist.TreeListActivity;
 
 /**
  * user caoyu
@@ -31,6 +32,6 @@ public class TreeItem2View extends BaseCustomView<ItemTree2Binding, TreeItem2Mod
 
     @Override
     public void onRootClick(View view) {
-        //WebviewActivity.startCommonWeb(view.getContext(), "", getViewModel().link);
+        TreeListActivity.show(view.getContext(),getViewModel().id,getViewModel().name);
     }
 }

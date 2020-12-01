@@ -34,7 +34,7 @@ public class WebViewActivity extends MvvmActivity<ActivityWebViewBinding, MvvmBa
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        StatusBarUtils.setStatusBarColor(this, Color.TRANSPARENT, false);
+        StatusBarUtils.setStatusBarColor(this, getResources().getColor(R.color.gray), false);
         StatusBarUtils.setStatusBarLightMode(this, true);
         viewDataBinding.webview.getSettings().setJavaScriptEnabled(true);
         viewDataBinding.webview.getSettings().setSupportZoom(true);
@@ -58,8 +58,6 @@ public class WebViewActivity extends MvvmActivity<ActivityWebViewBinding, MvvmBa
         Intent intent = getIntent();
         if (null != intent) {
             String url = intent.getStringExtra("url");
-            String title = intent.getStringExtra("title");
-            String chapterName = intent.getStringExtra("chapterName");
             if (!TextUtils.isEmpty(url)) {
                 viewDataBinding.webview.loadUrl(url);
             }

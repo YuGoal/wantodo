@@ -4,6 +4,8 @@ import android.content.Context;
 import android.view.View;
 
 import io.yugoal.lib_base.base.customview.BaseCustomView;
+import io.yugoal.lib_common_ui.arouter.IAppService;
+import io.yugoal.lib_common_ui.arouter.RouteServiceManager;
 import yugoal.wenda.R;
 import yugoal.wenda.databinding.ItemWendaBinding;
 
@@ -27,6 +29,8 @@ public class WendaItemView extends BaseCustomView<ItemWendaBinding, WendaItemMod
 
     @Override
     public void onRootClick(View view) {
-        //WebviewActivity.startCommonWeb(view.getContext(), "", getViewModel().link);
+        IAppService iAppService = RouteServiceManager.provide(IAppService.class, IAppService.APP_SERVICE);
+        assert iAppService != null;
+        iAppService.showWebview(view.getContext(),getViewModel().link,getViewModel().title,getViewModel().author);
     }
 }
