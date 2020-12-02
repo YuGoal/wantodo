@@ -1,13 +1,18 @@
 package io.yugoal.lib_base.base.activity;
 
+import android.graphics.Color;
+import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.view.WindowManager;
 
+import androidx.annotation.ColorInt;
 import androidx.annotation.LayoutRes;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.core.graphics.ColorUtils;
 import androidx.databinding.DataBindingUtil;
 import androidx.databinding.ObservableArrayList;
 import androidx.databinding.ViewDataBinding;
@@ -23,6 +28,7 @@ import io.yugoal.lib_base.base.viewmodel.ViewStatus;
 import io.yugoal.lib_base.loadsir.callback.EmptyCallback;
 import io.yugoal.lib_base.loadsir.callback.ErrorCallback;
 import io.yugoal.lib_base.loadsir.callback.LoadingCallback;
+import io.yugoal.lib_utils.utils.StatusBarUtils;
 import io.yugoal.lib_utils.utils.ToastUtil;
 
 public abstract class MvvmActivity<V extends ViewDataBinding, VM extends MvvmBaseViewModel> extends AppCompatActivity implements Observer {
@@ -44,6 +50,7 @@ public abstract class MvvmActivity<V extends ViewDataBinding, VM extends MvvmBas
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        StatusBarUtils.setStatusBarLightMode(this, true);
         initViewModel();
         performDataBinding();
         if (viewModel != null)
@@ -143,4 +150,6 @@ public abstract class MvvmActivity<V extends ViewDataBinding, VM extends MvvmBas
     protected String getActivityTag() {
         return this.getClass().getSimpleName();
     }
+
+
 }

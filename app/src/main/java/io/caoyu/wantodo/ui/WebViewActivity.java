@@ -34,8 +34,6 @@ public class WebViewActivity extends MvvmActivity<ActivityWebViewBinding, MvvmBa
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        StatusBarUtils.setStatusBarColor(this, getResources().getColor(R.color.gray), false);
-        StatusBarUtils.setStatusBarLightMode(this, true);
         viewDataBinding.webview.getSettings().setJavaScriptEnabled(true);
         viewDataBinding.webview.getSettings().setSupportZoom(true);
         viewDataBinding.webview.getSettings().setBuiltInZoomControls(true);

@@ -22,12 +22,10 @@ import androidx.annotation.ColorInt;
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import androidx.annotation.RequiresPermission;
+import androidx.core.graphics.ColorUtils;
 import androidx.drawerlayout.widget.DrawerLayout;
 
-
 import java.lang.reflect.Method;
-
-import io.yugoal.lib_utils.R;
 
 import static android.Manifest.permission.EXPAND_STATUS_BAR;
 import static io.yugoal.lib_utils.utils.UIUtils.getContext;
