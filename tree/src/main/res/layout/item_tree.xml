@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
 
@@ -49,11 +50,16 @@
                     android:textColor="@color/font_black" />
             </LinearLayout>
 
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/recyclerView"
-                android:layout_below="@+id/line_title"
+            <com.google.android.flexbox.FlexboxLayout
+                android:id="@+id/fbl"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/line_title"
+                android:layout_marginLeft="11dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginRight="11dp"
+                android:layout_marginBottom="11dp"
+                app:flexWrap="wrap" />
         </RelativeLayout>
     </androidx.core.widget.NestedScrollView>
 </layout>

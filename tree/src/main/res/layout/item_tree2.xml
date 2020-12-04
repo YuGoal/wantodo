@@ -1,29 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <data>
-        <variable
-            name="tree2"
-            type="io.yugoal.tree.views.TreeItem2Model" />
-        <import type="android.view.View" />
 
-        <import type="android.text.TextUtils" />
 
-        <import type="androidx.databinding.ObservableField" />
-    </data>
+    <TextView
+        android:id="@+id/btn_title"
+        style="@style/TextButton"
+        android:layout_marginTop="@dimen/dp_8"
+        android:layout_marginRight="@dimen/dp_8"
+        android:background="@drawable/ripple_bg" />
 
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
-
-        <TextView
-            style="@style/TextButton"
-            android:id="@+id/btn_title"
-            android:background="@drawable/ripple_bg"
-            android:text="@{tree2.name}"
-            android:layout_marginTop="@dimen/dp_8"
-            android:layout_marginRight="@dimen/dp_8"/>
-
-    </LinearLayout>
 </layout>
