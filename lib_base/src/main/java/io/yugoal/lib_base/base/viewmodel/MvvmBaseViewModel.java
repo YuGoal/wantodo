@@ -75,7 +75,7 @@ public class MvvmBaseViewModel<M extends MvvmBaseModel, D> extends ViewModel imp
     @Override
     public void onLoadFail(MvvmBaseModel model, String prompt, PagingResult... pageResult) {
         errorMessage.setValue(prompt);
-        if(model.isPaging() && !pageResult[0].isFirstPage) {
+        if (model.isPaging() && !pageResult[0].isFirstPage) {
             viewStatusLiveData.setValue(ViewStatus.LOAD_MORE_FAILED);
         } else {
             viewStatusLiveData.setValue(ViewStatus.REFRESH_ERROR);

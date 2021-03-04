@@ -48,6 +48,7 @@
                         android:textStyle="bold" />
 
                     <ImageView
+                        android:visibility="invisible"
                         android:id="@+id/img_btn_search"
                         android:layout_width="@dimen/dp_50"
                         android:layout_height="match_parent"

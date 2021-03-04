@@ -1,7 +1,5 @@
 package io.yugoal.user.loginreg;
 
-import io.caoyu.wantodo.R;
-import io.caoyu.wantodo.databinding.FragmentRegBinding;
 
 /**
  * user caoyu
@@ -9,7 +7,7 @@ import io.caoyu.wantodo.databinding.FragmentRegBinding;
  * time 14:35
  * 注册
  */
-public class RegActivity extends BaseDataBindActivity<FragmentRegBinding> {
+/*public class RegActivity extends BaseDataBindActivity<FragmentRegBinding> {
 
     @Override
     public void initViewModel() {
@@ -20,4 +18,4 @@ public class RegActivity extends BaseDataBindActivity<FragmentRegBinding> {
     protected int getLayoutId() {
         return R.layout.fragment_reg;
     }
-}
+}*/

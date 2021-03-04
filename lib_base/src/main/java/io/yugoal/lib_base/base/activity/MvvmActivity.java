@@ -1,5 +1,7 @@
 package io.yugoal.lib_base.base.activity;
 
+import android.app.Dialog;
+import android.app.ProgressDialog;
 import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
@@ -149,6 +151,31 @@ public abstract class MvvmActivity<V extends ViewDataBinding, VM extends MvvmBas
 
     protected String getActivityTag() {
         return this.getClass().getSimpleName();
+    }
+
+    private ProgressDialog dialog;
+
+    public void showPDLoading(String s) {
+        try {
+            if (dialog != null && dialog.isShowing() && !isFinishing()) {
+                return;
+            }
+            dialog = new ProgressDialog(this);
+            dialog.setTitle(s);
+            dialog.setCancelable(true);
+            dialog.show();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void dismissLoading() {
+        if (!isFinishing()) {
+            if (dialog != null && dialog.isShowing()) {
+                dialog.dismiss();
+                dialog = null;
+            }
+        }
     }
 
 

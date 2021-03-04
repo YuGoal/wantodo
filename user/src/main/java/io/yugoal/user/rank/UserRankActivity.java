@@ -1,4 +1,5 @@
 package io.yugoal.user.rank;
+/*
 
 import android.content.Context;
 import android.content.Intent;
@@ -41,4 +42,4 @@ public class UserRankActivity extends BaseDataBindActivity<ActivityUserRankBindi
     protected int getLayoutId() {
         return R.layout.activity_user_rank;
     }
-}
+}*/

@@ -1,11 +1,11 @@
 package io.caoyu.wantodo.ui.home;
 
 import android.annotation.SuppressLint;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.Gravity;
 
+import androidx.databinding.ObservableList;
 import androidx.fragment.app.Fragment;
 import androidx.viewpager.widget.ViewPager;
 
@@ -13,18 +13,18 @@ import java.util.ArrayList;
 import java.util.List;
 
 import io.caoyu.wantodo.R;
-import io.caoyu.wantodo.api.Constants;
 import io.caoyu.wantodo.databinding.ActivityMainBinding;
 import io.caoyu.wantodo.ui.home.adapter.CardViewAdapter;
 import io.yugoal.lib_base.base.activity.MvvmActivity;
 import io.yugoal.lib_base.base.preference.PreferencesUtil;
 import io.yugoal.lib_base.base.viewmodel.MvvmBaseViewModel;
+import io.yugoal.lib_common_ui.arouter.IArticleService;
 import io.yugoal.lib_common_ui.arouter.ITreeService;
+import io.yugoal.lib_common_ui.arouter.IUserService;
 import io.yugoal.lib_common_ui.arouter.IWendaService;
 import io.yugoal.lib_common_ui.arouter.RouteServiceManager;
-import io.yugoal.lib_common_ui.arouter.IArticleService;
-import io.yugoal.lib_utils.utils.StatusBarUtils;
 import io.yugoal.lib_utils.utils.ToastUtil;
+import io.yugoal.user.api.Constants;
 
 
 public class MainActivity extends MvvmActivity<ActivityMainBinding, MvvmBaseViewModel> {
@@ -32,6 +32,7 @@ public class MainActivity extends MvvmActivity<ActivityMainBinding, MvvmBaseView
     private IArticleService iArticleService;
     private ITreeService iTreeService;
     private IWendaService iWendaService;
+    private IUserService iUserService;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -85,9 +86,10 @@ public class MainActivity extends MvvmActivity<ActivityMainBinding, MvvmBaseView
         viewDataBinding.imgBtnSearch.setOnClickListener(v -> {
             ToastUtil.show("功能开发中...");
         });
-        viewDataBinding.drawerView.charAvatarView.setOnClickListener(v -> {
+        viewDataBinding.drawerView.lineUser.setOnClickListener(v -> {
             if (TextUtils.isEmpty(PreferencesUtil.getInstance().getString(Constants.NAME, ""))) {
                 //LoginActivity.show(this);
+                iUserService.showLogin();
             } else {
                 // TODO: 2020/11/13 个人积分
                 //UserRankActivity.show(this);
@@ -99,6 +101,8 @@ public class MainActivity extends MvvmActivity<ActivityMainBinding, MvvmBaseView
         iArticleService = RouteServiceManager.provide(IArticleService.class, IArticleService.ARTICLE_SERVICE);
         iTreeService = RouteServiceManager.provide(ITreeService.class, ITreeService.TREE_SERVICE);
         iWendaService = RouteServiceManager.provide(IWendaService.class, IWendaService.WENDA_SERVICE);
+        iUserService = RouteServiceManager.provide(IUserService.class, IUserService.USER_SERVICE);
+        iUserService.init(this);
         List<Fragment> fragments = new ArrayList<>();
         fragments.add(iArticleService.getArticleFragment());
         fragments.add(iWendaService.getWendaFragment());

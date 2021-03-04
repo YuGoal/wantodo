@@ -12,6 +12,8 @@ import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
+import androidx.databinding.ObservableList;
+
 import io.caoyu.wantodo.R;
 import io.caoyu.wantodo.databinding.ActivityWebViewBinding;
 import io.yugoal.lib_base.base.activity.MvvmActivity;
@@ -91,7 +93,6 @@ public class WebViewActivity extends MvvmActivity<ActivityWebViewBinding, MvvmBa
         }
         return super.onKeyDown(keyCode, event);
     }
-
 
     @Override
     public int getLayoutId() {

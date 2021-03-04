@@ -1,7 +1,6 @@
 package io.yugoal.article;
 
 import android.text.TextUtils;
-import android.util.Log;
 
 import com.google.gson.reflect.TypeToken;
 
@@ -14,11 +13,9 @@ import io.yugoal.lib_base.base.customview.BaseCustomViewModel;
 import io.yugoal.lib_base.base.model.MvvmBaseModel;
 import io.yugoal.lib_base.base.model.PagingResult;
 import io.yugoal.lib_common_ui.views.article.ArticleItemModel;
-import io.yugoal.lib_common_ui.views.article.ArticleItemView;
 import io.yugoal.lib_network.WanTodoApi;
 import io.yugoal.lib_network.beans.BaseResponse;
 import io.yugoal.lib_network.observer.BaseObserver;
-import io.yugoal.lib_utils.utils.ToastUtil;
 import retrofit2.Response;
 
 /**

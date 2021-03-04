@@ -18,4 +18,5 @@ public class BaseResponse<T> {
     @SerializedName("data")
     @Expose
     public T data;
+
 }

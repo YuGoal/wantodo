@@ -12,6 +12,7 @@
         android:orientation="vertical">
 
         <LinearLayout
+            android:id="@+id/line_user"
             android:paddingTop="@dimen/dp_20"
             android:gravity="center"
             android:background="@color/gray"

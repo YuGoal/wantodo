@@ -1,30 +1,27 @@
 package io.caoyu.wantodo.application;
 
-import android.app.Application;
 import android.content.Context;
 
-import com.alibaba.android.arouter.facade.annotation.Route;
 import com.alibaba.android.arouter.launcher.ARouter;
 import com.kingja.loadsir.core.LoadSir;
 
 import io.caoyu.wantodo.BuildConfig;
+import io.yugoal.lib_base.BaseApp;
 import io.yugoal.lib_base.base.preference.PreferencesUtil;
-import io.yugoal.lib_common_ui.arouter.IAppService;
-import io.yugoal.lib_common_ui.arouter.IArticleService;
-import io.yugoal.lib_utils.utils.ToastUtil;
 import io.yugoal.lib_base.loadsir.callback.CustomCallback;
 import io.yugoal.lib_base.loadsir.callback.EmptyCallback;
 import io.yugoal.lib_base.loadsir.callback.ErrorCallback;
 import io.yugoal.lib_base.loadsir.callback.LoadingCallback;
 import io.yugoal.lib_base.loadsir.callback.TimeoutCallback;
 import io.yugoal.lib_network.base.NetworkApi;
+import io.yugoal.lib_utils.utils.ToastUtil;
 
 
 /**
  * @user caoyu
  * @date 2019/11/13
  */
-public class TodoApplication extends Application {
+public class TodoApplication extends BaseApp {
 
     public static Context mContext;
 

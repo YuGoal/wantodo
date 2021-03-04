@@ -6,23 +6,33 @@ import android.os.Bundle;
 import android.view.View;
 
 import androidx.annotation.Nullable;
+import androidx.databinding.ObservableList;
+import androidx.lifecycle.ViewModelProvider;
 
 import com.google.android.material.textfield.TextInputEditText;
 
-import io.caoyu.wantodo.R;
-import io.caoyu.wantodo.api.Constants;
-import io.caoyu.wantodo.api.bean.LoginBean;
-import io.caoyu.wantodo.databinding.FragmentLoginBinding;
-import io.reactivex.Observer;
-import io.reactivex.annotations.NonNull;
-import io.reactivex.disposables.Disposable;
-import io.yugoal.lib_network.okhttp.ResultBean;
-import io.yugoal.lib_network.okhttp.RxObservableTransformer;
+import java.util.ArrayList;
+
+import io.yugoal.lib_base.base.activity.MvvmActivity;
+import io.yugoal.lib_base.base.customview.BaseCustomViewModel;
+import io.yugoal.lib_base.base.model.PagingResult;
+import io.yugoal.lib_base.base.preference.PreferencesUtil;
+import io.yugoal.lib_network.WanTodoApi;
+import io.yugoal.lib_network.beans.BaseResponse;
+import io.yugoal.lib_network.observer.BaseObserver;
 import io.yugoal.lib_utils.utils.StringUtils;
+import io.yugoal.lib_utils.utils.ToastUtil;
+import io.yugoal.user.R;
+import io.yugoal.user.api.Constants;
+import io.yugoal.user.api.LoginRegApiInterface;
+import io.yugoal.user.beans.User;
+import io.yugoal.user.databinding.FragmentLoginBinding;
+import okhttp3.FormBody;
+import okhttp3.RequestBody;
 import retrofit2.Response;
 
-public class LoginActivity extends BaseDataBindActivity<FragmentLoginBinding> {
-
+public class LoginActivity extends MvvmActivity<FragmentLoginBinding, LoginViewModel> {
+    private static final String TAG = "LoginActivity";
 
     public static void show(Context context) {
         Intent intent = new Intent(context, LoginActivity.class);
@@ -36,86 +46,93 @@ public class LoginActivity extends BaseDataBindActivity<FragmentLoginBinding> {
         initEvent();
     }
 
-    @Override
-    public void initViewModel() {
-
-    }
-
     private void initEvent() {
-        dataBind.tvLogin.setOnClickListener(new View.OnClickListener() {
+        viewDataBinding.tvLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String account = dataBind.etUsername.getText().toString();
-                String password = dataBind.etPwd.getText().toString();
+                String account = viewDataBinding.etUsername.getText().toString();
+                String password = viewDataBinding.etPwd.getText().toString();
                 //验证用户名和密码
-                if(validateAccount(account)&&validatePassword(password)){
-                    login(account,password);
+                if (validateAccount(account) && validatePassword(password)) {
+                    showPDLoading("登录中...");
+                    login(account, password);
                 }
             }
         });
+
+
     }
 
-    private void login(String account, String password) {
-        showDialogLoading("登录中...");
-        RetrofitClient.getRetrofit().getRetrofitApi()
-                .login(account,password)
-                .compose(RxObservableTransformer.transformer())
-                .subscribe(new Observer<Response<ResultBean<LoginBean>>>() {
+    public void login(String username, String password) {
+        RequestBody formBody = new FormBody.Builder()
+                .add("username", username)
+                .add("password", password)
+                .build();
+        WanTodoApi.getService(LoginRegApiInterface.class).login(formBody)
+                .compose(WanTodoApi.getInstance().applySchedulers(new BaseObserver<Response<BaseResponse<User>>>(null) {
                     @Override
-                    public void onSubscribe(@NonNull Disposable d) {
-
-                    }
-
-                    @Override
-                    public void onNext(@NonNull Response<ResultBean<LoginBean>> resultBeanResponse) {
-                        dismissDialogLoading();
-                        if (resultBeanResponse.isSuccessful()){
-                            if (resultBeanResponse.body().getErrorCode() == 0){
-                                ToastUtils.showToast("登录成功");
-                                SPUtils.putString(Constants.NAME,resultBeanResponse.body().getData().getNickname());
-                                SPUtils.putInt(Constants.ID,resultBeanResponse.body().getData().getId());
+                    public void onSuccess(Response<BaseResponse<User>> baseResponseResponse) {
+                        dismissLoading();
+                        if (baseResponseResponse.isSuccessful()) {
+                            if (baseResponseResponse.body().errorCode == 0) {
+                                User user = baseResponseResponse.body().data;
+                                PreferencesUtil.getInstance().setString(Constants.NAME, user.getNickname());
+                                PreferencesUtil.getInstance().setInt(Constants.ID, user.getId());
                                 finish();
                             }else {
-                                ToastUtils.showToast(resultBeanResponse.body().getErrorMsg());
+                                ToastUtil.show(baseResponseResponse.body().errorMsg);
                             }
-
                         }
                     }
 
                     @Override
-                    public void onError(@NonNull Throwable e) {
-
+                    public void onFailure(Throwable e) {
+                        dismissLoading();
+                        ToastUtil.show(e.getMessage());
                     }
-
-                    @Override
-                    public void onComplete() {
-
-                    }
-                });
+                }));
     }
 
     @Override
-    protected int getLayoutId() {
+    public int getLayoutId() {
         return R.layout.fragment_login;
     }
 
+    @Override
+    protected LoginViewModel getViewModel() {
+        return null;
+    }
+
+    @Override
+    public int getBindingVariable() {
+        return 0;
+    }
+
+    @Override
+    protected void onRetryBtnClick() {
+
+    }
+
+
     /**
      * 显示错误提示，并获取焦点
+     *
      * @param textInputLayout
      * @param error
      */
-    private void showError(TextInputEditText textInputLayout, String error){
+    private void showError(TextInputEditText textInputLayout, String error) {
         textInputLayout.setError(error);
     }
 
     /**
      * 验证用户名
+     *
      * @param account
      * @return
      */
-    private boolean validateAccount(String account){
-        if(StringUtils.isEmpty(account)){
-            showError(dataBind.etUsername,"用户名不能为空");
+    private boolean validateAccount(String account) {
+        if (StringUtils.isEmpty(account)) {
+            showError(viewDataBinding.etUsername, "用户名不能为空");
             return false;
         }
         return true;
@@ -123,12 +140,13 @@ public class LoginActivity extends BaseDataBindActivity<FragmentLoginBinding> {
 
     /**
      * 验证密码
+     *
      * @param password
      * @return
      */
     private boolean validatePassword(String password) {
         if (StringUtils.isEmpty(password)) {
-            showError(dataBind.etPwd,"密码不能为空");
+            showError(viewDataBinding.etPwd, "密码不能为空");
             return false;
         }
 

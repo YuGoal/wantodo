@@ -82,4 +82,11 @@ public class PreferencesUtil extends BasePreferences {
         }
         return appConfigSp.getBoolean(key, defValue);
     }
+
+    public static SharedPreferences getAppConfigSp() {
+        if (appConfigSp == null) {
+            appConfigSp = sApplication.getSharedPreferences(APP_CONFIG, Context.MODE_PRIVATE);
+        }
+        return appConfigSp;
+    }
 }

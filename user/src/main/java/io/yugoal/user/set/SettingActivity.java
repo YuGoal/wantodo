@@ -1,4 +1,5 @@
 package io.yugoal.user.set;
+/*
 
 
 import android.content.Context;
@@ -9,9 +10,11 @@ import io.caoyu.wantodo.R;
 import io.caoyu.wantodo.databinding.ActivitySettingBinding;
 import io.yugoal.lib_common_ui.CommonDialog;
 
+*/
 /**
  * 系统设置界面
- */
+ *//*
+
 public class SettingActivity extends BaseDataBindActivity<ActivitySettingBinding> {
 
     public static void show(Context context) {
@@ -49,4 +52,4 @@ public class SettingActivity extends BaseDataBindActivity<ActivitySettingBinding
     protected int getLayoutId() {
         return R.layout.activity_setting;
     }
-}
+}*/

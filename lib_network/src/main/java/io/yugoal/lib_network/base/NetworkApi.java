@@ -10,8 +10,11 @@ import io.reactivex.Observer;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.functions.Function;
 import io.reactivex.schedulers.Schedulers;
+import io.yugoal.lib_base.BaseApp;
 import io.yugoal.lib_network.commoninterceptor.CommonRequestInterceptor;
 import io.yugoal.lib_network.commoninterceptor.CommonResponseInterceptor;
+import io.yugoal.lib_network.cookie.CookieJarImpl;
+import io.yugoal.lib_network.cookie.PersistentCookieStore;
 import io.yugoal.lib_network.environment.EnvironmentActivity;
 import io.yugoal.lib_network.environment.IEnvironment;
 import io.yugoal.lib_network.errorhandler.HttpErrorHandler;
@@ -61,6 +64,7 @@ public abstract class NetworkApi implements IEnvironment {
             if (getInterceptor() != null) {
                 okHttpClientBuilder.addInterceptor(getInterceptor());
             }
+            okHttpClientBuilder.cookieJar(new CookieJarImpl(new PersistentCookieStore()));
             okHttpClientBuilder.addInterceptor(new CommonRequestInterceptor(iNetworkRequiredInfo));
             okHttpClientBuilder.addInterceptor(new CommonResponseInterceptor());
             if (iNetworkRequiredInfo != null && (iNetworkRequiredInfo.isDebug())) {
