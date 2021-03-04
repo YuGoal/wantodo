@@ -4,7 +4,9 @@ import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.Gravity;
+import android.widget.CompoundButton;
 
+import androidx.appcompat.app.AppCompatDelegate;
 import androidx.databinding.ObservableList;
 import androidx.fragment.app.Fragment;
 import androidx.viewpager.widget.ViewPager;
@@ -25,6 +27,8 @@ import io.yugoal.lib_common_ui.arouter.IWendaService;
 import io.yugoal.lib_common_ui.arouter.RouteServiceManager;
 import io.yugoal.lib_utils.utils.ToastUtil;
 import io.yugoal.user.api.Constants;
+
+import static androidx.appcompat.app.AppCompatDelegate.MODE_NIGHT_YES;
 
 
 public class MainActivity extends MvvmActivity<ActivityMainBinding, MvvmBaseViewModel> {
@@ -76,6 +80,16 @@ public class MainActivity extends MvvmActivity<ActivityMainBinding, MvvmBaseView
         viewDataBinding.drawerView.tvSetting.setOnClickListener(v -> {
             //SettingActivity.show(this);
         });
+        viewDataBinding.drawerView.switchWidget.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked){
+                    AppCompatDelegate.setDefaultNightMode(MODE_NIGHT_YES);
+                }else {
+                    AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+                }
+            }
+        });
     }
 
     @SuppressLint("RtlHardcoded")
@@ -88,11 +102,9 @@ public class MainActivity extends MvvmActivity<ActivityMainBinding, MvvmBaseView
         });
         viewDataBinding.drawerView.lineUser.setOnClickListener(v -> {
             if (TextUtils.isEmpty(PreferencesUtil.getInstance().getString(Constants.NAME, ""))) {
-                //LoginActivity.show(this);
                 iUserService.showLogin();
             } else {
-                // TODO: 2020/11/13 个人积分
-                //UserRankActivity.show(this);
+                iUserService.showRank();
             }
         });
     }

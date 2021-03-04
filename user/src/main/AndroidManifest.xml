@@ -4,5 +4,6 @@
 
     <application>
         <activity android:name=".loginreg.LoginActivity" />
+        <activity android:name=".rank.UserRankActivity" />
     </application>
 </manifest>

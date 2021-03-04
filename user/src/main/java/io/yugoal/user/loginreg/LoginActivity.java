@@ -6,16 +6,10 @@ import android.os.Bundle;
 import android.view.View;
 
 import androidx.annotation.Nullable;
-import androidx.databinding.ObservableList;
-import androidx.lifecycle.ViewModelProvider;
 
 import com.google.android.material.textfield.TextInputEditText;
 
-import java.util.ArrayList;
-
 import io.yugoal.lib_base.base.activity.MvvmActivity;
-import io.yugoal.lib_base.base.customview.BaseCustomViewModel;
-import io.yugoal.lib_base.base.model.PagingResult;
 import io.yugoal.lib_base.base.preference.PreferencesUtil;
 import io.yugoal.lib_network.WanTodoApi;
 import io.yugoal.lib_network.beans.BaseResponse;

@@ -40,9 +40,6 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent" >
 
-            <TextView
-                style="@style/DrawerMenuFont"
-                android:text="我的积分" />
 
             <TextView
                 style="@style/DrawerMenuFont"
@@ -53,13 +50,7 @@
 
             <View
                 style="@style/DrawerMenuLine" />
-            <TextView
-                style="@style/DrawerMenuFont"
-                android:text="稍后阅读" />
 
-            <TextView
-                style="@style/DrawerMenuFont"
-                android:text="阅读历史" />
             <TextView
                 android:id="@+id/tv_setting"
                 style="@style/DrawerMenuFont"
@@ -69,6 +60,7 @@
 
 
             <androidx.appcompat.widget.SwitchCompat
+                android:id="@+id/switchWidget"
                 style="@style/DrawerMenuFont"
                 android:text="夜间模式" />
 
