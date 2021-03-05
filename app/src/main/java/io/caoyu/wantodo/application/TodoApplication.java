@@ -1,13 +1,15 @@
 package io.caoyu.wantodo.application;
 
 import android.content.Context;
+import android.os.Process;
 
 import com.alibaba.android.arouter.launcher.ARouter;
 import com.kingja.loadsir.core.LoadSir;
+import com.tencent.bugly.Bugly;
 
+import io.caoyu.wantodo.BuglyUtils;
 import io.caoyu.wantodo.BuildConfig;
 import io.yugoal.lib_base.BaseApp;
-import io.yugoal.lib_base.base.preference.PreferencesUtil;
 import io.yugoal.lib_base.loadsir.callback.CustomCallback;
 import io.yugoal.lib_base.loadsir.callback.EmptyCallback;
 import io.yugoal.lib_base.loadsir.callback.ErrorCallback;
@@ -33,7 +35,6 @@ public class TodoApplication extends BaseApp {
     public void onCreate() {
         super.onCreate();
         mContext = getApplicationContext();
-        PreferencesUtil.init(this);
         NetworkApi.init(new NetworkRequestInfo(this));
         ToastUtil.init(this);
 
@@ -44,6 +45,7 @@ public class TodoApplication extends BaseApp {
             ARouter.openLog();
         }
         ARouter.init(this);
+        initBugly();
         LoadSir.beginBuilder()
                 .addCallback(new ErrorCallback())//添加各种状态页
                 .addCallback(new EmptyCallback())
@@ -54,5 +56,19 @@ public class TodoApplication extends BaseApp {
                 .commit();
     }
 
+    /**
+     * 初始化Bugly
+     */
+    private void initBugly() {
+        /*全量更新配置*/
+        //BuglyUtils.BuglyAppConfig();
+        /*热更新配置 还未集成*/
+        //BuglyUtils.BuglyHotConfig();
+        Bugly.init(getApplicationContext(), "efbaaa61a0", BuildConfig.DEBUG);
+        BuglyUtils.BuglyAppConfig();
+    }
 
+    public static void exitApp() {
+        Process.killProcess(Process.myPid());
+    }
 }

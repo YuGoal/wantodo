@@ -7,6 +7,7 @@ import com.alibaba.android.arouter.facade.annotation.Route;
 import io.yugoal.lib_common_ui.arouter.IUserService;
 import io.yugoal.user.loginreg.LoginActivity;
 import io.yugoal.user.rank.UserRankActivity;
+import io.yugoal.user.set.SettingActivity;
 
 /**
  * user caoyu
@@ -35,5 +36,10 @@ public class UserService implements IUserService {
     @Override
     public void showRank() {
         UserRankActivity.show(mContext);
+    }
+
+    @Override
+    public void showSet() {
+        SettingActivity.show(mContext);
     }
 }

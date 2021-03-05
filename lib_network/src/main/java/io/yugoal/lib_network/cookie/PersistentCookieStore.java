@@ -1,6 +1,5 @@
 package io.yugoal.lib_network.cookie;
 
-import android.content.Context;
 import android.content.SharedPreferences;
 import android.text.TextUtils;
 import android.util.Log;
@@ -18,7 +17,7 @@ import java.util.Locale;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
-import io.yugoal.lib_base.base.preference.PreferencesUtil;
+import io.yugoal.lib_base.base.preference.SPUtils;
 import okhttp3.Cookie;
 import okhttp3.HttpUrl;
 
@@ -43,7 +42,7 @@ public class PersistentCookieStore implements CookieStore {
      * Construct a persistent cookie store.
      */
     public PersistentCookieStore() {
-        this.cookiePrefs = PreferencesUtil.getAppConfigSp();
+        this.cookiePrefs = SPUtils.getInstance().getSp();
         this.cookies = new HashMap<String, ConcurrentHashMap<String, Cookie>>();
 
         Map tempCookieMap = new HashMap<Object, Object>(cookiePrefs.getAll());

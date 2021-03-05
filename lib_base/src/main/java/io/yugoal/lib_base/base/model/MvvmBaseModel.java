@@ -15,9 +15,7 @@ import java.util.concurrent.ConcurrentLinkedQueue;
 
 import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.disposables.Disposable;
-import io.yugoal.lib_base.base.preference.BasicDataPreferenceUtil;
 import io.yugoal.lib_base.base.utils.GsonUtils;
-import io.yugoal.lib_utils.utils.ToastUtil;
 
 /**
  * user caoyu
@@ -116,7 +114,6 @@ public abstract class MvvmBaseModel<T> {
     protected void saveDataToPreference(T data) {
         mCachedData.data = data;
         mCachedData.updateTimeInMills = System.currentTimeMillis();
-        BasicDataPreferenceUtil.getInstance().setString(mCachedPreferenceKey, GsonUtils.toJson(mCachedData));
     }
 
     public abstract void refresh();
@@ -155,36 +152,6 @@ public abstract class MvvmBaseModel<T> {
         }
 
         compositeDisposable.add(d);
-    }
-
-    public void getCachedDataAndLoad() {
-        if (mCachedPreferenceKey != null) {
-            String saveDataString = BasicDataPreferenceUtil.getInstance().getString(mCachedPreferenceKey);
-            if (!TextUtils.isEmpty(saveDataString)) {
-                try {
-                    T savedData = GsonUtils.fromLocalJson(new JSONObject(saveDataString).get("data").toString(), getTClass());
-                    if (null != savedData) {
-                        if (isPaging()) {
-                            //分页刷新
-                            loadSuccess(savedData, new PagingResult(false, true, true));
-                        } else {
-                            //普通数据
-                            loadSuccess(savedData);
-                        }
-                        if (isNeedToUpdate()) {
-                            load();
-                        }
-                        return;
-                    }
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
-            }
-            if (mApkPredefinedData != null) {
-
-            }
-        }
-        load();
     }
 
     /**

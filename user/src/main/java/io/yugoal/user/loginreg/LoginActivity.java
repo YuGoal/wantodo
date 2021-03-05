@@ -10,7 +10,7 @@ import androidx.annotation.Nullable;
 import com.google.android.material.textfield.TextInputEditText;
 
 import io.yugoal.lib_base.base.activity.MvvmActivity;
-import io.yugoal.lib_base.base.preference.PreferencesUtil;
+import io.yugoal.lib_base.base.preference.SPUtils;
 import io.yugoal.lib_network.WanTodoApi;
 import io.yugoal.lib_network.beans.BaseResponse;
 import io.yugoal.lib_network.observer.BaseObserver;
@@ -70,8 +70,8 @@ public class LoginActivity extends MvvmActivity<FragmentLoginBinding, LoginViewM
                         if (baseResponseResponse.isSuccessful()) {
                             if (baseResponseResponse.body().errorCode == 0) {
                                 User user = baseResponseResponse.body().data;
-                                PreferencesUtil.getInstance().setString(Constants.NAME, user.getNickname());
-                                PreferencesUtil.getInstance().setInt(Constants.ID, user.getId());
+                                SPUtils.getInstance().save(Constants.NAME, user.getNickname());
+                                SPUtils.getInstance().save(Constants.ID, user.getId());
                                 finish();
                             }else {
                                 ToastUtil.show(baseResponseResponse.body().errorMsg);

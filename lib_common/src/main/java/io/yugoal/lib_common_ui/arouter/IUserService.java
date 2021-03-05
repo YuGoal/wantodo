@@ -15,5 +15,6 @@ public interface IUserService extends IProvider {
 
     void showReg();
     void showRank();
+    void showSet();
 
 }

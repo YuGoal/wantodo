@@ -35,6 +35,7 @@
             android:text="常规设置" />
 
         <RelativeLayout
+            android:id="@+id/relativeCache"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
@@ -60,6 +61,7 @@
             style="@style/DrawerMenuLine"/>
 
         <RelativeLayout
+            android:visibility="gone"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
@@ -93,6 +95,7 @@
             style="@style/DrawerMenuLine"/>
 
         <RelativeLayout
+            android:visibility="gone"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
@@ -158,6 +161,7 @@
         <View
             style="@style/DrawerMenuLine"/>
         <RelativeLayout
+            android:id="@+id/relativeVersion"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 

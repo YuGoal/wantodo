@@ -1,13 +1,15 @@
 package io.caoyu.wantodo.ui.home;
 
 import android.annotation.SuppressLint;
+import android.app.Dialog;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.Gravity;
+import android.view.LayoutInflater;
+import android.view.View;
 import android.widget.CompoundButton;
 
 import androidx.appcompat.app.AppCompatDelegate;
-import androidx.databinding.ObservableList;
 import androidx.fragment.app.Fragment;
 import androidx.viewpager.widget.ViewPager;
 
@@ -15,16 +17,19 @@ import java.util.ArrayList;
 import java.util.List;
 
 import io.caoyu.wantodo.R;
+import io.caoyu.wantodo.application.TodoApplication;
 import io.caoyu.wantodo.databinding.ActivityMainBinding;
 import io.caoyu.wantodo.ui.home.adapter.CardViewAdapter;
 import io.yugoal.lib_base.base.activity.MvvmActivity;
-import io.yugoal.lib_base.base.preference.PreferencesUtil;
+import io.yugoal.lib_base.base.preference.SPUtils;
 import io.yugoal.lib_base.base.viewmodel.MvvmBaseViewModel;
+import io.yugoal.lib_common_ui.CommonDialog;
 import io.yugoal.lib_common_ui.arouter.IArticleService;
 import io.yugoal.lib_common_ui.arouter.ITreeService;
 import io.yugoal.lib_common_ui.arouter.IUserService;
 import io.yugoal.lib_common_ui.arouter.IWendaService;
 import io.yugoal.lib_common_ui.arouter.RouteServiceManager;
+import io.yugoal.lib_common_ui.utils.GuideSPUtils;
 import io.yugoal.lib_utils.utils.ToastUtil;
 import io.yugoal.user.api.Constants;
 
@@ -44,6 +49,25 @@ public class MainActivity extends MvvmActivity<ActivityMainBinding, MvvmBaseView
         initToolbar();
         initViewPager();
         initEvent();
+        showIfFirst();
+    }
+
+    private void showIfFirst() {
+        if (!GuideSPUtils.getInstance().isPrivacyPolicyShown()) {
+            Dialog dialog = new Dialog(this);
+            View view = LayoutInflater.from(this).inflate(R.layout.dialog_privacy_policy, null);
+            dialog.setContentView(view);
+            dialog.setCanceledOnTouchOutside(false);
+            dialog.show();
+            view.findViewById(R.id.dialog_privacy_policy_tv_yes).setOnClickListener(v -> {
+                GuideSPUtils.getInstance().setPrivacyPolicyShown();
+                dialog.dismiss();
+            });
+            view.findViewById(R.id.dialog_privacy_policy_tv_no).setOnClickListener(v -> {
+                TodoApplication.exitApp();
+                dialog.dismiss();
+            });
+        }
     }
 
     @Override
@@ -69,23 +93,26 @@ public class MainActivity extends MvvmActivity<ActivityMainBinding, MvvmBaseView
     @Override
     public void onResume() {
         super.onResume();
-        String name = PreferencesUtil.getInstance().getString(Constants.NAME, "");
+        String name = SPUtils.getInstance().get(Constants.NAME, "");
         if (!TextUtils.isEmpty(name)) {
             viewDataBinding.drawerView.tvName.setText(name);
             viewDataBinding.drawerView.charAvatarView.setText(name);
+        } else {
+            viewDataBinding.drawerView.tvName.setText("请先登录");
+            viewDataBinding.drawerView.charAvatarView.setText("W");
         }
     }
 
     private void initEvent() {
         viewDataBinding.drawerView.tvSetting.setOnClickListener(v -> {
-            //SettingActivity.show(this);
+            iUserService.showSet();
         });
         viewDataBinding.drawerView.switchWidget.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                if (isChecked){
+                if (isChecked) {
                     AppCompatDelegate.setDefaultNightMode(MODE_NIGHT_YES);
-                }else {
+                } else {
                     AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
                 }
             }
@@ -101,7 +128,7 @@ public class MainActivity extends MvvmActivity<ActivityMainBinding, MvvmBaseView
             ToastUtil.show("功能开发中...");
         });
         viewDataBinding.drawerView.lineUser.setOnClickListener(v -> {
-            if (TextUtils.isEmpty(PreferencesUtil.getInstance().getString(Constants.NAME, ""))) {
+            if (TextUtils.isEmpty(SPUtils.getInstance().get(Constants.NAME, ""))) {
                 iUserService.showLogin();
             } else {
                 iUserService.showRank();

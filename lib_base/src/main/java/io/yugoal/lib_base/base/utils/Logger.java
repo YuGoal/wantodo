@@ -25,7 +25,7 @@ import java.util.concurrent.LinkedBlockingQueue;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipOutputStream;
 
-import io.yugoal.lib_base.base.preference.PreferencesUtil;
+import io.yugoal.lib_base.base.preference.SPUtils;
 
 public class Logger {
     private static boolean sEnabled = false;
@@ -227,7 +227,7 @@ public class Logger {
                         //切换文件
                         curLogFileFlag = curLogFileFlag == 0 ? 1 : 0;
                         switchLogRandomAccessFile(curLogFileFlag == 0 ? FIRST_FILE_NAME : SECOND_FILE_NAME);
-                        PreferencesUtil.getInstance().setInt(SP_KEY_CUR_LOG_FILE_FLAG, curLogFileFlag);
+                        SPUtils.getInstance().save(SP_KEY_CUR_LOG_FILE_FLAG, curLogFileFlag);
                     }
                     curWriteTime = 0;
                 }
@@ -396,7 +396,7 @@ public class Logger {
         File rootFile = getDirFile(sContext);
         RandomAccessFile randomAccessFile = null, lastRandomAccessFile = null;
         try {
-            int curFileFlag = PreferencesUtil.getInstance().getInt(SP_KEY_CUR_LOG_FILE_FLAG, 0);
+            int curFileFlag = SPUtils.getInstance().get(SP_KEY_CUR_LOG_FILE_FLAG, 0);
             String fileName = curFileFlag == 0 ? FIRST_FILE_NAME : SECOND_FILE_NAME;
             File curLogFile = new File(rootFile.getAbsolutePath() + File.separator + fileName);
             if (!curLogFile.exists()) {
@@ -447,7 +447,7 @@ public class Logger {
                 tryDeleteOldFile(sContext);
                 File rootDir = getDirFile(sContext);
                 try {
-                    curLogFileFlag = PreferencesUtil.getInstance().getInt(SP_KEY_CUR_LOG_FILE_FLAG, 0);
+                    curLogFileFlag = SPUtils.getInstance().get(SP_KEY_CUR_LOG_FILE_FLAG, 0);
                     String fileName = curLogFileFlag == 0 ? FIRST_FILE_NAME : SECOND_FILE_NAME;
                     File newLogFile = new File(rootDir.getAbsolutePath() + File.separator + fileName);
                     if (!newLogFile.exists()) {
