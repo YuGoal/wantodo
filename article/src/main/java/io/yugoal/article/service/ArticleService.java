@@ -7,6 +7,7 @@ import androidx.fragment.app.Fragment;
 import com.alibaba.android.arouter.facade.annotation.Route;
 
 import io.yugoal.article.ArticleFragment;
+import io.yugoal.article.MineArticleActivity;
 import io.yugoal.lib_common_ui.arouter.IArticleService;
 
 /**
@@ -19,6 +20,11 @@ public class ArticleService implements IArticleService {
     @Override
     public Fragment getArticleFragment() {
         return new ArticleFragment();
+    }
+
+    @Override
+    public void showMine(Context context,int type) {
+        MineArticleActivity.show(context,type);
     }
 
     @Override

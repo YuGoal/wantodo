@@ -42,4 +42,14 @@ public class UserService implements IUserService {
     public void showSet() {
         SettingActivity.show(mContext);
     }
+
+    @Override
+    public Boolean isLogin(Context context) {
+        return UserUtils.getInstance().doIfLogin(context);
+    }
+
+    @Override
+    public String getNickname() {
+        return UserUtils.getInstance().getNickname();
+    }
 }

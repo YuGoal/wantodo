@@ -24,6 +24,7 @@ import io.yugoal.lib_network.cookie.PersistentCookieStore;
 import io.yugoal.lib_utils.utils.CacheUtils;
 import io.yugoal.user.ISkill;
 import io.yugoal.user.R;
+import io.yugoal.user.UserUtils;
 import io.yugoal.user.api.Constants;
 import io.yugoal.user.databinding.ActivitySettingBinding;
 
@@ -42,9 +43,8 @@ public class SettingActivity extends MvvmActivity<ActivitySettingBinding, MvvmBa
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         initToolbar("系统设置");
-        if (TextUtils.isEmpty(SPUtils.getInstance().get(Constants.NAME, ""))) {
-            viewDataBinding.tvLogout.setVisibility(View.GONE);
-        } else {
+        if (UserUtils.getInstance().isLogin()) {
+            viewDataBinding.tvLogout.setVisibility(View.VISIBLE);
             viewDataBinding.tvLogout.setOnClickListener(v -> {
                 CommonDialog commonDialog = new CommonDialog(this,
                         "退出登录",
@@ -54,8 +54,7 @@ public class SettingActivity extends MvvmActivity<ActivitySettingBinding, MvvmBa
                         new CommonDialog.DialogClickListener() {
                             @Override
                             public void onDialogClick() {
-                                SPUtils.getInstance().save(Constants.NAME, "");
-                                SPUtils.getInstance().save(Constants.ID, "");
+                                UserUtils.getInstance().logout();
                                 PersistentCookieStore persistentCookieStore = new PersistentCookieStore();
                                 persistentCookieStore.removeAll();
                                 finish();
@@ -63,6 +62,8 @@ public class SettingActivity extends MvvmActivity<ActivitySettingBinding, MvvmBa
                         });
                 commonDialog.show();
             });
+        } else {
+            viewDataBinding.tvLogout.setVisibility(View.GONE);
         }
 
         viewDataBinding.relativeCache.setOnClickListener(v -> {

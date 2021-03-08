@@ -17,6 +17,7 @@ import io.yugoal.lib_network.observer.BaseObserver;
 import io.yugoal.lib_utils.utils.StringUtils;
 import io.yugoal.lib_utils.utils.ToastUtil;
 import io.yugoal.user.R;
+import io.yugoal.user.UserUtils;
 import io.yugoal.user.api.Constants;
 import io.yugoal.user.api.LoginRegApiInterface;
 import io.yugoal.user.beans.User;
@@ -70,8 +71,7 @@ public class LoginActivity extends MvvmActivity<FragmentLoginBinding, LoginViewM
                         if (baseResponseResponse.isSuccessful()) {
                             if (baseResponseResponse.body().errorCode == 0) {
                                 User user = baseResponseResponse.body().data;
-                                SPUtils.getInstance().save(Constants.NAME, user.getNickname());
-                                SPUtils.getInstance().save(Constants.ID, user.getId());
+                                UserUtils.getInstance().login(user);
                                 finish();
                             }else {
                                 ToastUtil.show(baseResponseResponse.body().errorMsg);

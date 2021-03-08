@@ -19,7 +19,6 @@ public class ISkillImpl implements ISkill {
     @Override
     public void checkVersion() {
         BuglyUtils.checkAppUpdate(true);
-        ToastUtil.show("dddd");
     }
 
     @Override

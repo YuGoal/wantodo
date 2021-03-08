@@ -13,6 +13,7 @@ import io.reactivex.schedulers.Schedulers;
 import io.yugoal.lib_base.BaseApp;
 import io.yugoal.lib_network.commoninterceptor.CommonRequestInterceptor;
 import io.yugoal.lib_network.commoninterceptor.CommonResponseInterceptor;
+import io.yugoal.lib_network.commoninterceptor.TInterceptor;
 import io.yugoal.lib_network.cookie.CookieJarImpl;
 import io.yugoal.lib_network.cookie.PersistentCookieStore;
 import io.yugoal.lib_network.environment.EnvironmentActivity;
@@ -64,6 +65,7 @@ public abstract class NetworkApi implements IEnvironment {
             if (getInterceptor() != null) {
                 okHttpClientBuilder.addInterceptor(getInterceptor());
             }
+            okHttpClientBuilder.addNetworkInterceptor(new TInterceptor());// 加入日志拦截
             okHttpClientBuilder.cookieJar(new CookieJarImpl(new PersistentCookieStore()));
             okHttpClientBuilder.addInterceptor(new CommonRequestInterceptor(iNetworkRequiredInfo));
             okHttpClientBuilder.addInterceptor(new CommonResponseInterceptor());
@@ -72,6 +74,7 @@ public abstract class NetworkApi implements IEnvironment {
                 httpLoggingInterceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
                 okHttpClientBuilder.addInterceptor(httpLoggingInterceptor);
             }
+
             mOkHttpClient = okHttpClientBuilder.build();
         }
         return mOkHttpClient;

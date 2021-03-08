@@ -6,5 +6,6 @@
         <activity android:name=".loginreg.LoginActivity" />
         <activity android:name=".rank.UserRankActivity" />
         <activity android:name=".set.SettingActivity" />
+        <activity android:name="io.yugoal.article.MineArticleActivity" />
     </application>
 </manifest>

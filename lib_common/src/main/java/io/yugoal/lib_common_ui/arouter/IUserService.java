@@ -1,5 +1,7 @@
 package io.yugoal.lib_common_ui.arouter;
 
+import android.content.Context;
+
 import com.alibaba.android.arouter.facade.template.IProvider;
 
 /**
@@ -16,5 +18,7 @@ public interface IUserService extends IProvider {
     void showReg();
     void showRank();
     void showSet();
+    Boolean isLogin(Context context);
+    String getNickname();
 
 }

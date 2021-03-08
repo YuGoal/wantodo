@@ -23,7 +23,6 @@ import io.caoyu.wantodo.ui.home.adapter.CardViewAdapter;
 import io.yugoal.lib_base.base.activity.MvvmActivity;
 import io.yugoal.lib_base.base.preference.SPUtils;
 import io.yugoal.lib_base.base.viewmodel.MvvmBaseViewModel;
-import io.yugoal.lib_common_ui.CommonDialog;
 import io.yugoal.lib_common_ui.arouter.IArticleService;
 import io.yugoal.lib_common_ui.arouter.ITreeService;
 import io.yugoal.lib_common_ui.arouter.IUserService;
@@ -93,10 +92,12 @@ public class MainActivity extends MvvmActivity<ActivityMainBinding, MvvmBaseView
     @Override
     public void onResume() {
         super.onResume();
-        String name = SPUtils.getInstance().get(Constants.NAME, "");
-        if (!TextUtils.isEmpty(name)) {
-            viewDataBinding.drawerView.tvName.setText(name);
-            viewDataBinding.drawerView.charAvatarView.setText(name);
+        if (null == iUserService) {
+            return;
+        }
+        if (!TextUtils.isEmpty(iUserService.getNickname())) {
+            viewDataBinding.drawerView.tvName.setText(iUserService.getNickname());
+            viewDataBinding.drawerView.charAvatarView.setText(iUserService.getNickname());
         } else {
             viewDataBinding.drawerView.tvName.setText("请先登录");
             viewDataBinding.drawerView.charAvatarView.setText("W");
@@ -115,6 +116,11 @@ public class MainActivity extends MvvmActivity<ActivityMainBinding, MvvmBaseView
                 } else {
                     AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
                 }
+            }
+        });
+        viewDataBinding.drawerView.tvFavorites.setOnClickListener(v -> {
+            if (iUserService.isLogin(MainActivity.this)) {
+                iArticleService.showMine(MainActivity.this, 0);
             }
         });
     }

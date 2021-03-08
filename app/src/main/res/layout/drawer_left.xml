@@ -40,13 +40,14 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent" >
 
-
             <TextView
-                style="@style/DrawerMenuFont"
-                android:text="我的分享" />
-            <TextView
+                android:id="@+id/tv_favorites"
                 style="@style/DrawerMenuFont"
                 android:text="我的收藏" />
+            <TextView
+                android:visibility="gone"
+                style="@style/DrawerMenuFont"
+                android:text="我的分享" />
 
             <View
                 style="@style/DrawerMenuLine" />
