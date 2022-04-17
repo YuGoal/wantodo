@@ -61,6 +61,7 @@
 
 
             <androidx.appcompat.widget.SwitchCompat
+                android:visibility="gone"
                 android:id="@+id/switchWidget"
                 style="@style/DrawerMenuFont"
                 android:text="夜间模式" />

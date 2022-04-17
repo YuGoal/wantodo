@@ -32,6 +32,12 @@ public class WebViewActivity extends MvvmActivity<ActivityWebViewBinding, MvvmBa
         context.startActivity(intent);
     }
 
+    public static void show(Context context, String url, String title) {
+        Intent intent = new Intent(context, WebViewActivity.class);
+        intent.putExtra("url", url);
+        intent.putExtra("title", title);
+        context.startActivity(intent);
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

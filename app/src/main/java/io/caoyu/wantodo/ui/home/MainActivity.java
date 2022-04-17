@@ -9,7 +9,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.CompoundButton;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatDelegate;
+import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 import androidx.viewpager.widget.ViewPager;
 
@@ -32,6 +34,7 @@ import io.yugoal.lib_common_ui.utils.GuideSPUtils;
 import io.yugoal.lib_utils.utils.ToastUtil;
 import io.yugoal.user.api.Constants;
 
+import static androidx.appcompat.app.AppCompatDelegate.MODE_NIGHT_NO;
 import static androidx.appcompat.app.AppCompatDelegate.MODE_NIGHT_YES;
 
 
@@ -48,25 +51,6 @@ public class MainActivity extends MvvmActivity<ActivityMainBinding, MvvmBaseView
         initToolbar();
         initViewPager();
         initEvent();
-        showIfFirst();
-    }
-
-    private void showIfFirst() {
-        if (!GuideSPUtils.getInstance().isPrivacyPolicyShown()) {
-            Dialog dialog = new Dialog(this);
-            View view = LayoutInflater.from(this).inflate(R.layout.dialog_privacy_policy, null);
-            dialog.setContentView(view);
-            dialog.setCanceledOnTouchOutside(false);
-            dialog.show();
-            view.findViewById(R.id.dialog_privacy_policy_tv_yes).setOnClickListener(v -> {
-                GuideSPUtils.getInstance().setPrivacyPolicyShown();
-                dialog.dismiss();
-            });
-            view.findViewById(R.id.dialog_privacy_policy_tv_no).setOnClickListener(v -> {
-                TodoApplication.exitApp();
-                dialog.dismiss();
-            });
-        }
     }
 
     @Override
@@ -114,7 +98,7 @@ public class MainActivity extends MvvmActivity<ActivityMainBinding, MvvmBaseView
                 if (isChecked) {
                     AppCompatDelegate.setDefaultNightMode(MODE_NIGHT_YES);
                 } else {
-                    AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+                    AppCompatDelegate.setDefaultNightMode(MODE_NIGHT_NO);
                 }
             }
         });
@@ -132,6 +116,27 @@ public class MainActivity extends MvvmActivity<ActivityMainBinding, MvvmBaseView
         });
         viewDataBinding.imgBtnSearch.setOnClickListener(v -> {
             ToastUtil.show("功能开发中...");
+        });
+        viewDataBinding.drawer.addDrawerListener(new DrawerLayout.DrawerListener() {
+            @Override
+            public void onDrawerSlide(@NonNull View drawerView, float slideOffset) {
+
+            }
+
+            @Override
+            public void onDrawerOpened(@NonNull View drawerView) {
+                drawerView.setClickable(true);
+            }
+
+            @Override
+            public void onDrawerClosed(@NonNull View drawerView) {
+
+            }
+
+            @Override
+            public void onDrawerStateChanged(int newState) {
+
+            }
         });
         viewDataBinding.drawerView.lineUser.setOnClickListener(v -> {
             if (TextUtils.isEmpty(SPUtils.getInstance().get(Constants.NAME, ""))) {
@@ -154,22 +159,7 @@ public class MainActivity extends MvvmActivity<ActivityMainBinding, MvvmBaseView
         fragments.add(iTreeService.getTreeFragment());
         CardViewAdapter cardViewAdapter = new CardViewAdapter(getSupportFragmentManager(), fragments);
         viewDataBinding.viewpager.setAdapter(cardViewAdapter);
+        viewDataBinding.viewpager.setOffscreenPageLimit(2);
         viewDataBinding.tabs.setupWithViewPager(viewDataBinding.viewpager);
-        viewDataBinding.viewpager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
-            @Override
-            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
-
-            }
-
-            @Override
-            public void onPageSelected(int position) {
-
-            }
-
-            @Override
-            public void onPageScrollStateChanged(int state) {
-
-            }
-        });
     }
 }
